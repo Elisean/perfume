@@ -1,0 +1,12 @@
+{
+  "files": {
+    "main.js": "/perfume/static/js/main.e9d3f004.js",
+    "static/js/787.c740db24.chunk.js": "/perfume/static/js/787.c740db24.chunk.js",
+    "index.html": "/perfume/index.html",
+    "main.e9d3f004.js.map": "/perfume/static/js/main.e9d3f004.js.map",
+    "787.c740db24.chunk.js.map": "/perfume/static/js/787.c740db24.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/js/main.e9d3f004.js"
+  ]
+}
