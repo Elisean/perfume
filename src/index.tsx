@@ -28,7 +28,6 @@ const GlobalStyle = createGlobalStyle`
 	-moz-box-sizing: border-box;
 	-webkit-box-sizing: border-box;
 	box-sizing: border-box;
-
 }
 
 :focus,
@@ -55,6 +54,7 @@ textarea {
 	border-radius: 0;
 	border: none;
 	-webkit-border-radius: 0;
+  font-size:16px;
 }
 
 input::-ms-clear {
@@ -117,14 +117,12 @@ h6 {
 	color: #000;
 	border: none;
 	opacity: 1;
-
 }
 
 :-ms-button {
 	margin: 0;
 	border: none;
 	color: #000;
-
 }
 
 ::-ms-button {
@@ -137,8 +135,6 @@ h6 {
 	background: none;
 	border: none;
 	border-radius: 0;
-
-
 }
 
 ::-webkit-input {

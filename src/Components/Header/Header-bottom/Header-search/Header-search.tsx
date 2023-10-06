@@ -122,7 +122,7 @@ const ButtonStyled = styled.button`
     outline:none;
     border:none;
     position: absolute;
-    top: 12px;
+    top: 15px;
     right: 25px;
     cursor: pointer;  
     z-index:5;
