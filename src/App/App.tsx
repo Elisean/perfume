@@ -1,11 +1,22 @@
 import React from 'react';
+import { AppRoutes } from "../Routes/Routes"
 
-function App() {
+
+
+
+
+
+export const App:React.FC = () => {
+
+
+
   return (
-    <div className="App">
-     sssss
+    <div className='app'>
+     
+        <AppRoutes/>
+ 
     </div>
   );
 }
 
-export default App;
+
