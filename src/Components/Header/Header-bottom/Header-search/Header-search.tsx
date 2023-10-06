@@ -122,7 +122,7 @@ const ButtonStyled = styled.button`
     outline:none;
     border:none;
     position: absolute;
-    top: 12px;
+    top: 15px;
     right: 25px;
     cursor: pointer;  
     z-index:5;
@@ -149,11 +149,11 @@ export const HeaderSearch:React.FC = () =>{
     return(
         <MainContainer>
         <FormContainerStyled>
-            <div ref={wrapRef} className="search-icon" onClick={()=> setOpenSearch(!openSearch)}>
+            <div className="search-icon" onClick={()=> setOpenSearch(!openSearch)}>
                 <img className="search-icon" src={SearchIconOpen} alt="icon-search" />
             </div>
-        <form action="#" className={openSearch ? 'search-open' : 'search-closed'}>
-            <input className="search" type="search" placeholder="Найти парфюм.." />
+        <form  action="#" className={openSearch ? 'search-open' : 'search-closed'}>
+            <input ref={wrapRef} className="search" type="search" placeholder="Найти парфюм.." />
             <ButtonStyled type="submit">
                 <SearchIcon/>
             </ButtonStyled>
