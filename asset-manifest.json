@@ -1,12 +1,16 @@
 {
   "files": {
-    "main.js": "/perfume/static/js/main.e9d3f004.js",
-    "static/js/787.c740db24.chunk.js": "/perfume/static/js/787.c740db24.chunk.js",
+    "main.js": "/perfume/static/js/main.62566a27.js",
+    "static/media/logo.svg": "/perfume/static/media/logo.e78e5271fbec2f726d512694f1c70e83.svg",
+    "static/media/basket.svg": "/perfume/static/media/basket.b5577b45e809a303ba4dfa9f86e95332.svg",
+    "static/media/phone-call.svg": "/perfume/static/media/phone-call.4fd804adfbdb11c6a40f2115d3f74761.svg",
+    "static/media/user.svg": "/perfume/static/media/user.0faf7d20654bb6a17bea3ac28bbd31ee.svg",
+    "static/media/search.svg": "/perfume/static/media/search.6d25401103907d1ad00097181f3756b6.svg",
     "index.html": "/perfume/index.html",
-    "main.e9d3f004.js.map": "/perfume/static/js/main.e9d3f004.js.map",
-    "787.c740db24.chunk.js.map": "/perfume/static/js/787.c740db24.chunk.js.map"
+    "static/media/location.svg": "/perfume/static/media/location.c0472d38b32c89fcf04e561125cd1d4b.svg",
+    "main.62566a27.js.map": "/perfume/static/js/main.62566a27.js.map"
   },
   "entrypoints": [
-    "static/js/main.e9d3f004.js"
+    "static/js/main.62566a27.js"
   ]
 }
