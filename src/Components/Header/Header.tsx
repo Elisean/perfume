@@ -17,7 +17,10 @@ const HeaderStyledWrapper = styled.div`
     backdrop-filter: blur(0px); 
     height:93px;
     padding:28px 0 0 0;
+    position: fixed;
+    width: 100%;
   }
+
 `
 
 

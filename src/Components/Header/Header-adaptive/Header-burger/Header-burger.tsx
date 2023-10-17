@@ -1,11 +1,40 @@
 import React from 'react'
 import styled from 'styled-components'
-import { useState } from 'react'
+import { useState,useEffect,useRef } from 'react'
 import  BurgerLogo from '../../../../icons/logo.svg'
 import { HeaderLocation } from '../../Header-top/Header-location/Header-location'
 import { HeaderPhone } from '../../Header-top/Header-phone/Header-phone'
 import { HeaderMenu } from '../../Header-top/Header-menu/Header-menu'
 
+
+const HeaderBurgerWrapper = styled.div`
+
+@media (max-width:767px) {
+  .header-bg{
+      content:'';
+      width: 100%;
+      height: 100vh;
+      position:fixed;
+      top:0;
+      left:0;
+      background-color: var(--black);
+      opacity:.5;
+      transition:.5s;
+    }
+    .header-bg-closed{
+      content:'';
+      width: 100%;
+      height: 100vh;
+      position:fixed;
+      top:0;
+      left: -100%;
+      background-color: var(--black);
+      transition:.5s;
+    }
+}
+ 
+
+`
 
 const BurgerStyled = styled.div`
      display:none;
@@ -20,6 +49,7 @@ const BurgerStyled = styled.div`
       position: fixed;
       box-shadow: 0px 2px 10px 0px rgba(184, 164, 142, 0.40);
       z-index:3;
+      top:30px;
 
       .burger-item{
         display: block;
@@ -74,7 +104,7 @@ const HeaderBurgerMenuStyled = styled.div`
     display: block;
     position:fixed;
     top:0;
-    left:0;
+    left: -100%;
     width: 100%;
     height: 100vh;
     z-index:2;
@@ -83,27 +113,6 @@ const HeaderBurgerMenuStyled = styled.div`
       display:block;
     }
 
-    .menu-open::after{
-      content:'';
-      width: 100%;
-      height: 100vh;
-      position:fixed;
-      top:0;
-      left:0;
-      background-color: var(--black);
-      opacity:.5;
-      transition:.5s;
-    }
-    .menu-closed::after{
-      content:'';
-      width: 100%;
-      height: 100vh;
-      position:fixed;
-      top:0;
-      left: -100%;
-      background-color: var(--black);
-      transition:.5s;
-    }
     .menu-inner{
       width: 415px;
       height:405px;
@@ -203,17 +212,31 @@ const HeaderBurgerMenuStyled = styled.div`
 
 export const HeaderBurger:React.FC = () => {
   const [openBurger, setOpenBurger] = React.useState(false);
+  
+  const wrapRef = useRef<HTMLDivElement>(null)
+
+  const handleClosed = (event:any) =>{
+      if(wrapRef.current && wrapRef.current.contains(event.target)){
+        setOpenBurger(openBurger)
+      }
+  }
+  
+  useEffect(() =>{
+      document.addEventListener('mousedown', handleClosed)
+  }, [])
 
 
   return (
     <>
-      <BurgerStyled onClick={()=> setOpenBurger(!openBurger)}>
+    <HeaderBurgerWrapper>
+      <div ref={wrapRef} className={openBurger ? 'header-bg' : 'header-bg-closed'} ></div>
+    <BurgerStyled onClick={()=> setOpenBurger(!openBurger)}>
         <span className={openBurger ? 'burger-open' : 'burger-item'}></span>
         <span className={openBurger ? 'burger-open' : 'burger-item'}></span>
         <span className={openBurger ? 'burger-open' : 'burger-item'}></span>
       </BurgerStyled>
       <HeaderBurgerMenuStyled>
-        <div className={openBurger ? 'menu-open': 'menu-closed'}>
+        <div  className={openBurger ? 'menu-open': 'menu-closed'}>
           <div className={openBurger ? 'menu-inner': 'menu-inner-closed'}>
               <img className='burger-logo' src={BurgerLogo} alt="logo" />
              <nav className='burger-nav'>
@@ -235,6 +258,9 @@ export const HeaderBurger:React.FC = () => {
           </div>
         </div>
       </HeaderBurgerMenuStyled>
+
+    </HeaderBurgerWrapper>
+     
     </>
     
   )

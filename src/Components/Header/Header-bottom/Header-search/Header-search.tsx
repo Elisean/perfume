@@ -1,8 +1,9 @@
-import { useState, useEffect, useRef } from "react"
+import { useState, useEffect, useRef, ButtonHTMLAttributes, MutableRefObject, DetailedHTMLProps } from "react"
 import { styled } from "styled-components"
 import { ReactComponent as SearchIcon } from "../../../../icons/search.svg"
 import { MainContainer } from "../../../../Containers/Main-container/Main-container"
 import SearchIconOpen from '../../../../icons/search.svg'
+
 
 const FormContainerStyled = styled.div`
     position: relative;
@@ -41,7 +42,7 @@ const FormContainerStyled = styled.div`
         .search-icon{
             display: block;
             position:absolute;
-            z-index:3;
+            z-index:1;
             top: -6px;
             left:20px; 
         }
@@ -82,18 +83,7 @@ const FormContainerStyled = styled.div`
             z-index:5;   
             transition:.4s all;
         }
-        .search-closed::after{
-            content: "";
-            position: fixed;
-            width: 100%;
-            background-color: var(--black);
-            height: 100%;
-            top: -100%;
-            left: 0;
-            z-index:5;   
-            transition:.4s all;
-        }
-        .search-open::after{
+        .form-bg{
             content: "";
             position: fixed;
             width: 100%;
@@ -105,7 +95,17 @@ const FormContainerStyled = styled.div`
             opacity:0.4;
             transition:.4s all;
         }
-       
+        .form-bg-closed{
+            content: "";
+            position: fixed;
+            width: 100%;
+            background-color: var(--black);
+            height: 100%;
+            top: -100%;
+            left: 0;
+            z-index:5;   
+            transition:.4s all;
+        }
     }
     @media (max-width:420px) {
         .search-open{
@@ -131,12 +131,11 @@ const ButtonStyled = styled.button`
 export const HeaderSearch:React.FC = () =>{
     const [openSearch, setOpenSearch] = useState(false);
 
-
-    const wrapRef = useRef<HTMLInputElement>(null)
+    const boxRef = useRef<HTMLDivElement>(null)
 
    
     const handleClosed = (event:any) =>{
-        if(wrapRef.current && !wrapRef.current.contains(event.target)){
+        if(boxRef.current && boxRef.current.contains(event.target)){
             setOpenSearch(openSearch)
         }
     }
@@ -149,16 +148,18 @@ export const HeaderSearch:React.FC = () =>{
     return(
         <MainContainer>
         <FormContainerStyled>
-            <div  className="search-icon" onClick={()=> setOpenSearch(!openSearch)}>
+            <div className="search-icon" onClick={()=> setOpenSearch(!openSearch)}>
                 <img className="search-icon" src={SearchIconOpen} alt="icon-search" />
             </div>
-        <form action="#" className={openSearch ? 'search-open' : 'search-closed'}>
-            <input ref={wrapRef} className="search" type="search" placeholder="Найти парфюм.." />
+            <div ref={boxRef} className={openSearch ? 'form-bg' : 'form-bg-closed'}></div>
+        <form  action="#" className={openSearch ? 'search-open' : 'search-closed'}>
+            <input  className="search" type="search" placeholder="Найти парфюм.." />
             <ButtonStyled type="submit">
-                <SearchIcon/>
+                <SearchIcon />
             </ButtonStyled>
         </form>
         </FormContainerStyled>
         </MainContainer>
     )
 }
+
