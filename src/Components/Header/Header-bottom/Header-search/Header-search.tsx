@@ -166,7 +166,7 @@ export const HeaderSearch:React.FC = () =>{
                 <img className="search-icon" src={SearchIconOpen} alt="icon-search" />
             </div>
             <div ref={boxRef} className={openSearch ? 'form-bg' : 'form-bg-closed'}>
-                <div className="icon-closed" onClick={()=>setOpenSearch(!openSearch)}>x</div>
+                <div className="icon-closed" onClick={()=>setOpenSearch(openSearch)}>x</div>
             </div>
         <form  action="#" className={openSearch ? 'search-open' : 'search-closed'}>
             <input  className="search" type="search" placeholder="Найти парфюм.." />
