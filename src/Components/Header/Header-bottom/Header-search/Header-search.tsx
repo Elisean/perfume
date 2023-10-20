@@ -46,7 +46,7 @@ const FormContainerStyled = styled.div`
             font-size:45px;
             color:var(--border);
             position: absolute;
-            bottom: 30px;
+            bottom: 20px;
             left: 50%;
             transform: translate(-50%);
             font-weight:700;
@@ -54,7 +54,7 @@ const FormContainerStyled = styled.div`
         }
         .search-icon{
             display: block;
-            position:absolute;
+            position: absolute;
             z-index:1;
             top: -6px;
             left:20px; 
@@ -101,7 +101,7 @@ const FormContainerStyled = styled.div`
             position: fixed;
             width: 100%;
             background-color: var(--black);
-            height: 100vh;
+            min-height: 20vh;
             top:0;
             left:0;
             z-index:4;
@@ -113,7 +113,7 @@ const FormContainerStyled = styled.div`
             position: fixed;
             width: 100%;
             background-color: var(--black);
-            height: 100%;
+            min-height: 20%;
             top: -100%;
             left: 0;
             z-index:5;   
@@ -162,11 +162,11 @@ export const HeaderSearch:React.FC = () =>{
     return(
         <MainContainer>
         <FormContainerStyled>
-            <div className="search-icon" onClick={()=> setOpenSearch(!openSearch)}>
+            <div className="search-icon" onClick={() => setOpenSearch(!openSearch)}>
                 <img className="search-icon" src={SearchIconOpen} alt="icon-search" />
             </div>
             <div ref={boxRef} className={openSearch ? 'form-bg' : 'form-bg-closed'}>
-                <div className="icon-closed" onClick={()=>setOpenSearch(openSearch)}>x</div>
+                <div className="icon-closed" onClick={() => setOpenSearch(openSearch)}>x</div>
             </div>
         <form  action="#" className={openSearch ? 'search-open' : 'search-closed'}>
             <input  className="search" type="search" placeholder="Найти парфюм.." />
