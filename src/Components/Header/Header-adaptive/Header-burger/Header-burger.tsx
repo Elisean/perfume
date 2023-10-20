@@ -14,7 +14,7 @@ const HeaderBurgerWrapper = styled.div`
       content:'';
       width: 100%;
       height: 100vh;
-      position:fixed;
+      position: fixed;
       top:0;
       left:0;
       background-color: var(--black);
@@ -25,7 +25,7 @@ const HeaderBurgerWrapper = styled.div`
       content:'';
       width: 100%;
       height: 100vh;
-      position:fixed;
+      position: fixed;
       top:0;
       left: -100%;
       background-color: var(--black);
@@ -102,7 +102,7 @@ const HeaderBurgerMenuStyled = styled.div`
   }
   @media (max-width:767px) {
     display: block;
-    position:fixed;
+    position: fixed;
     top:0;
     left: -100%;
     width: 100%;
