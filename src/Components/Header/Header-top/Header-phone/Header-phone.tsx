@@ -8,7 +8,7 @@ const PhoneStyled = styled.div`
     .header-phone{
         padding: 0 0 0 10px;
     }
-    @media (max-width:767px) {
+    @media (max-width:768px) {
       position:absolute;
       top: -100%;
       left: 0;

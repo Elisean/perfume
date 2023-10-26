@@ -18,7 +18,7 @@ const SelectStyled = styled.div`
     border: 1px solid var(--border);
     box-shadow: 0px 2px 10px 0px rgba(184, 164, 142, 0.40);
     cursor: pointer;
- 
+    
     
     .select-burger{
         background: linear-gradient(118deg, #C09E6C 0%, #FFEBCC 42.62%, #BF936B 100%);
@@ -100,7 +100,7 @@ const SelectStyled = styled.div`
     }
     }
     }
-    @media (max-width:767px) {
+    @media (max-width:768px) {
         position: absolute;
         top: -100%;
       
@@ -111,9 +111,10 @@ export const CustomSelect = styled.div`
     position: absolute;
     top: 120px;
     left: 2px;
+   
     
 .select-item{
-    display:flex;
+    display: flex;
     border-radius: 4px;
     background: #2B2825;
     box-shadow: 0px 2px 10px 0px rgba(184, 164, 142, 0.40);
@@ -148,6 +149,7 @@ const WrapperSelectStyled = styled.div`
         opacity:1;
         visibility: visible;
         transition: all .4s ease;
+        z-index:3;
 
     }
     .close-select{

@@ -13,7 +13,7 @@ import { HeaderBurger } from '../Header-adaptive/Header-burger/Header-burger';
 const HeaderBottomStyled = styled.div`
 
   margin:16px 0 0 0;
-  @media (max-width:767px) {
+  @media (max-width:768px) {
     margin: 0;
   }
 `

@@ -7,7 +7,7 @@ const LogoStyled = styled.div`
   z-index:1;
  
   
-@media (max-width:767px) {
+@media (max-width:768px) {
   position:absolute;
   left:50%;
   top:0;

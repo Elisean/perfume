@@ -173,7 +173,7 @@ button::-moz-focus-inner {
 	border: 0
 }
 
-body{
+html,body{
   font-family: 'Inter', sans-serif;
   font-family: 'Montserrat', sans-serif;
   font-family: 'Open Sans', sans-serif;
@@ -182,6 +182,7 @@ body{
   color: var(--text);
   font-size:16px;
   min-height:100%;
+
 }
 
 input[type="search"]::-webkit-search-decoration,

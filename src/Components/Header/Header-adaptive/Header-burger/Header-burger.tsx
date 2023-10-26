@@ -9,7 +9,7 @@ import { HeaderMenu } from '../../Header-top/Header-menu/Header-menu'
 
 const HeaderBurgerWrapper = styled.div`
 
-@media (max-width:767px) {
+@media (max-width:768px) {
   .header-bg{
       content:'';
       width: 100%;
@@ -37,9 +37,10 @@ const HeaderBurgerWrapper = styled.div`
 `
 
 const BurgerStyled = styled.div`
+   
      display:none;
 
-    @media (max-width:767px) {
+    @media (max-width:768px) {
       display:block;
       width: 40px;
       height: 40px;
@@ -50,7 +51,8 @@ const BurgerStyled = styled.div`
       box-shadow: 0px 2px 10px 0px rgba(184, 164, 142, 0.40);
       z-index:3;
       top:30px;
-
+  
+ 
       .burger-item{
         display: block;
         width:22px;
@@ -96,11 +98,12 @@ const BurgerStyled = styled.div`
 
 `
 const HeaderBurgerMenuStyled = styled.div`
+
   display: none;
   .burger-logo{
     display:none;
   }
-  @media (max-width:767px) {
+  @media (max-width:768px) {
     display: block;
     position: fixed;
     top:0;
@@ -108,6 +111,7 @@ const HeaderBurgerMenuStyled = styled.div`
     width: 100%;
     height: 100vh;
     z-index:2;
+    
 
     .burger-logo{
       display:block;

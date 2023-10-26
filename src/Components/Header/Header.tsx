@@ -11,14 +11,15 @@ const HeaderStyledWrapper = styled.div`
 
   font-family: 'Montserrat', sans-serif;
   margin:16px 0 0 0;
-  @media (max-width:767px) {
+  @media (max-width:768px) {
     margin: 0;
     background: rgba(63, 58, 51, 0.3);
-    backdrop-filter: blur(0px); 
+    backdrop-filter: blur(15px); 
     height:93px;
     padding:28px 0 0 0;
     position: fixed;
     width: 100%;
+    z-index:2;
   }
 
 `
