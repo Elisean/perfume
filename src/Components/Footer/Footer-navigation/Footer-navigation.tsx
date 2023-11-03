@@ -1,0 +1,105 @@
+import React from 'react'
+
+import styled from 'styled-components'
+import { FlexContainer } from '../../../Containers/Flex-container/FlexContainer'
+import { ReactComponent as Location } from '../../../icons/footer-location.svg'
+import { ReactComponent as Time } from '../../../icons/footer-time.svg'
+import { ReactComponent as Whatsapp } from '../../../icons/footer-whatsapp.svg'
+import { ReactComponent as Telegram } from '../../../icons/footer-telegram.svg'
+import { ReactComponent as Email } from '../../../icons/footer-email.svg'
+import { ReactComponent as Self } from '../../../icons/footer-self-emloyed.svg'
+
+
+
+
+
+const FooterNavigationStyled = styled.nav`
+  .nav-item{
+    margin:27.5px 0 0 0;
+    display: flex;
+    align-items: center;
+  }
+  .item-icon{
+    margin:0 20px 0 0;
+    display: flex;
+    width:40px;
+    height:40px;
+   
+    border-radius:50%;
+    justify-content: center; 
+    align-items: center;
+
+    background-color: #37332F;
+    color: #37332F;
+   
+    
+    svg{
+        background: linear-gradient(118deg, #C09E6C 0%, #FFEBCC 42.62%, #BF936B 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
+  } 
+  
+    .time{
+        position: relative;
+        svg{
+            width: 12px;
+            height: 20px;
+            position: absolute;
+            left: 11px;
+            top:9px;
+        }
+    }
+    .whatsapp{
+        position: relative;
+        svg{
+            width: 21px;
+            height: 21px;
+            position: absolute;
+            left: 10px;
+            top:9px;
+        }
+    }
+    .email{
+        position: relative;
+        svg{
+            width: 20px;
+            height: 18px;
+            position: absolute;
+            left: 10px;
+            top:9px;
+        }  
+    }
+    
+    .item-icon:hover{
+        background: linear-gradient(118deg, #C09E6C 0%, #FFEBCC 42.62%, #BF936B 100%);
+        -webkit-text-fill-color: transparent;
+        color: black;
+    }
+ 
+ 
+
+  
+`
+
+
+export const FooterNavigation:React.FC = () => {
+  return (
+    <FooterNavigationStyled>
+        <FlexContainer justify='space-between'>
+        <ul className='nav-list'>
+            <li className='nav-item'> <span className='item-icon location'> <Location/> </span> г. Астрахань: ул. Свердлова, 106; ул. Победы <br /> 55А, пав. 10.</li>
+            <li className='nav-item'> <span className='item-icon time'> <Time/> </span> Ежедневно с 9:00 до 18:00</li>
+        </ul>
+        <ul className='nav-list'>
+            <li className='nav-item'> <span className='item-icon whatsapp'> <Whatsapp/> </span> Мы в Whatsapp</li>
+            <li className='nav-item'> <span className='item-icon'> <Telegram/> </span> Мы в Telegram</li>
+            <li className='nav-item'> <span className='item-icon email'> <Email/> </span> parfumpomotivam@gmail.com</li>
+        </ul>
+        <ul className='nav-list'>
+            <li className='nav-item'> <span className='item-icon'> <Self/> </span> ИП РАГИМОВА А.М.К. <br /> ИНН 510704693888</li>
+        </ul>
+        </FlexContainer>
+    </FooterNavigationStyled>
+  )
+}

@@ -81,7 +81,7 @@ const SliderStyledWrapper = styled.div`
         margin: -200px 0;
         object-fit: fill;
         width:100%;
-        height:1250px;
+        height:1100px;
    
         @media (max-width:1700px) {
             object-fit: cover;

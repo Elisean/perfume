@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, {css} from 'styled-components';
 import { ContainersTypes } from "../Containers-types";
 
 const StyledContainer = styled.div<ContainersTypes>`
@@ -6,6 +6,15 @@ const StyledContainer = styled.div<ContainersTypes>`
     max-width:${props=> props.maxWidth || '1310px'};
     margin:${(props)=>props.margin || '0 auto'};
     padding:${(props) => props.padding || '0 15px'};
+
+    ${props => props.response && css`
+        @media(max-width:1300px){
+            max-width:900px;
+        }
+        @media(max-width:993px) {
+            max-width:768px;
+        }
+    `}
 `
 
 

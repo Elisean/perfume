@@ -14,6 +14,7 @@ const GlobalStyle = createGlobalStyle`
   --red:#E05B49;
   --gray:#36332E;
   --border:#D6B88D;
+  --svg:#37332F;
 }
 
 * {

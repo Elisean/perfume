@@ -11,4 +11,5 @@ export interface ContainersTypes {
     margin?: number;
     padding?: string;
     flex?: string;
+    response?:boolean;
 }
