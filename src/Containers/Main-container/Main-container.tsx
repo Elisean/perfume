@@ -6,7 +6,8 @@ const StyledContainer = styled.div<ContainersTypes>`
     max-width:${props=> props.maxWidth || '1310px'};
     margin:${(props)=>props.margin || '0 auto'};
     padding:${(props) => props.padding || '0 15px'};
-
+   
+    
     ${props => props.response && css`
         @media(max-width:1300px){
             max-width:900px;
@@ -22,7 +23,6 @@ const StyledContainer = styled.div<ContainersTypes>`
         @media (max-width: 997px) {
             max-width:768px;
         }
-
     `}
 `
 

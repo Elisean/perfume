@@ -3,14 +3,15 @@ import styled, {css} from 'styled-components'
 
 
 interface IButton{
-  position: string
-  children: React.ReactNode
-  top:string;
-  left:string;
+  position?: string
+  children?: React.ReactNode
+  top?:string;
+  left?:string;
   transform?:string;
   width?:string;
   padding?:string;
   responsebtn?:boolean
+  responsebonusesBtn?:boolean
 }
 
 
@@ -34,18 +35,20 @@ const StyledButton = styled.button<IButton>`
     left:${props => props.left || 0};
     cursor: pointer;
     z-index: 3;
-    transform: ${props => props.transform || 'translate(-57%, 0)'};
+    transform: ${props => props.transform || '0 0'};
     width:250px;
 
   ${props => props.responsebtn && css`
     @media (max-width:1300px) {
       width:200px;
       padding: 12px 0;
-      top:83%;  
+      top:83%;
+      left:48%;  
     }
     @media (max-width:993px) {
       transform: translate(-50%, 0);
       top:81%;  
+      left:50%; 
     }
     @media (max-width:767px) {
       transform: translate(-50%, 0);
@@ -57,7 +60,18 @@ const StyledButton = styled.button<IButton>`
     @media (max-width:325px) {
       top:80%;  
     }
-    
+  `}
+
+  ${props => props.responsebonusesBtn && css`
+    @media (max-width: 767px) {
+      left:20px;
+      top:20px;
+    }
+    @media (max-width:450px) {
+        margin:0 auto;
+        left:0;
+    }
+
   `}
 
 

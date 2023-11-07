@@ -6,6 +6,9 @@ import styled, {css} from 'styled-components'
 export interface IProps{
     children: React.ReactNode
     response?:boolean
+    position?:string
+    top?:string
+    left?:string
 }
 
 
@@ -17,17 +20,26 @@ const TitleStyled = styled.div<IProps>`
     background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    margin:50px 0 30px 0;
+    margin:50px 0 0 0;
+    position:${props => props.position || 'relative'};
+    top:${props => props.top || '0'};
+    left:${props => props.left || '0'};
+
+
 
     ${props => props.response && css`
+
+        @media (max-width:992px) {
+            left:10px;
+        }
+
         @media (max-width: 768px) {
             text-align:center;
-            margin:30px 0;
+            margin:0;
         }
         @media (max-width: 450px) {
             text-align:center;
             margin:20px 0;
-
         }
         
     `}

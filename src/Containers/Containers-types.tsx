@@ -11,7 +11,7 @@ export interface ContainersTypes {
     margin?: number;
     padding?: string;
     flex?: string;
+    position?: string;
     response?:boolean;
     footerResponse?:boolean;
-    
 }
