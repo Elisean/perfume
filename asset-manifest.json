@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/perfume/static/css/main.969f830a.css",
-    "main.js": "/perfume/static/js/main.712ddfbf.js",
+    "main.js": "/perfume/static/js/main.fcfeef80.js",
     "static/media/slider-banner-1.png": "/perfume/static/media/slider-banner-1.cf43f919cdf08fa2e15c.png",
     "static/media/slider-banner-2-768px.png": "/perfume/static/media/slider-banner-2-768px.41f226fe364eb03c727f.png",
     "static/media/slider-banner-1-768px.png": "/perfume/static/media/slider-banner-1-768px.bb69f5cc9d7d9b8ca070.png",
@@ -12,6 +12,7 @@
     "static/media/slider-banner-4.png": "/perfume/static/media/slider-banner-4.6fe6eb20573287dafef4.png",
     "static/media/slider-banner-4-768px.png": "/perfume/static/media/slider-banner-4-768px.6bc089cf32ea5f5313d5.png",
     "static/media/slider-banner-3.png": "/perfume/static/media/slider-banner-3.d6e0215b86ca973f0608.png",
+    "static/media/bg-stars.png": "/perfume/static/media/bg-stars.6d79e82856d78628c3d2.png",
     "static/media/fleur.png": "/perfume/static/media/fleur.378ab3dd801535e5fa52.png",
     "static/media/bombshel.png": "/perfume/static/media/bombshel.cb97bdcf6b7d5e1697ce.png",
     "static/media/aventus.png": "/perfume/static/media/aventus.b7a1b81bea670351ec2b.png",
@@ -29,10 +30,10 @@
     "static/media/footer-time.svg": "/perfume/static/media/footer-time.45a98c9972c196062441a6245fe74360.svg",
     "static/media/location.svg": "/perfume/static/media/location.c0472d38b32c89fcf04e561125cd1d4b.svg",
     "main.969f830a.css.map": "/perfume/static/css/main.969f830a.css.map",
-    "main.712ddfbf.js.map": "/perfume/static/js/main.712ddfbf.js.map"
+    "main.fcfeef80.js.map": "/perfume/static/js/main.fcfeef80.js.map"
   },
   "entrypoints": [
     "static/css/main.969f830a.css",
-    "static/js/main.712ddfbf.js"
+    "static/js/main.fcfeef80.js"
   ]
 }
