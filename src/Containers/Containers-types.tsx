@@ -12,4 +12,6 @@ export interface ContainersTypes {
     padding?: string;
     flex?: string;
     response?:boolean;
+    footerResponse?:boolean;
+    
 }

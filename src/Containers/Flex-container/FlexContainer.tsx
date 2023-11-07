@@ -15,6 +15,13 @@ const FlexContainerStyled = styled.div<ContainersTypes>`
         }
     }
     `}
+
+    ${props => props.footerResponse && css`
+        @media (max-width:997px) {
+            flex-wrap: wrap;
+        }
+    }
+    `}
 `
 
 export const FlexContainer:React.FC<ContainersTypes> = (props)=>{

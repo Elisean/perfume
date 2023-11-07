@@ -137,19 +137,19 @@ export const PopularFragrances:React.FC = () => {
               <h3 className='card-title'>Для неё</h3>
                 <img className={bombshellHover ? 'card-img-hover' : 'card-img'} src={CardImageBombshel} alt="images" />
                 <p className='card-subtitle'>Victoria Secret Bombshell</p>
-                <Button responseBtn padding='12px 72px' top='85%' left='50%'  position='absolute'>в корзину</Button>
+                <Button responsebtn={true} padding='12px 72px' top='85%' left='50%'  position='absolute'>в корзину</Button>
               </li>
               <li className='fragrances-item' onMouseOver={()=> setCreedhoverHover(!creedHover)} onMouseLeave={()=> setCreedhoverHover(!creedHover)}>
               <h3 className='card-title'>Для него</h3>
                 <img className={creedHover ? 'card-img-hover' : 'card-img'} src={CardImagesCreed} alt="images" />
                 <p className='card-subtitle'>Aventus By Creed</p>
-                <Button responseBtn padding='12px 72px' top='85%' left='50%' position='absolute'>в корзину</Button>
+                <Button responsebtn={true} padding='12px 72px' top='85%' left='50%' position='absolute'>в корзину</Button>
               </li>
               <li className='fragrances-item' onMouseOver={()=> setFleurHover(!fleurHover)} onMouseLeave={()=> setFleurHover(!fleurHover)}>
               <h3 className='card-title'>Унисекс</h3>
                 <img className={fleurHover ? 'card-img-hover' : 'card-img'} src={CardImagesNarcotiqe} alt="images" />
                 <p className='card-subtitle'>Narcotiqe</p>
-                <Button responseBtn padding='12px 72px' top='85%' left='50%' position='absolute' >в корзину</Button>
+                <Button responsebtn={true} padding='12px 72px' top='85%' left='50%' position='absolute' >в корзину</Button>
               </li>
             </FlexContainer>
             </ul>

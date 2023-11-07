@@ -10,7 +10,7 @@ export const HomePage:React.FC = () => {
       <Header/>
       <Slider/>
       <PopularFragrances/>
-      {/* <Footer/> */}
+      <Footer/>
     </>
   )
 }

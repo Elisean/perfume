@@ -33,7 +33,7 @@ const FooterStyled = styled.div`
 export const Footer:React.FC = () => {
   return (
     <FooterStyled>
-        <MainContainer>
+        <MainContainer footerResponse>
             <FlexContainer direction='column'>
                 <div className='footer-logo'>
                     <Logo/>

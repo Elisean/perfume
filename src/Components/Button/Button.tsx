@@ -10,7 +10,7 @@ interface IButton{
   transform?:string;
   width?:string;
   padding?:string;
-  responseBtn?:boolean
+  responsebtn?:boolean
 }
 
 
@@ -37,7 +37,7 @@ const StyledButton = styled.button<IButton>`
     transform: ${props => props.transform || 'translate(-57%, 0)'};
     width:250px;
 
-  ${props => props.responseBtn && css`
+  ${props => props.responsebtn && css`
     @media (max-width:1300px) {
       width:200px;
       padding: 12px 0;
@@ -63,7 +63,7 @@ const StyledButton = styled.button<IButton>`
 
 `
 
-export const Button:React.FC<IButton> = (props) => {
+export const Button:React.FC<IButton> = (props) =>  {
   return (
     <StyledButton {...props}>
         {props.children}
