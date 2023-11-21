@@ -4,6 +4,7 @@ import { Slider } from '../Components/Slider/Slider'
 import { PopularFragrances } from '../Layout/Popular-fragrances/Popular-Fragrances'
 import { Footer } from '../Components/Footer/Footer'
 import { PurchaseBonuses } from '../Layout/Purchase-bonuses/Purchase-bonuses'
+import { HomePageCatalog } from '../Layout/HomePage-catalog/HomePage-catalog'
 
 
 export const HomePage:React.FC = () => {
@@ -13,6 +14,7 @@ export const HomePage:React.FC = () => {
       <Slider/>
       <PopularFragrances/>
       <PurchaseBonuses/>
+      <HomePageCatalog/>
       <Footer/>
     </>
   )

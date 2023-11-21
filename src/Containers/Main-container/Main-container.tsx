@@ -10,7 +10,7 @@ const StyledContainer = styled.div<ContainersTypes>`
     
     ${props => props.response && css`
         @media(max-width:1300px){
-            max-width:900px;
+            max-width:985px;
         }
         @media(max-width:993px) {
             max-width:768px;
@@ -24,6 +24,21 @@ const StyledContainer = styled.div<ContainersTypes>`
             max-width:768px;
         }
     `}
+    ${props => props.catalogResponse && css`
+        @media(max-width:1300px){
+            max-width:985px;
+        }
+        @media(max-width:993px) {
+            max-width:768px;
+        }
+        @media(max-width:768px) {
+            max-width:568px;
+        }
+        @media(max-width:568px) {
+            max-width:320px;
+        }
+    `}
+
 `
 
 

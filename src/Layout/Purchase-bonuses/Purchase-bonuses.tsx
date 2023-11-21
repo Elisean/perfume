@@ -2,7 +2,7 @@ import { styled } from 'styled-components';
 import { Button } from '../../Components/Button/Button';
 import { MainContainer } from '../../Containers/Main-container/Main-container';
 import bgStar from '../../images/bg-stars.png';
-import { SectionTitle } from '../../Components/Section-title/Section-title';
+import { AsideTitle } from '../../Components/Aside-title/Aside-title';
 
 
 const PurchaseBonusesStyles = styled.div`
@@ -83,10 +83,10 @@ export const PurchaseBonuses = () =>{
         <PurchaseBonusesStyles>
             <div className='purchase-inner'>
             <MainContainer response>
-            <SectionTitle response top='-70px'>Бонусы от покупок</SectionTitle>
+            <AsideTitle response top='-70px'>Бонусы от покупок</AsideTitle>
                 <h2 className='bonus-title'>Получайте кэшбэк за покупки</h2>
                 <h3 className='bonus-subtitle'>Бонусные баллы за регистрацию и покупки</h3>
-                <Button responsebonusesBtn top='35px' left='90px' padding='12px 0'>Узнать подробнее</Button>
+                <Button responseBonusesBtn top='35px' left='90px' padding='12px 0'>Узнать подробнее</Button>
             </MainContainer>
             </div>
         </PurchaseBonusesStyles>

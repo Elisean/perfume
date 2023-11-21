@@ -1,0 +1,117 @@
+import React, { ReactNode } from 'react'
+import styled, { css } from 'styled-components'
+import { FlexContainer } from '../../Containers/Flex-container/FlexContainer'
+
+
+
+type SelectProps = {
+    name?:string
+    children?:ReactNode
+    textTransform?:string
+    padding?:string
+    fontSize?:string
+    fontWeight?:string
+    width?:string
+    left?:string
+    top?:string
+    border?:string
+    boxShadow?:string
+    Opened?:boolean
+    tabIndex?:string
+    onClick?:any
+    ref?:any
+    selectFilter?:boolean
+    ResponceSelect?:boolean
+    ResponceSelectPop?:boolean
+}
+
+
+const StyledSelectInner = styled.div <SelectProps>`
+    position: relative;
+    color: #D6B88D;
+    text-align: center;
+    font-family: 'Montserrat', sans-serif;
+    font-size: ${props => props.fontSize || '16px'};
+    font-weight: ${props => props.fontWeight || '400'};
+    text-transform: ${props => props.textTransform || 'none'};
+    padding:${(props) => props.padding || '0'};
+    border-radius: 4px;
+    border: ${props => props.border || 'none'};
+    box-shadow: ${props => props.boxShadow || 'none'};
+    cursor: pointer;
+    width:${props => props.width || '0'};
+    top:${props => props.top || '0'};
+    left:${props => props.left || '0'};
+    background-color: #36332E;
+    border: 1px solid transparent;
+    z-index:3;
+
+
+    &:hover{
+        font-weight: 500;
+        color: var(--black);
+        background: var(--gradient, linear-gradient(92deg, #C09E6C -1.94%, #FFEBCC 40.99%, #BF936B 98.79%));
+    }
+    &:focus{
+        border: 1px solid var(--border);
+        box-shadow: 0px 2px 10px 0px rgba(184, 164, 142, 0.40);
+    }
+
+    ${props => props.selectFilter && css`
+        border: 1px solid var(--border);
+        width:90%;
+        padding:5px 20px;
+    `}
+
+    ${props => props.ResponceSelect && css`
+        @media (max-width:993px) {
+            left: -10px;
+            width:305px;
+        }
+        @media (max-width:768px) {
+            width:240px;
+        }
+        @media (max-width:568px) {
+            width:140px;
+            left: 0;
+            font-size:15px;
+        }
+    `}
+    ${props => props.ResponceSelectPop && css`
+        @media (max-width:993px) {
+            left: 10px;
+        }
+        @media (max-width:768px) {
+            width:240px;
+            padding:10px 15px;
+            
+        }
+        @media (max-width:568px) {
+            width:140px;
+            padding:10px 0;
+            font-size:12px;
+            left: 5px;
+        }
+        
+    `}
+
+
+`
+
+
+
+export const MainSelect:React.FC<SelectProps> = (props:SelectProps) => {
+
+  return (
+   
+    <StyledSelectInner {...props}  tabIndex='0'>
+        <FlexContainer justify='space-between' align='center'>
+            {props.name}
+            {props.children}
+        </FlexContainer>
+    </StyledSelectInner>
+  )
+}
+
+
+

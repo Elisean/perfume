@@ -14,4 +14,9 @@ export interface ContainersTypes {
     position?: string;
     response?:boolean;
     footerResponse?:boolean;
+    catalogResponse?:boolean;
+    filtersResponse?:boolean;
+    ref?:any
+    onClick?:any;
+    
 }

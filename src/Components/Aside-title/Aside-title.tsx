@@ -34,19 +34,20 @@ const TitleStyled = styled.div<IProps>`
         }
 
         @media (max-width: 768px) {
-            text-align:center;
-            margin:0;
+            text-align: center;
+            margin:30px 0 0 0;
+            left:0;
         }
         @media (max-width: 450px) {
             text-align:center;
             margin:20px 0;
+           
         }
-        
     `}
 `
 
 
-export const SectionTitle:React.FC<IProps> = (props) => {
+export const AsideTitle:React.FC<IProps> = (props) => {
    return (
    <TitleStyled {...props}>
     {props.children}
