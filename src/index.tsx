@@ -8,6 +8,7 @@ import { BrowserRouter } from 'react-router-dom';
 const GlobalStyle = createGlobalStyle`
 
 :root{
+
   --black:#12110F;
   --bg-color:#211E1C;
   --text:#BEAE97;

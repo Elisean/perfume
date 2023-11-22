@@ -9,7 +9,6 @@ import { HeaderBasket } from './Header-basket/Header-basket';
 import { HeaderBurger } from '../Header-adaptive/Header-burger/Header-burger';
 
 
-
 const HeaderBottomStyled = styled.div`
 
   margin:16px 0 0 0;

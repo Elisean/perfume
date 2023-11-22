@@ -1,10 +1,9 @@
-import React, { ReactNode } from 'react'
+import React, { ReactNode, createContext, useState } from 'react'
 import styled, { css } from 'styled-components'
 import { FlexContainer } from '../../Containers/Flex-container/FlexContainer'
 
 
-
-type SelectProps = {
+export type SelectProps = {
     name?:string
     children?:ReactNode
     textTransform?:string
@@ -23,12 +22,17 @@ type SelectProps = {
     selectFilter?:boolean
     ResponceSelect?:boolean
     ResponceSelectPop?:boolean
+    SelectHeader?:boolean
+    isActive?: boolean
+    setActive?: (value: boolean) => void
+    onMouseEnter?: (event: MouseEvent) => void
+    onMouseLeave?: (event: MouseEvent) => void
+
 }
 
 
 const StyledSelectInner = styled.div <SelectProps>`
     position: relative;
-    color: #D6B88D;
     text-align: center;
     font-family: 'Montserrat', sans-serif;
     font-size: ${props => props.fontSize || '16px'};
@@ -42,13 +46,14 @@ const StyledSelectInner = styled.div <SelectProps>`
     width:${props => props.width || '0'};
     top:${props => props.top || '0'};
     left:${props => props.left || '0'};
-    background-color: #36332E;
     border: 1px solid transparent;
     z-index:3;
+    color: var(--gradient, linear-gradient(92deg, #C09E6C -1.94%, #FFEBCC 40.99%, #BF936B 98.79%));
+    background: #2B2825;
 
 
     &:hover{
-        font-weight: 500;
+        font-weight: 600;
         color: var(--black);
         background: var(--gradient, linear-gradient(92deg, #C09E6C -1.94%, #FFEBCC 40.99%, #BF936B 98.79%));
     }
@@ -62,6 +67,18 @@ const StyledSelectInner = styled.div <SelectProps>`
         width:90%;
         padding:5px 20px;
     `}
+
+    ${props => props.SelectHeader && css`
+        width: 175px;
+        border: 1px solid var(--border);
+        box-shadow: 0px 2px 10px 0px rgba(184, 164, 142, 0.40);
+        padding:14px 20px;
+        font-weight: 600;
+        text-transform: uppercase;
+    `}
+
+
+
 
     ${props => props.ResponceSelect && css`
         @media (max-width:993px) {
@@ -99,17 +116,18 @@ const StyledSelectInner = styled.div <SelectProps>`
 `
 
 
-
 export const MainSelect:React.FC<SelectProps> = (props:SelectProps) => {
-
+    
   return (
-   
-    <StyledSelectInner {...props}  tabIndex='0'>
+  
+    <StyledSelectInner {...props} tabIndex='0'>
         <FlexContainer justify='space-between' align='center'>
             {props.name}
             {props.children}
         </FlexContainer>
     </StyledSelectInner>
+
+    
   )
 }
 
