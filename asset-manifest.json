@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/perfume/static/css/main.969f830a.css",
-    "main.js": "/perfume/static/js/main.45c4d910.js",
+    "main.js": "/perfume/static/js/main.8f7348bd.js",
     "static/media/slider-banner-1.png": "/perfume/static/media/slider-banner-1.cf43f919cdf08fa2e15c.png",
     "static/media/slider-banner-2-768px.png": "/perfume/static/media/slider-banner-2-768px.41f226fe364eb03c727f.png",
     "static/media/slider-banner-1-768px.png": "/perfume/static/media/slider-banner-1-768px.bb69f5cc9d7d9b8ca070.png",
@@ -22,6 +22,7 @@
     "static/media/phone-call.svg": "/perfume/static/media/phone-call.4fd804adfbdb11c6a40f2115d3f74761.svg",
     "static/media/filters.svg": "/perfume/static/media/filters.e9a0a46cef22690204366f59e75fe0e4.svg",
     "static/media/footer-whatsapp.svg": "/perfume/static/media/footer-whatsapp.21fff4dc87dfcfd6a185dbe0f5544da9.svg",
+    "static/media/select-icon.svg": "/perfume/static/media/select-icon.9364c38db5ac892d78c551cfa6c18851.svg",
     "static/media/user.svg": "/perfume/static/media/user.0faf7d20654bb6a17bea3ac28bbd31ee.svg",
     "static/media/footer-email.svg": "/perfume/static/media/footer-email.a5be35b09f8cf5d7063f7fdc453d0c43.svg",
     "static/media/search.svg": "/perfume/static/media/search.6d25401103907d1ad00097181f3756b6.svg",
@@ -34,10 +35,10 @@
     "static/media/closed.svg": "/perfume/static/media/closed.f488721c64d2ee0157d5019b1fd7560b.svg",
     "static/media/chevron-down.svg": "/perfume/static/media/chevron-down.1bfdc16570336225b1ed8c297144f2bb.svg",
     "main.969f830a.css.map": "/perfume/static/css/main.969f830a.css.map",
-    "main.45c4d910.js.map": "/perfume/static/js/main.45c4d910.js.map"
+    "main.8f7348bd.js.map": "/perfume/static/js/main.8f7348bd.js.map"
   },
   "entrypoints": [
     "static/css/main.969f830a.css",
-    "static/js/main.45c4d910.js"
+    "static/js/main.8f7348bd.js"
   ]
 }
