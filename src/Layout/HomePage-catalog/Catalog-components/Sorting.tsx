@@ -16,7 +16,10 @@ const SortWrapper = styled.div`
     position: absolute;
     z-index:2;
     top: 65px;
-    left: 315px;
+    left: 325px;
+    @media (max-width:993px) {
+      left:315px;
+    }
     @media (max-width:768px) {
       left: 250px;
     }

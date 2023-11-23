@@ -1,14 +1,14 @@
 import React, { useState, useEffect, ReactNode, useContext } from 'react'
 import styled from 'styled-components'
-import { FlexContainer } from '../../../Containers/Flex-container/FlexContainer'
-import { Button } from '../../../Components/Button/Button'
-import { Pagination } from './Pagination';
-import { FiltersContext } from '../../../Routes/Routes';
-import { useResize } from '../../../Hooks/useResize';
-
+import { FlexContainer } from '../../../../Containers/Flex-container/FlexContainer'
+import { Button } from '../../../../Components/Button/Button'
+import { Pagination } from '../Pagination';
+import { FiltersContext } from '../../../../Routes/Routes';
+import { useResize } from '../../../../Hooks/useResize';
+import Skeleton from './Skeleton-catalog-card';
 
 const StyledCatalogWrapper = styled.div`
-
+   
    .filterOpen{
       display: grid;
       grid-template-columns: repeat(3, 305px);
@@ -167,7 +167,7 @@ const CardItem = styled.div`
     font-weight: 700;
     padding: 0 5px 0 0;
   }
-
+  
 `
 
 
@@ -176,6 +176,8 @@ export const CatalogCard:React.FC = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const {filtersOpen, setFiltersOpen} = useContext(FiltersContext);
   const { width, isScreenSm, isScreenMd, isScreenLg, isScreenXl, isScreenXxl } = useResize();
+
+  const [isLoading, setIsLoading] = useState(true);
 
   let countCards = 0;
 
@@ -204,8 +206,6 @@ export const CatalogCard:React.FC = () => {
     }else if(width >= 100 && !filtersOpen ){
       countCards = 3;
     }
-    
-  
 
   useEffect(() => {
     fetch(
@@ -213,21 +213,21 @@ export const CatalogCard:React.FC = () => {
     )
     .then((res) => res.json())
     .then((data) => {
-      setCards(data)
+        setIsLoading(false)
+        setCards(data)
+       
      });  
-  }, [ currentPage, filtersOpen, isScreenSm, isScreenMd, isScreenLg, isScreenXl, isScreenXxl]);
+  }, [ countCards, currentPage, filtersOpen, isScreenSm, isScreenMd, isScreenLg, isScreenXl, isScreenXxl]);
   
   return (
     <>
     <StyledCatalogWrapper>
-  
     <div className={filtersOpen ? 'filterOpen' : 'filterClosed'}>
 
 {
-  cards.map((card, index) => {
-
-    return (   
-    <CardItem key={index}>
+  isLoading ? [...new Array(12)].map((_, index) => <Skeleton key={index}/>) 
+            : cards.map((card, index) => (   
+      <CardItem key={index} >
          <img className='card-image' src={card.url} alt="card-img" />
                     <div className='card-inner'>
                       <h2 className='card-title'>{card.title}</h2>
@@ -246,7 +246,7 @@ export const CatalogCard:React.FC = () => {
                   </div>
       </CardItem>
     )
-  })
+  )
 
 }
 </div>
