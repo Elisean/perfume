@@ -7,6 +7,8 @@ import { FiltersContext } from '../../../../Routes/Routes';
 import { useResize } from '../../../../Hooks/useResize';
 import Skeleton from './Skeleton-catalog-card';
 
+
+
 const StyledCatalogWrapper = styled.div`
    
    .filterOpen{
@@ -177,8 +179,11 @@ export const CatalogCard:React.FC = () => {
   const {filtersOpen, setFiltersOpen} = useContext(FiltersContext);
   const { width, isScreenSm, isScreenMd, isScreenLg, isScreenXl, isScreenXxl } = useResize();
 
-  const [isLoading, setIsLoading] = useState(true);
 
+  console.log(cards)
+
+  const [isLoading, setIsLoading] = useState(true);
+ 
   let countCards = 0;
 
     if(isScreenXxl && !filtersOpen){
@@ -209,7 +214,8 @@ export const CatalogCard:React.FC = () => {
 
   useEffect(() => {
     fetch(
-      `http://localhost:4000/flavors?_limit=${countCards}&_page=${currentPage}` 
+      `https://64e6020b09e64530d17f6dd0.mockapi.io/Flavors?page=${currentPage}&limit=12&`
+      // `http://localhost:4000/flavors?_limit=${countCards}&_page=${currentPage}` 
     )
     .then((res) => res.json())
     .then((data) => {

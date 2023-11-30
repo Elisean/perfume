@@ -1,6 +1,6 @@
 import React from 'react'
 import { ReactComponent as Search } from '../../icons/search.svg';
-import styled, { css } from 'styled-components';
+import styled from 'styled-components';
 
 
 
@@ -22,12 +22,11 @@ const FormWrapperStyled = styled.form<IForm>`
         color: var(--text);
         margin:0 0 0 0;
  
-       
         
         &:focus{
             outline: none;
             border-radius: 4px;
-            border: 1px solid var(--border);
+            border: 2px solid var(--border);
             box-shadow: 0px 0px 20px 0px rgba(160, 149, 133, 0.20);
         }
         &::placeholder{
@@ -36,7 +35,14 @@ const FormWrapperStyled = styled.form<IForm>`
             font-size: 16px;
             font-weight: 400;
             line-height: 140%;
-    }
+        }
+        &:hover{
+            outline: none;
+            border-radius: 4px;
+            border: 2px solid var(--border);
+            box-shadow: 0px 0px 20px 0px rgba(160, 149, 133, 0.20);
+  
+        }
 }
     .form-btn-search{
         position: absolute;
@@ -50,9 +56,6 @@ const FormWrapperStyled = styled.form<IForm>`
         justify-content: center;
         position: relative;
     }   
-
-
-
 
 `
 
