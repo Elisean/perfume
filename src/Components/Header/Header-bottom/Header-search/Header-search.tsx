@@ -25,18 +25,12 @@ const FormContainerStyled = styled.div`
             left:40px;
             z-index:3;
         }
-        .icon-closed{
-            display: block;
-            position: absolute;
-            top:0;
-        } 
         .search-open{
             position: fixed;
             top: -5px;
             left: 50%;
             transform: translate(-50%, 25px);
             width:90%;
-            transition: .3s;
             z-index:3;
         }
         .search-closed{
@@ -45,7 +39,6 @@ const FormContainerStyled = styled.div`
             width:90%;
             left: 50%;
             transform: translate(-50%, 25px);
-            transition: .3s;
         }
         .icon-open{
             position: absolute;
@@ -59,9 +52,11 @@ const FormContainerStyled = styled.div`
             top: -100%;
             font-size:40px;
             font-weight:600;
-            z-index:4;
+            z-index:4;  
         }
         .form-bg{
+            display: flex;
+            justify-content: center;
             position: fixed;
             top: 0;
             left: 0;
@@ -70,8 +65,6 @@ const FormContainerStyled = styled.div`
             background-color: var(--gray);
             z-index:3;
             transition: .3s;
-            display: flex;
-            justify-content: center;
         }
         .form-bg::after{
             content: '';
