@@ -32,7 +32,7 @@ const FormContainerStyled = styled.div`
         } 
         .search-open{
             position: fixed;
-            top: -10px;
+            top: -5px;
             left: 50%;
             transform: translate(-50%, 25px);
             width:90%;
