@@ -1,6 +1,9 @@
 import React from 'react';
 import {ReactComponent as Logo} from '../../../../icons/logo.svg';
 import styled from 'styled-components';
+import { ROUTES } from "../../../../Utils/routes";
+import { Link } from "react-router-dom";
+
 
 const LogoStyled = styled.div`
   position:relative;
@@ -18,7 +21,9 @@ const LogoStyled = styled.div`
 export const HeaderLogo:React.FC = () => {
   return (
     <LogoStyled>
-      <Logo/>
+      <Link to={ROUTES.HOME}>
+        <Logo/>
+      </Link>
     </LogoStyled>
   )
 }

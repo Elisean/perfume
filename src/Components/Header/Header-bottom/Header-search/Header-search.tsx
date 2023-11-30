@@ -1,149 +1,132 @@
 import { useState, useEffect, useRef, ButtonHTMLAttributes, MutableRefObject, DetailedHTMLProps } from "react"
 import { styled } from "styled-components"
-import { ReactComponent as SearchIcon } from "../../../../icons/search.svg"
 import { MainContainer } from "../../../../Containers/Main-container/Main-container"
 import SearchIconOpen from '../../../../icons/search.svg'
+import { MainForm } from "../../../Main-Form/Main-Form"
+
 
 
 const FormContainerStyled = styled.div`
     position: relative;
     
-    .search{
-        position: relative;
-        min-width: 100%;
-        padding:17px 84px 16px 20px;
-        border-radius: 4px;
-        border: 1px solid #514941;
-        background:var(--black);
-        box-shadow: 0px 0px 10px 0px rgba(160, 149, 133, 0.20);
-        color:var(--border);
-        z-index:5;
-
-        
-        &::placeholder{
-        color: #867A68;
-        font-family: 'Inter', sans-serif;
-        font-size: 16px;
-        font-weight: 400;
-        line-height: 140%;
-    }
-    &:focus{
-        outline: none;
-        border-radius: 4px;
-        border: 1px solid var(--border);
-        box-shadow: 0px 0px 20px 0px rgba(160, 149, 133, 0.20);
-    }
-} 
     .search-icon{
         display: none;
     }
     .icon-closed{
         display: none;
-    }
+    } 
+   
+
     @media (max-width: 768px) {
-        .icon-closed{
-            display: block;
-            font-size:45px;
-            color:var(--border);
-            position: absolute;
-            bottom: 20px;
-            left: 50%;
-            transform: translate(-50%);
-            font-weight:700;
-            z-index:5;
-        }
         .search-icon{
             display: block;
             position: absolute;
-            z-index:1;
-            top: -6px;
-            left:20px; 
+            top: -10px;
+            left:40px;
+            z-index:3;
+        }
+        .icon-closed{
+            display: block;
+            position: absolute;
+            top:0;
+        } 
+        .search-open{
+            position: fixed;
+            top: -10px;
+            left: 50%;
+            transform: translate(-50%, 25px);
+            width:90%;
+            transition: .3s;
+            z-index:3;
         }
         .search-closed{
             position: fixed;
             top: -100%;
-            left: 14px;
-            width:96%;
-            transition:.4s all;
-        } 
-        .search-open{
-            position: fixed;
-            top: 25px;
-            left: 14px;
-            width:96%;
-            z-index:6;
-            transition:.4s all;
-        } 
-        .search-open::before{
-            content: "";
-            position: fixed;
-            width: 100%;
-            background-color: var(--black);
-            height: 100%;
-            top:0;
-            left:0;
-            z-index:5;   
-            transition:.4s all;
+            width:90%;
+            left: 50%;
+            transform: translate(-50%, 25px);
+            transition: .3s;
         }
-        .search-closed::before{
-            content: "";
-            position: fixed;
-            width: 100%;
-            background-color: var(--black);
-            height: 100%;
+        .icon-open{
+            position: absolute;
+            top: 200%;
+            font-size:40px;
+            font-weight:600;
+            z-index:4;
+        }
+        .icon-closed{
+            position: absolute;
             top: -100%;
-            left: 0;
-            z-index:5;   
-            transition:.4s all;
+            font-size:40px;
+            font-weight:600;
+            z-index:4;
         }
         .form-bg{
-            content: "";
             position: fixed;
-            width: 100%;
-            background-color: var(--black);
-            min-height: 20vh;
-            top:0;
-            left:0;
-            z-index:4;
-            opacity:0.4;
-            transition:.4s all;
+            top: 0;
+            left: 0;
+            width:100%;
+            min-height:92px;
+            background-color: var(--gray);
+            z-index:3;
+            transition: .3s;
+            display: flex;
+            justify-content: center;
+        }
+        .form-bg::after{
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width:100%;
+            min-height:100vh;
+            display: block;
+            background-color: #000000;
+            z-index:3;
+            opacity: .5;
+            transition: .5s;
         }
         .form-bg-closed{
-            content: "";
+            content: '';
             position: fixed;
-            width: 100%;
-            background-color: var(--black);
-            min-height: 20%;
             top: -100%;
             left: 0;
-            z-index:5;   
-            transition:.4s all;
+            width:100%;
+            min-height:100%;
+            display: block;
+            background-color: #000000;
+            z-index:3;
+            opacity: .5;
+            transition: .5s;
         }
+        .form-bg-closed:after{
+            content: '';
+            position: fixed;
+            top: -100%;
+            left: 0;
+            width:100%;
+            min-height:100%;
+            display: block;
+            background-color: #000000;
+            z-index:3;
+            opacity: .5;
+            transition: .5s;
+        }
+        
     }
-    @media (max-width:420px) {
-        .search-open{
-            width:94%;
-        } 
-        .search-closed{          
-            width:94%;
-        } 
-    }
-
-
 `
-const ButtonStyled = styled.button`
-    background-color: transparent;
-    outline:none;
-    border:none;
-    position: absolute;
-    top: 15px;
-    right: 25px;
-    cursor: pointer;  
-    z-index:5;
-`
+
 
 export const HeaderSearch:React.FC = () =>{
+ 
     const [openSearch, setOpenSearch] = useState(false);
+    
+
+    const body = document.body;
+
+    openSearch ? body.classList.add('overflow') : body.classList.remove('overflow');
+
+ 
 
     const boxRef = useRef<HTMLDivElement>(null)
 
@@ -163,17 +146,17 @@ export const HeaderSearch:React.FC = () =>{
         <MainContainer>
         <FormContainerStyled>
             <div className="search-icon" onClick={() => setOpenSearch(!openSearch)}>
-                <img className="search-icon" src={SearchIconOpen} alt="icon-search" />
+                <img src={SearchIconOpen} alt="icon-search" />
             </div>
             <div ref={boxRef} className={openSearch ? 'form-bg' : 'form-bg-closed'}>
-                <div className="icon-closed" onClick={() => setOpenSearch(openSearch)}>x</div>
+                <div className={openSearch ? 'icon-open' : 'icon-closed'} onClick={() => setOpenSearch(openSearch)}>x</div>
             </div>
-        <form  action="#" className={openSearch ? 'search-open' : 'search-closed'}>
-            <input  className="search" type="search" placeholder="Найти парфюм.." />
-            <ButtonStyled type="submit">
-                <SearchIcon />
-            </ButtonStyled>
-        </form>
+
+            <div className={openSearch ? 'search-open' : 'search-closed'}>
+                <MainForm placeholder="Найти парфюм.." />
+            </div>
+ 
+
         </FormContainerStyled>
         </MainContainer>
     )

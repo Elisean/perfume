@@ -19,7 +19,7 @@ const HeaderStyledWrapper = styled.div`
     padding:28px 0 0 0;
     position: fixed;
     width: 100%;
-    z-index:2;
+    z-index:5;
   }
 
 `

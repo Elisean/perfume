@@ -32,8 +32,6 @@ const noteList = [
 
 
 
-
-
 const StyledNotes = styled.div`
 
 .wrapper-scroll{

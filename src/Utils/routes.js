@@ -1,5 +1,8 @@
 export const ROUTES = {
     HOME:"/perfume",
     USER:"/user",
-    BASKET:"/Basket"
+    BASKET:"/basket",
+    BONUSES:"/bonuses",
+    DOCUMENTATION:"/documentation",
+    ABOUTUS:"/aboutUs",
 };

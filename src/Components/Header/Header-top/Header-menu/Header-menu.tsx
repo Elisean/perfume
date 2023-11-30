@@ -1,6 +1,9 @@
 import React from 'react'
 import { FlexContainer } from '../../../../Containers/Flex-container/FlexContainer'
 import styled from 'styled-components'
+import { ROUTES } from "../../../../Utils/routes";
+import { Link } from "react-router-dom";
+
 
 const NavigationStyled = styled.div`
 
@@ -43,9 +46,6 @@ const NavigationStyled = styled.div`
     }
     .nav-item{
             padding:10px 0 0 0;
-            &:hover{
-
-            }
     }   
    }
 
@@ -57,9 +57,9 @@ export const HeaderMenu:React.FC = () => {
     <FlexContainer>
         <nav className='header-nav'>
             <ul className='nav-list'>
-                <li className='nav-item'>Бонусы</li>
-                <li className='nav-item'>Документация</li>
-                <li className='nav-item'>О нас</li>
+                <Link to={ROUTES.BONUSES} className='nav-item'><li>Бонусы</li></Link>
+                <Link to={ROUTES.DOCUMENTATION} className='nav-item'><li>Документация</li></Link>
+                <Link to={ROUTES.ABOUTUS} className='nav-item'><li>О нас</li></Link> 
             </ul>
         </nav>
     </FlexContainer>    

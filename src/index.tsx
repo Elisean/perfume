@@ -185,7 +185,9 @@ html,body{
   font-size:16px;
   min-height:100%;
 }
-
+body.overflow{
+	overflow: hidden;
+}
 input[type="search"]::-webkit-search-decoration,
 input[type="search"]::-webkit-search-cancel-button,
 input[type="search"]::-webkit-search-results-button,

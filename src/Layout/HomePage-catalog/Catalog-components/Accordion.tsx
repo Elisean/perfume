@@ -2,7 +2,7 @@ import React,{ useState } from 'react'
 import styled from 'styled-components'
 import { MainSelect } from '../../../Components/Main-select/Main-select'
 import { ReactComponent as Chevron } from '../../../icons/chevron-down.svg';
-import { ReactComponent as Search } from '../../../icons/search.svg';
+import { MainForm } from '../../../Components/Main-Form/Main-Form';
 
 interface IAccordion{
     children?: React.ReactNode
@@ -42,37 +42,6 @@ const StyledAccordion = styled.div<IAccordion>`
       border-radius:4px;
 }
   }
-
-
-
-
-
-.accordion-title{
-  text-align: left;
-  padding: 0 0 10px 33px;
-  text-transform: uppercase;
-}
-.accordion-form{
-  margin:10px 0 4px 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: relative;
-}
-.accordion-input{
-  border:2px solid #514941;
-  padding:14px 50px 14px 20px;
-  position: relative;
-  width:90%;
-  border-radius:4px;
-  color:var(--text);
-  margin:10px 0 0 0;
-}
-.btn-search{
-  position: absolute;
-  right:40px;
-  top:23px;
-}
 
 .wrapper-scroll{
   height:350px;
@@ -119,12 +88,8 @@ export const Accordion:React.FC<IAccordion> = (props) => {
         </MainSelect>
 
       <div className={accordionOpen ? 'open' : 'closed'}>
-          <form action="" className='accordion-form'>
-            <input className='accordion-input' type="text" placeholder={props.placeholder}/>
-            <button className='btn-search'>
-              <Search />
-            </button>
-          </form>
+        <MainForm placeholder={props.placeholder} />
+
           <p className='accordion-title'>{props.title}</p>
             {props.children}
       </div>
