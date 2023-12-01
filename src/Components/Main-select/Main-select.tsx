@@ -88,11 +88,7 @@ const StyledSelectInner = styled.div <SelectProps>`
         @media (max-width:768px) {
             width:240px;
         }
-        @media (max-width:568px) {
-            width:140px;
-            left: 0;
-            font-size:15px;
-        }
+       
     `}
     ${props => props.ResponceSelectPop && css`
         @media (max-width:993px) {

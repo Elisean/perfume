@@ -65,11 +65,11 @@ const StyledCatalogWrapper = styled.div`
       justify-content: center;  
   }
 }
-@media (max-width: 767px) {
+@media (max-width: 768px) {
     .filterClosed{
       display: grid;
       grid-template-columns: repeat(2, 240px);
-      grid-template-rows: repeat(3, 500px);
+      grid-template-rows: repeat(3, 470px);
       grid-column-gap: 20px;
       grid-row-gap: 20px;
       justify-content: center;
@@ -77,7 +77,7 @@ const StyledCatalogWrapper = styled.div`
   .filterOpen{
       display: grid;
       grid-template-columns: repeat(2, 240px);
-      grid-template-rows: repeat(3, 500px);
+      grid-template-rows: repeat(3, 470px);
       grid-column-gap: 20px;
       grid-row-gap: 20px;
       justify-content: center;  
@@ -86,7 +86,7 @@ const StyledCatalogWrapper = styled.div`
 @media (max-width: 568px) {
     .filterClosed{
       display: grid;
-      grid-template-columns: repeat(1, 285px);
+      grid-template-columns: repeat(1, 1fr);
       grid-template-rows: repeat(3, 500px);
       grid-column-gap: 20px;
       grid-row-gap: 20px;
@@ -94,7 +94,7 @@ const StyledCatalogWrapper = styled.div`
   }
   .filterOpen{
       display: grid;
-      grid-template-columns: repeat(1, 285px);
+      grid-template-columns: repeat(1, 1fr);
       grid-template-rows: repeat(3, 500px);
       grid-column-gap: 20px;
       grid-row-gap: 20px;
@@ -116,7 +116,7 @@ const CardItem = styled.div`
   .card-image{
     width:245px;
     height:220px;
-    object-fit: cover;
+    /* object-fit: cover; */
     border-radius:4px;
     margin:30px auto 0 auto;
   }
@@ -126,7 +126,6 @@ const CardItem = styled.div`
     padding:0 30px; 
     height: 200px;
   }
-
   .card-title{
     font-size: 16px;
     position: absolute;
@@ -138,9 +137,9 @@ const CardItem = styled.div`
     margin:60px 0 15px 0;
   }
   .button-volume{
-    display:flex;
-    justify-content:center;
-    align-items:center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     width:34px;
     height:34px;
     border-radius: 4px;
@@ -153,6 +152,15 @@ const CardItem = styled.div`
     font-family: Montserrat;
     font-weight:600;
     cursor: pointer;
+    &:hover{
+      background: var(--gradient, linear-gradient(118deg, #C09E6C 0%, #FFEBCC 42.62%, #BF936B 100%));
+      -webkit-text-fill-color: #36332E;
+    }
+
+    &:focus{
+      background: var(--gradient, linear-gradient(118deg, #C09E6C 0%, #FFEBCC 42.62%, #BF936B 100%));
+      -webkit-text-fill-color: #36332E;
+    }
   }
   .price-title{
     font-size: 18px;
@@ -169,7 +177,20 @@ const CardItem = styled.div`
     font-weight: 700;
     padding: 0 5px 0 0;
   }
-  
+  @media (max-width: 768px) {
+    .card-inner{
+      padding:0 12px 0 16px;
+    }
+    .card-image{
+      margin:15px auto 0 auto;
+      width:210px;
+      height:210px;
+    }
+    .card-title{
+      top:235px;
+    }
+
+  }
 `
 
 
@@ -180,7 +201,7 @@ export const CatalogCard:React.FC = () => {
   const { width, isScreenSm, isScreenMd, isScreenLg, isScreenXl, isScreenXxl } = useResize();
 
 
-  console.log(cards)
+  
 
   const [isLoading, setIsLoading] = useState(true);
  
@@ -191,7 +212,7 @@ export const CatalogCard:React.FC = () => {
     }else if (isScreenXxl && filtersOpen){
       countCards = 9;
     }else if(isScreenXl && !filtersOpen ){
-      countCards = 9;
+      countCards = 6;
     }else if(isScreenXl && filtersOpen ){
       countCards = 6;
     }else if(isScreenLg && !filtersOpen ){
@@ -203,7 +224,7 @@ export const CatalogCard:React.FC = () => {
     }else if(isScreenMd && !filtersOpen ){
       countCards = 6;
     }else if(isScreenSm && filtersOpen ){
-      countCards = 3;
+      countCards = 6;
     }else if(isScreenSm && !filtersOpen ){
       countCards = 3;
     }else if(width >= 100 && filtersOpen ){
@@ -214,8 +235,7 @@ export const CatalogCard:React.FC = () => {
 
   useEffect(() => {
     fetch(
-      `https://64e6020b09e64530d17f6dd0.mockapi.io/Flavors?page=${currentPage}&limit=12&`
-      // `http://localhost:4000/flavors?_limit=${countCards}&_page=${currentPage}` 
+      `https://64e6020b09e64530d17f6dd0.mockapi.io/Flavors?page=${currentPage}&limit=${countCards}&`
     )
     .then((res) => res.json())
     .then((data) => {
@@ -238,11 +258,11 @@ export const CatalogCard:React.FC = () => {
                     <div className='card-inner'>
                       <h2 className='card-title'>{card.title}</h2>
                       <p className='card-volume'>Объем мл.</p>
-                      <FlexContainer wrap='wrap' justify='space-around'>
-                        <button className='button-volume'>{card.volumes[0]}</button>
-                        <button className='button-volume'>{card.volumes[1]}</button>
-                        <button className='button-volume'>{card.volumes[2]}</button>
-                        <button className='button-volume'>{card.volumes[3]}</button>
+                      <FlexContainer wrap='wrap' justify='space-between'>
+                        <button className='button-volume' tabIndex={0}>{card.volumes[0]}</button>
+                        <button className='button-volume' tabIndex={1}>{card.volumes[1]}</button>
+                        <button className='button-volume' tabIndex={2}>{card.volumes[2]}</button>
+                        <button className='button-volume' tabIndex={3}>{card.volumes[3]}</button>
                       </FlexContainer>
                       <FlexContainer justify='space-between'>
                         <p className='price-title'>Стоимость:</p>

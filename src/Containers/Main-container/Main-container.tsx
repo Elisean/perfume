@@ -35,12 +35,12 @@ const StyledContainer = styled.div<ContainersTypes>`
             max-width:568px;
         }
         @media(max-width:568px) {
-            max-width:320px;
+            max-width:420px;
         }
     `}
 
 `
-
+// надо fix
 
 export const MainContainer:React.FC<ContainersTypes> = (props:ContainersTypes) => {
     return <StyledContainer {...props}/>

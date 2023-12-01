@@ -82,9 +82,9 @@ export const Pagination:React.FC<Paginations> = ({onChangePage }) => {
     if(isScreenXxl){
         countPage = 4;
     }else if (isScreenXl){
-        countPage = 5;
+        countPage = 7;
     }else if (isScreenLg){
-        countPage = 6;
+        countPage = 7;
     }else if (isScreenMd){
         countPage = 7;
     }else if (isScreenSm){

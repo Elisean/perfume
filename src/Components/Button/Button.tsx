@@ -143,12 +143,12 @@ const StyledButton = styled.button<IButton>`
 
   ${props => props.btnCards && css`
   @media (max-width:768px) {
-      width:220px;
+      width:210px;
       padding:10px 0;
-      left: -20px;
+      left: -1px;
+   
   }
   @media (max-width:568px) {
-      
       left: 0;
   }
   `
