@@ -14,10 +14,14 @@ const StyledWrapper = styled.div`
   position: relative;
   margin:30px 0 0 0;
 
+
+
+
   @media (max-width:993px) {
     display: flex;
     justify-content: center;
   }
+
 
   .show{
         position: absolute;
@@ -29,7 +33,7 @@ const StyledWrapper = styled.div`
   }
   .hide{
         position: absolute;
-        top:-5%;
+        top: -5%;
         transition:all .5s;
         opacity: 0;
         visibility: hidden;
@@ -59,7 +63,7 @@ export const SelectCards:React.FC = () => {
 
   return (
     <StyledWrapper>
-      <FlexContainer filtersResponse align='center' ref={wrapRef} >
+      <FlexContainer filtersResponse align='center' ref={wrapRef}>
         <MainSelect ResponceSelect left={filtersOpen ? '7px': '0'} padding='10px 20px' width={filtersOpen ? '290px' : '305px'} fontSize='18px' onClick={()=> setFiltersOpen(!filtersOpen)}>
           Фильтры
           <Filter/>

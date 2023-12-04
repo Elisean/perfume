@@ -12,8 +12,6 @@ interface IAccordion{
 }
 
 
-
-
 const StyledAccordion = styled.div<IAccordion>`
 
 .open{
@@ -93,7 +91,6 @@ export const Accordion:React.FC<IAccordion> = (props) => {
           <p className='accordion-title'>{props.title}</p>
             {props.children}
       </div>
-
 
     </StyledAccordion>
   )

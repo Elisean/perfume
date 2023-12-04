@@ -146,10 +146,10 @@ const StyledButton = styled.button<IButton>`
       width:210px;
       padding:10px 0;
       left: -1px;
-   
   }
   @media (max-width:568px) {
-      left: 0;
+      left: 50%;
+      transform: translate(-50%, 0%);
   }
   `
 

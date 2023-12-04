@@ -87,7 +87,7 @@ const StyledCatalogWrapper = styled.div`
     .filterClosed{
       display: grid;
       grid-template-columns: repeat(1, 1fr);
-      grid-template-rows: repeat(3, 500px);
+      grid-template-rows: repeat(3, 520px);
       grid-column-gap: 20px;
       grid-row-gap: 20px;
       justify-content: center;
@@ -191,6 +191,22 @@ const CardItem = styled.div`
     }
 
   }
+  @media (max-width: 568px) {
+    .card-inner{
+      padding:0 30px 0 26px;
+    }
+    .card-image{
+      margin:15px auto 0 auto;
+      width:250px;
+      height:250px;
+    }
+    .card-title{
+      top:280px;
+    }
+    .card-volume{
+      margin: 65px 0 15px 0;
+    }
+  }
 `
 
 
@@ -268,7 +284,7 @@ export const CatalogCard:React.FC = () => {
                         <p className='price-title'>Стоимость:</p>
                         <p className='price'>{card.price + '₽'}</p>
                       </FlexContainer>
-                      <Button btnCards top='-70px' left='0' padding='12px 72px'>в корзину</Button>
+                        <Button btnCards top='-70px' padding='12px 72px'>в корзину</Button>
                   </div>
       </CardItem>
     )

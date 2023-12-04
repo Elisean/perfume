@@ -53,7 +53,6 @@ const StyledSelectInner = styled.div <SelectProps>`
 
 
     &:hover{
-        font-weight: 600;
         color: var(--black);
         background: var(--gradient, linear-gradient(92deg, #C09E6C -1.94%, #FFEBCC 40.99%, #BF936B 98.79%));
     }
@@ -78,16 +77,20 @@ const StyledSelectInner = styled.div <SelectProps>`
     `}
 
 
-
-
     ${props => props.ResponceSelect && css`
         @media (max-width:993px) {
             left: -10px;
             width:305px;
         }
         @media (max-width:768px) {
-            width:240px;
+            max-width:240px;
         }
+        @media (max-width:568px) {
+            max-width:100%;
+            right:0;
+            position: static;
+        }
+         
        
     `}
     ${props => props.ResponceSelectPop && css`
@@ -100,10 +103,10 @@ const StyledSelectInner = styled.div <SelectProps>`
             
         }
         @media (max-width:568px) {
-            width:140px;
+            max-width:100%;
             padding:10px 0;
             font-size:12px;
-            left: 5px;
+            position: static;
         }
         
     `}
