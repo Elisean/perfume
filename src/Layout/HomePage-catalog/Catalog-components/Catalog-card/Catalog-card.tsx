@@ -95,13 +95,13 @@ const StyledCatalogWrapper = styled.div`
   .filterOpen{
       display: grid;
       grid-template-columns: repeat(1, 1fr);
-      grid-template-rows: repeat(3, 500px);
+      grid-template-rows: repeat(3, 520px);
       grid-column-gap: 20px;
       grid-row-gap: 20px;
       justify-content: center;  
   }
 }
-  margin:20px 0 0 0;
+  margin:10px 0 0 0;
 
 `
 

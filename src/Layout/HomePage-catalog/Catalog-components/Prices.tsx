@@ -5,7 +5,8 @@ import { FlexContainer } from '../../../Containers/Flex-container/FlexContainer'
 
 
 const StyledPriced = styled.div`
- margin:0 0 10px 0;
+  margin:0 0 10px 0;
+
 .Slider{
   width:280px;
   height: 6px;

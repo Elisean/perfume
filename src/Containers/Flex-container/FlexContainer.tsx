@@ -28,16 +28,11 @@ const FlexContainerStyled = styled.div<ContainersTypes>`
     `}
     ${props => props.filtersResponse && css`
         @media (max-width:568px) {
-            flex:0;
+            flex: 0 0 auto;
             flex-wrap: wrap;
-          
         }
     }
     `}
-
-    
-    
-
 `
 
 export const FlexContainer:React.FC<ContainersTypes> = (props)=>{

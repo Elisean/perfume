@@ -86,14 +86,18 @@ const StyledSelectInner = styled.div <SelectProps>`
             max-width:240px;
         }
         @media (max-width:568px) {
-            max-width:100%;
+            width:155px;
             right:0;
             position: static;
+            display: flex;  
+            justify-content: center;
+            padding: 0;
         }
          
        
     `}
-    ${props => props.ResponceSelectPop && css`
+    /* переименуй responce - неправильно написанно */
+    ${props => props.ResponceSelectPop && css` 
         @media (max-width:993px) {
             left: 10px;
         }
@@ -103,10 +107,29 @@ const StyledSelectInner = styled.div <SelectProps>`
             
         }
         @media (max-width:568px) {
-            max-width:100%;
-            padding:10px 0;
+            width:150px;
+            padding:10px 5px;
             font-size:12px;
-            position: static;
+            background: transparent;
+            display: flex;  
+            justify-content: center;
+
+            svg{
+                width:30px;
+                height:30px;
+            }
+            &:hover{
+                background: transparent;
+                color: var(--gradient, linear-gradient(92deg, #C09E6C -1.94%, #FFEBCC 40.99%, #BF936B 98.79%));
+                border: 1px solid transparent;
+                box-shadow: none;
+            }
+            &:focus{
+                background: transparent;
+                color: var(--gradient, linear-gradient(92deg, #C09E6C -1.94%, #FFEBCC 40.99%, #BF936B 98.79%));
+                border: 1px solid transparent;
+                box-shadow: none;
+            }
         }
         
     `}
