@@ -15,10 +15,12 @@ const StyledPriced = styled.div`
   
   @media (max-width:768px) {
       width:225px;
-}
-@media (max-width:568px) {
-    width:115px;
-}
+  }
+  @media (max-width:568px) {
+      margin: 15px 0 0 0;
+      width:100%;
+   
+  }
   .thumb{
     width:20px;
     height:20px;
@@ -34,6 +36,10 @@ const StyledPriced = styled.div`
 }
 .values{
     margin:10px 12px 0 12px;
+    @media (max-width:567px){
+        margin:20px 0 0 0;
+     
+    }
 }
 `
 const MIN = 500;

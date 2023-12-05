@@ -3,7 +3,7 @@ import React, {useState} from 'react'
 import { FlexContainer } from '../../../Containers/Flex-container/FlexContainer'
 import { Button } from '../../../Components/Button/Button'
 
-const sortItems = [
+export const sortItems = [
  'По популярности',
  'По рейтингу',
  'Сортировка от последнего',
@@ -24,7 +24,8 @@ const SortWrapper = styled.div`
       left: 250px;
     }
     @media (max-width:568px) {
-      left: 145px;
+      left: 0;
+      top:50px;
     }
    
     

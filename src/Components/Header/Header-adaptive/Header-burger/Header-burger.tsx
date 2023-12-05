@@ -100,9 +100,11 @@ const BurgerStyled = styled.div`
 const HeaderBurgerMenuStyled = styled.div`
 
   display: none;
+
   .burger-logo{
-    display:none;
+      display:none;
   }
+  
   @media (max-width:768px) {
     display: block;
     position: fixed;

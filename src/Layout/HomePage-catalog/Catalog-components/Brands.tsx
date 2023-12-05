@@ -2,7 +2,7 @@ import React from 'react'
 import styled, { css } from 'styled-components'
 import { Accordion } from './Accordion';
 
-const priceList = [
+export const priceList = [
  'Acqua di parma',
  'Ajmal',
  'Alexandre,J',

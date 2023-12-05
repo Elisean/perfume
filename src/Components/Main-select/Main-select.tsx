@@ -113,7 +113,9 @@ const StyledSelectInner = styled.div <SelectProps>`
             background: transparent;
             display: flex;  
             justify-content: center;
-
+            order: -1;
+            left:0;
+            
             svg{
                 width:30px;
                 height:30px;

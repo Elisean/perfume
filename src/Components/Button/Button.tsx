@@ -99,10 +99,12 @@ const StyledButton = styled.button<IButton>`
       width:220px;
     }
     @media (max-width:568px) {
-      width:120px;
+      width:100%;
       padding:2px 5px;
       left:0;
-      font-size:15px;
+      font-size:20px;
+      justify-content: center;
+      border: 2px solid var(--border)
   }
 
 
@@ -126,9 +128,10 @@ const StyledButton = styled.button<IButton>`
       padding:15px;
     }
     @media (max-width:568px) {
-      width:140px;
-      padding:15px 4px;
-      font-size:10px;
+      width:305px;
+      padding:15px 10px;
+      font-size:16px;
+      box-shadow:none;
     }
 
     &:hover{
@@ -164,4 +167,3 @@ export const Button:React.FC<IButton> = (props) =>  {
     </StyledButton>
   )
 }
-// 12px 0

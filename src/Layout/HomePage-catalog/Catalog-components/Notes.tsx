@@ -3,7 +3,7 @@ import styled from 'styled-components'
 import { Accordion } from './Accordion';
 
 
-const noteList = [
+export const noteList = [
     'Akigalawood',
     'Ambertonic',
     'Amberwood',

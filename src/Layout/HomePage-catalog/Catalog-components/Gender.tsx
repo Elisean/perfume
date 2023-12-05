@@ -18,6 +18,12 @@ const StyledGender = styled.div`
     .input-check:checked{
         background-image: url(${checked});   
     }
+    @media (max-width:568px) {
+      .input-check{
+        margin: 10px 10px 10px 0;
+      }
+      
+    }
 
 `
 
@@ -38,7 +44,6 @@ export const Gender:React.FC = () => {
             <input className='input-check' id='gender' type='checkbox'value={'Унисекс'}/>
               Унисекс
           </label>
-   
         </FlexContainer>
     </StyledGender>
   )
