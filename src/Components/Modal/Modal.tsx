@@ -12,7 +12,7 @@ const ModalStyledWrapper = styled.section`
       
     .show-modal{
       width:100%;
-      height:100vh;
+      min-height:100vh;
       background-color: var(--gray);
       position: fixed;
       top: 0;
@@ -23,7 +23,7 @@ const ModalStyledWrapper = styled.section`
     }
     .hide-modal{
       width:100%;
-      height:100vh;
+      min-height:100vh;
       position: fixed;
       top:0;
       right: -100%;
