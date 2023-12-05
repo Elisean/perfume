@@ -32,7 +32,7 @@ const ModalStyledWrapper = styled.section`
       font-size:40px;
       position: fixed;
       top: 50%;
-      right: 90%;
+      right: 83%;
       z-index:6;
       color: var(--goldenWhite);
       transform: translate(-50%, -50%) rotate(360deg);

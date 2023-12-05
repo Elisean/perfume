@@ -154,8 +154,6 @@ export const SelectCards:React.FC = () => {
               Сбросить
             <Closed/>
           </Button>
-
-
             </Modal>
           }
         </div>
