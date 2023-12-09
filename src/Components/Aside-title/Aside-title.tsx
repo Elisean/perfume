@@ -15,17 +15,16 @@ export interface IProps{
 const TitleStyled = styled.div<IProps>`
     font-family: 'Montserrat', sans-serif;
     font-size: 24px;
-    font-weight: 400;
+    font-weight: 600;
     background: linear-gradient(92deg, #C09E6C -1.94%, #FFEBCC 40.99%, #BF936B 98.79%);
     background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     margin:50px 0 0 0;
+    padding:0 0 10px 0;
     position:${props => props.position || 'relative'};
     top:${props => props.top || '0'};
     left:${props => props.left || '0'};
-
-
 
     ${props => props.response && css`
 

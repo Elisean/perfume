@@ -5,6 +5,11 @@ import styled, { createGlobalStyle } from'styled-components';
 import { BrowserRouter } from 'react-router-dom';
 
 
+
+
+
+
+
 const GlobalStyle = createGlobalStyle`
 
 :root{
@@ -172,7 +177,7 @@ button {
 
 button::-moz-focus-inner {
 	padding: 0;
-	border: 0
+	border: 0;
 }
 
 html,body{
@@ -203,7 +208,7 @@ const root = ReactDOM.createRoot(
 
 root.render(
   <React.StrictMode>
-    <BrowserRouter>
+	<BrowserRouter>
       <GlobalStyle/>
       <App />
     </BrowserRouter>

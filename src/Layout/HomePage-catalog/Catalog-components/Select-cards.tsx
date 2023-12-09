@@ -47,17 +47,15 @@ const StyledWrapper = styled.div`
 
   @media (max-width: 568px) {
     .show{
-        top:0;
         overflow-x: hidden;
         z-index:5;
         opacity: 1;
         visibility: visible;
-        position: fixed;
+        position: static;
   }
     .hide{
-        top:0;
         overflow-x: hidden;
-        position: fixed;
+        position: static;
         opacity: 1;
         z-index:0;
         visibility: visible;

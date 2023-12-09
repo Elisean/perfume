@@ -16,6 +16,7 @@ export interface ContainersTypes {
     footerResponse?:boolean;
     catalogResponse?:boolean;
     filtersResponse?:boolean;
+    aboutPageResponce?:boolean
     ref?:any,
     onClick?:any
     

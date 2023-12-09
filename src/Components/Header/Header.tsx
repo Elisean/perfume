@@ -14,6 +14,7 @@ const HeaderStyledWrapper = styled.div`
   
   @media (max-width:768px) {
     margin: 0;
+    top: 0;
     background: rgba(63, 58, 51, 0.3);
     backdrop-filter: blur(15px); 
     height:93px;
