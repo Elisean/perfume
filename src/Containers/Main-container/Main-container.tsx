@@ -38,12 +38,7 @@ const StyledContainer = styled.div<ContainersTypes>`
             max-width:335px;
         }
     `}
-    ${props => props.aboutPageResponce && css`
-        
-        @media(max-width:568px) {
-            text-align: center;
-        }
-    `}
+    
 
 `
 

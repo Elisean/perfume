@@ -74,6 +74,9 @@ const AboutPageStyled = styled.section`
     .list-item::before{
       display: none
     }
+    .about-inner{
+      text-align:center;
+    }
   }
 `
 
@@ -81,11 +84,11 @@ export const AboutUsPage = () => {
   return (
     <AboutPageStyled>
       <Header/>
-      <MainContainer aboutPageResponce position='relative'>
-       
-      <section className='about-inner'>
-        <AsideTitle>О Нас</AsideTitle>
+      <MainContainer position='relative'>
+      <AsideTitle>О Нас</AsideTitle>
       <Breadcrumbs/>
+      <section className='about-inner'>
+     
 
        <p className='text-page'>Дорогие гости, рады приветствовать вас на нашем сайте!</p>
 

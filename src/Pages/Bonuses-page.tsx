@@ -48,11 +48,13 @@ const BonusesPageStyled = styled.section`
     margin:0 0 40px 0;
   }
   @media (max-width: 768px) {
-    .title-page{
-      margin:100px 0 10px 0;
-    }
+    padding:50px 0 0 0;
+
     .bonuses-images{
       max-width:100%;
+    }
+    .breadcrumbs-wrapper{
+      margin:0 0 10px 0;
     }
   }
 `
@@ -64,8 +66,10 @@ export const BonusesPage:React.FC = () => {
       <MainContainer>
         <section className='bonuses-inner'>
           <AsideTitle>Бонусы</AsideTitle>
-
-          <Breadcrumbs />
+          <div className='breadcrumbs-wrapper'>
+            <Breadcrumbs />
+          </div>
+         
 
           <p className='text-page mb-40'>Совершая покупки, а также определённые действия у нас на сайте, вы можете зарабатывать себе бонусные баллы. <br /> Этими баллами можно оплачивать покупки!</p>
           <p className='text-page mb-10'>Совершая покупки, а также определённые действия у нас на сайте, вы можете зарабатывать себе бонусные баллы. <br /> Этими баллами можно оплачивать покупки! Бонусные баллы можно найти в вашей Корзине</p>
