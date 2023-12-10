@@ -1,6 +1,6 @@
 import React, { useState , useContext, ReactNode} from 'react'
 import { styled } from 'styled-components'
-import { FiltersContext } from '../../Routes/Routes'
+import { FiltersContext } from '../../App/App'
 
 interface IModal{
   children? : ReactNode

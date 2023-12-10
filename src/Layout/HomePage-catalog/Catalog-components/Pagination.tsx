@@ -1,7 +1,7 @@
 import React, { ChangeEvent, useContext } from 'react'
 import ReactPaginate from 'react-paginate';
 import styled from 'styled-components';
-import { FiltersContext } from '../../../Routes/Routes';
+import { FiltersContext } from '../../../App/App'
 // import { Breakpoints } from '../../../Breakpoints/Breakpoints';
 import { useResize } from '../../../Hooks/useResize';
 

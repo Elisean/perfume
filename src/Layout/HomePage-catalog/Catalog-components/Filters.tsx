@@ -7,7 +7,7 @@ import { Brands } from './Brands';
 import { Prices } from './Prices';
 import { Gender } from './Gender';
 import { Notes } from './Notes';
-import { FiltersContext } from '../../../Routes/Routes';
+import { FiltersContext } from '../../../App/App'
 
 
 

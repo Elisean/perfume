@@ -3,7 +3,7 @@ import styled from 'styled-components'
 import { FlexContainer } from '../../../../Containers/Flex-container/FlexContainer'
 import { Button } from '../../../../Components/Button/Button'
 import { Pagination } from '../Pagination';
-import { FiltersContext } from '../../../../Routes/Routes';
+import { FiltersContext } from '../../../../App/App'
 import { useResize } from '../../../../Hooks/useResize';
 import Skeleton from './Skeleton-catalog-card';
 

@@ -1,5 +1,5 @@
 import { styled } from 'styled-components'
-import React, {useState} from 'react'
+import React, { useState } from 'react'
 import { FlexContainer } from '../../../Containers/Flex-container/FlexContainer'
 import { Button } from '../../../Components/Button/Button'
 
