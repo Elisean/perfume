@@ -79,11 +79,12 @@ const StyledSelectInner = styled.div <SelectProps>`
 
     ${props => props.ResponceSelect && css`
         @media (max-width:993px) {
-            left: -10px;
-            width:305px;
+            left: -5px;
+            width:310px;
         }
         @media (max-width:768px) {
             max-width:240px;
+            left: -10px;
         }
         @media (max-width:568px) {
             width:155px;

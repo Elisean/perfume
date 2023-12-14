@@ -10,8 +10,6 @@ interface Paginations{
   onChangePage:any
 }
 
-
-
 const StyledPaginate = styled.div`
     margin:20px 0 0 0;
     
@@ -107,8 +105,6 @@ export const Pagination:React.FC<Paginations> = ({onChangePage }) => {
                 previousLabel="<"
                 renderOnZeroPageCount={null}/>
             </div>
-        
-    
         </StyledPaginate>
     
 }

@@ -5,4 +5,5 @@ export const ROUTES = {
     BONUSES:"/bonuses",
     DOCUMENTATION:"/documentation",
     ABOUTUS:"/aboutUs",
+    SINGLEPRODUCT:"/singleProduct/:id",
 };

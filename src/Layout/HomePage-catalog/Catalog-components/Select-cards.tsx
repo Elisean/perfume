@@ -119,7 +119,7 @@ export const SelectCards:React.FC = () => {
   return (
     <StyledWrapper>
       <FlexContainer filtersResponse align='center' ref={wrapRef}>
-        <MainSelect ResponceSelect left={filtersOpen ? '7px': '0'} padding='10px 20px' width={filtersOpen ? '290px' : '305px'} fontSize='18px' onClick={()=> setFiltersOpen(!filtersOpen)}>
+        <MainSelect ResponceSelect left={filtersOpen ? '7px': '0'} padding='10px 20px' width={filtersOpen ? '290px' : '310px'} fontSize='18px' onClick={()=> setFiltersOpen(!filtersOpen)}>
           Фильтры
           <Filter/>
         </MainSelect>
@@ -155,7 +155,7 @@ export const SelectCards:React.FC = () => {
             </Modal>
           }
         </div>
-        <MainSelect ResponceSelectPop padding='10px 30px' width='305px' left={filtersOpen ? '35px' : '20px'} fontSize='18px' onClick={() => setOpenSorting(!openSorting)}>
+        <MainSelect ResponceSelectPop padding='10px 30px' width='310px' left={filtersOpen ? '35px' : '15px'} fontSize='18px' onClick={() => setOpenSorting(!openSorting)}>
           По популярности
           <Chevron/>
         </MainSelect>

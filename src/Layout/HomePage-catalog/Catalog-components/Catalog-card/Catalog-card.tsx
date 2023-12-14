@@ -1,4 +1,4 @@
-import React, { useState, useEffect, ReactNode, useContext } from 'react'
+import React, { useState, useEffect, useContext } from 'react'
 import styled from 'styled-components'
 import { FlexContainer } from '../../../../Containers/Flex-container/FlexContainer'
 import { Button } from '../../../../Components/Button/Button'
@@ -6,11 +6,12 @@ import { Pagination } from '../Pagination';
 import { FiltersContext } from '../../../../App/App'
 import { useResize } from '../../../../Hooks/useResize';
 import Skeleton from './Skeleton-catalog-card';
+import { Link } from 'react-router-dom';
 
 
 
 const StyledCatalogWrapper = styled.div`
-   
+ 
    .filterOpen{
       display: grid;
       grid-template-columns: repeat(3, 305px);
@@ -215,8 +216,6 @@ export const CatalogCard:React.FC = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const {filtersOpen, setFiltersOpen} = useContext(FiltersContext);
   const { width, isScreenSm, isScreenMd, isScreenLg, isScreenXl, isScreenXxl } = useResize();
-
-
   
 
   const [isLoading, setIsLoading] = useState(true);
@@ -228,7 +227,7 @@ export const CatalogCard:React.FC = () => {
     }else if (isScreenXxl && filtersOpen){
       countCards = 9;
     }else if(isScreenXl && !filtersOpen ){
-      countCards = 6;
+      countCards = 9;
     }else if(isScreenXl && filtersOpen ){
       countCards = 6;
     }else if(isScreenLg && !filtersOpen ){
@@ -256,8 +255,7 @@ export const CatalogCard:React.FC = () => {
     .then((res) => res.json())
     .then((data) => {
         setIsLoading(false)
-        setCards(data)
-       
+        setCards(data)      
      });  
   }, [ countCards, currentPage, filtersOpen, isScreenSm, isScreenMd, isScreenLg, isScreenXl, isScreenXxl]);
   
@@ -269,10 +267,10 @@ export const CatalogCard:React.FC = () => {
 {
   isLoading ? [...new Array(12)].map((_, index) => <Skeleton key={index}/>) 
             : cards.map((card, index) => (   
-      <CardItem key={index} >
-         <img className='card-image' src={card.url} alt="card-img" />
+    <CardItem key={index}>
+         <Link style={{display:'flex'}} to={`/perfume/singleProduct/${card.id}`}> <img className='card-image' src={card.url} alt="card-img" /> </Link>
                     <div className='card-inner'>
-                      <h2 className='card-title'>{card.title}</h2>
+                    <Link  to={`/perfume/singleProduct/${card.id}`}> <h2 className='card-title'>{card.title}</h2> </Link>
                       <p className='card-volume'>Объем мл.</p>
                       <FlexContainer wrap='wrap' justify='space-between'>
                         <button className='button-volume' tabIndex={0}>{card.volumes[0]}</button>
@@ -286,7 +284,8 @@ export const CatalogCard:React.FC = () => {
                       </FlexContainer>
                         <Button btnCards top='-70px' padding='12px 72px'>в корзину</Button>
                   </div>
-      </CardItem>
+      </CardItem> 
+      
     )
   )
 
