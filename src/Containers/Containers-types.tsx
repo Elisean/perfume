@@ -7,8 +7,8 @@ export interface ContainersTypes {
     wrap?: string;
     children?: ReactNode;
     width?: number;
-    maxWidth?: number;
-    margin?: number;
+    maxWidth?: string;
+    margin?: string;
     padding?: string;
     flex?: string;
     position?: string;
@@ -16,8 +16,8 @@ export interface ContainersTypes {
     footerResponse?:boolean;
     catalogResponse?:boolean;
     filtersResponse?:boolean;
-    
-    ref?:any,
-    onClick?:any
-    
+    cardResponse?:boolean;
+    btnsCardResponse?:boolean;
+    ref?:any;
+    onClick?:any;
 }

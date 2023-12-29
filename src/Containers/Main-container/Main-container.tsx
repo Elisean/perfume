@@ -7,7 +7,7 @@ const StyledContainer = styled.div<ContainersTypes>`
     margin:${(props)=>props.margin || '0 auto'};
     padding:${(props) => props.padding || '0 15px'};
     position: ${(props)=> props.position || 'static'};
-    
+   
     ${props => props.response && css`
         @media(max-width:1300px){
             max-width:985px;
@@ -38,6 +38,21 @@ const StyledContainer = styled.div<ContainersTypes>`
             max-width:335px;
         }
     `}
+
+
+    ${props => props.cardResponse && css`
+    
+        @media(max-width:768px) {
+            max-width:568px;
+          
+        }
+        @media(max-width:568px) {
+            max-width:335px;
+            margin:0 auto;
+        }
+    `}
+
+   
     
 
 `

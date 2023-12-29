@@ -9,6 +9,7 @@ export interface IProps{
     position?:string
     top?:string
     left?:string
+    textAlign?:string
 }
 
 
@@ -25,6 +26,7 @@ const TitleStyled = styled.div<IProps>`
     position:${props => props.position || 'relative'};
     top:${props => props.top || '0'};
     left:${props => props.left || '0'};
+    text-align:${props => props.textAlign || 'left '}
 
     ${props => props.response && css`
 

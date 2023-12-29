@@ -3,6 +3,7 @@ import styled, {css} from 'styled-components'
 
 
 interface IButton{
+  justify?: string;
   position?: string
   children?: React.ReactNode
   top?:string;
@@ -12,17 +13,19 @@ interface IButton{
   padding?:string;
   responseBtn?:boolean
   responseBonusesBtn?:boolean
+  cardResponse?:boolean
   btnClosed?:boolean
   btnSorting?:boolean
   onClick?:Function
   btnCards?:boolean
   tabIndex?:number
+  type?:string
 }
 
 
 const StyledButton = styled.button<IButton>`
     display: flex;
-    justify-content: center;
+    justify-content: ${props => props.justify || 'center'};
     font-family: 'Montserrat', sans-serif;
     font-size: 16px;
     font-weight: 600;
@@ -157,6 +160,20 @@ const StyledButton = styled.button<IButton>`
   `
 
 }
+
+${props => props.cardResponse && css`
+    @media (max-width:768px) {
+        position: absolute;
+        top:315px;
+        width: 100%;
+    }
+    @media(max-width:568px) {
+      top:590px;
+      }
+  `
+
+}
+
 
 `
 

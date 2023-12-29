@@ -12,7 +12,6 @@ const FlexContainerStyled = styled.div<ContainersTypes>`
     flex-wrap:${props => props.wrap || 'nowrap'};
     flex:${props => props.flex || '0 0 auto'};
 
-
     ${props => props.response && css`
         @media (max-width:768px) {
             flex-direction: column;
@@ -33,6 +32,22 @@ const FlexContainerStyled = styled.div<ContainersTypes>`
         }
     }
     `}
+    ${props => props.cardResponse && css`
+        @media (max-width:568px) {
+           flex-direction: column;
+        }
+    }
+    `}
+    ${props => props.btnsCardResponse && css`
+        @media (max-width:568px) {
+           justify-content: space-between;
+        
+        }
+    }
+    `}
+    
+    
+  
 `
 
 export const FlexContainer:React.FC<ContainersTypes> = (props)=>{

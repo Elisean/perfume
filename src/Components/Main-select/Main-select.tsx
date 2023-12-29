@@ -22,12 +22,12 @@ export type SelectProps = {
     selectFilter?:boolean
     ResponceSelect?:boolean
     ResponceSelectPop?:boolean
+    cardProductSelect?:boolean
     SelectHeader?:boolean
     isActive?: boolean
     setActive?: (value: boolean) => void
     onMouseEnter?: (event: MouseEvent) => void
     onMouseLeave?: (event: MouseEvent) => void
-
 }
 
 
@@ -95,7 +95,6 @@ const StyledSelectInner = styled.div <SelectProps>`
             padding: 0;
         }
          
-       
     `}
     /* переименуй responce - неправильно написанно */
     ${props => props.ResponceSelectPop && css` 
@@ -137,7 +136,20 @@ const StyledSelectInner = styled.div <SelectProps>`
         
     `}
 
-
+    ${props => props.cardProductSelect && css`
+        font-family: 'Open Sans', sans-serif;
+        width:850px;
+        border-radius: 4px;
+        border: 1px solid #D6B88D;
+        padding: 5px 10px;
+        color: var(--txt, #BEAE97);
+      @media (max-width: 865px) {
+        width: 100%;
+      }
+      @media (max-width: 768px) {
+        top: 30px;
+      }
+    `}
 `
 
 
