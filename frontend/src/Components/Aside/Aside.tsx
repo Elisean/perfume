@@ -53,8 +53,8 @@ export const Aside:React.FC<IAside> = (props:IAside) => {
 
   const {filtersOpen, setFiltersOpen} = useContext(FiltersContext);
 
-    const body = document.body;
-    filtersOpen ? body.classList.add('overflow') : body.classList.remove('overflow');
+    // const body = document.body;
+    // filtersOpen ? body.classList.add('overflow') : body.classList.remove('overflow');
 
 
   return (
