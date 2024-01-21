@@ -122,7 +122,23 @@ export const SelectCards:React.FC = () => {
             isScreenMd ? <Filters/> :
         
             <Aside>
-           ssssss
+              ssssssssssssssssssss
+              ssssssssssssssssssss
+              ssssssssssssssssssss
+              ssssssssssssssssssss
+              ssssssssssssssssssss
+              ssssssssssssssssssss
+              ssssssssssssssssssss
+              ssssssssssssssssssss
+              ssssssssssssssssssss
+              ssssssssssssssssssss
+              ssssssssssssssssssss
+              ssssssssssssssssssss
+              ssssssssssssssssssss
+              ssssssssssssssssssss
+              ssssssssssssssssssss
+              ssssssssssssssssssss
+              ssssssssssssssssssss
            
             </Aside>
           }

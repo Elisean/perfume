@@ -10,7 +10,7 @@ const AsideStyledWrapper = styled.section`
 
     .show-aside{
       width:100%;
-      min-height:100vh;
+      height:100%;
       background-color: var(--gray);
       position: fixed;
       top: 0;
@@ -22,23 +22,23 @@ const AsideStyledWrapper = styled.section`
     }
     .hide-aside{
       width:100%;
-      min-height:100vh;
+      height:100%;
       position: fixed;
       top:0;
       right: -100%;
     }
-    .show-aside-response{
+    .show-aside-arrow{
       font-size:40px;
       position: fixed;
       top: 50%;
-      left: 50%;
+      left: 10px;
       z-index:6;
       color: var(--goldenWhite);
       transform: translate(0px, 0px) rotate(360deg);
       transition: .5s all;
    
     }
-    .close-aside-response{
+    .close-aside-arrow{
       font-size:40px;
       position: absolute;
       top: 0;
@@ -62,7 +62,7 @@ export const Aside:React.FC<IAside> = (props:IAside) => {
       <div className={filtersOpen ? 'show-aside' : 'hide-aside'}>
         {props.children}
       </div>
-      <div className={filtersOpen ? 'show-aside-response' : 'close-aside-response'} onClick={()=> setFiltersOpen(!filtersOpen)}>🠖</div>
+      <div className={filtersOpen ? 'show-aside-arrow' : 'close-aside-arrow'} onClick={()=> setFiltersOpen(!filtersOpen)}>🠖</div>
     </AsideStyledWrapper>
   )
 }
