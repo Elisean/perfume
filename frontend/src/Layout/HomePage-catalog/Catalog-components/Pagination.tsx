@@ -6,7 +6,7 @@ import { FiltersContext } from '../../../App/App'
 import { useResize } from '../../../Hooks/useResize';
 
 
-interface Paginations{
+interface IPagination{
   onChangePage:any
 }
 
@@ -70,7 +70,7 @@ const StyledPaginate = styled.div`
     }  
 `
 
-export const Pagination:React.FC<Paginations> = ({onChangePage }) => {
+export const Pagination:React.FC<IPagination> = ({onChangePage}) => {
     const {filtersOpen, setFiltersOpen} = useContext(FiltersContext);
     const { width, isScreenSm, isScreenMd, isScreenLg, isScreenXl, isScreenXxl } = useResize();
 
@@ -85,7 +85,8 @@ export const Pagination:React.FC<Paginations> = ({onChangePage }) => {
         countPage = 7;
     }else if (isScreenMd){
         countPage = 7;
-    }else if (isScreenSm){
+    }
+    else if (isScreenSm){
         countPage = 8;
     }else if (width >= 100){
         countPage = 8;

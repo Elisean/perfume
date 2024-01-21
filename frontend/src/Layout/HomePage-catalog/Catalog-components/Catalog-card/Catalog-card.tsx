@@ -236,10 +236,10 @@ export const CatalogCard:React.FC = () => {
       countCards = 6;
     }else if(isScreenMd && !filtersOpen ){
       countCards = 6;
-    }else if(isScreenMd && !filtersOpen ){
+    }else if(isScreenMd && filtersOpen ){
       countCards = 6;
     }else if(isScreenSm && filtersOpen ){
-      countCards = 6;
+      countCards = 3;
     }else if(isScreenSm && !filtersOpen ){
       countCards = 3;
     }else if(width >= 100 && filtersOpen ){

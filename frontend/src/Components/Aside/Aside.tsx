@@ -18,6 +18,7 @@ const AsideStyledWrapper = styled.section`
       transition:.5s all;
       padding: 30px 60px 0 60px;
       overflow: scroll;
+      opacity: 0.3;
     }
     .hide-aside{
       width:100%;
@@ -30,7 +31,7 @@ const AsideStyledWrapper = styled.section`
       font-size:40px;
       position: fixed;
       top: 50%;
-      left: 10px;
+      left: 50%;
       z-index:6;
       color: var(--goldenWhite);
       transform: translate(0px, 0px) rotate(360deg);
@@ -44,7 +45,6 @@ const AsideStyledWrapper = styled.section`
       right: 0;
       /* transform: translate(-50%, -50%) rotate(360deg); */
       transition: .5s all;
-
     }
 
 `
@@ -53,8 +53,8 @@ export const Aside:React.FC<IAside> = (props:IAside) => {
 
   const {filtersOpen, setFiltersOpen} = useContext(FiltersContext);
 
-    // const body = document.body;
-    // filtersOpen ? body.classList.add('overflow') : body.classList.remove('overflow');
+    const body = document.body;
+    filtersOpen ? body.classList.add('overflow') : body.classList.remove('overflow');
 
 
   return (
