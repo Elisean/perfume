@@ -10,6 +10,7 @@ import { FiltersContext } from '../../../App/App'
 import { useResize } from '../../../Hooks/useResize'
 import { Aside } from '../../../Components/Aside/Aside'
 import { Filters } from './Filters'
+import { Modal } from '../../../Components/Modal/Modal'
 
 
 const StyledWrapper = styled.div`
@@ -120,10 +121,8 @@ export const SelectCards:React.FC = () => {
         <div className={filtersOpen ? `${'show'}` : `${'hide'}` }>
           {
             isScreenMd ? <Filters/> :
-        
             <Aside>
-          
-           
+              
             </Aside>
           }
         </div>
