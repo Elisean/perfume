@@ -8,35 +8,40 @@ interface IAside{
 
 const AsideStyledWrapper = styled.section`
 
+    position: relative;
+
     .show-aside{
       width:100%;
-      height:100%;
-      background-color: var(--gray);
+      min-height:100vh;
+      background-color: #36332e5c;
       position: fixed;
       top: 0;
       right: 0;
       transition:.5s all;
       padding: 30px 60px 0 60px;
       overflow: scroll;
-      opacity: 0.3;
+      
+      z-index:5;
     }
     .hide-aside{
       width:100%;
-      height:100%;
+      min-height:100vh;
       position: fixed;
       top:0;
       right: -100%;
+      z-index:5;
     }
+    /* Попробуй сделать псевдоклассами */
+    
     .show-aside-arrow{
       font-size:40px;
-      position: fixed;
+      position: absolute;
       top: 50%;
       left: 10px;
       z-index:6;
       color: var(--goldenWhite);
       transform: translate(0px, 0px) rotate(360deg);
       transition: .5s all;
-   
     }
     .close-aside-arrow{
       font-size:40px;
@@ -45,6 +50,7 @@ const AsideStyledWrapper = styled.section`
       right: 0;
       /* transform: translate(-50%, -50%) rotate(360deg); */
       transition: .5s all;
+      z-index:6;
     }
 
 `
@@ -61,8 +67,8 @@ export const Aside:React.FC<IAside> = (props:IAside) => {
     <AsideStyledWrapper>
       <div className={filtersOpen ? 'show-aside' : 'hide-aside'}>
         {props.children}
+        <div className={filtersOpen ? 'show-aside-arrow' : 'close-aside-arrow'} onClick={()=> setFiltersOpen(!filtersOpen)}>🠖</div>
       </div>
-      <div className={filtersOpen ? 'show-aside-arrow' : 'close-aside-arrow'} onClick={()=> setFiltersOpen(!filtersOpen)}>🠖</div>
     </AsideStyledWrapper>
   )
 }
