@@ -2,7 +2,7 @@ import React, {ReactNode, useRef, useEffect} from 'react'
 import styled from 'styled-components';
 import { createPortal } from "react-dom";
 import { ReactComponent as ModalClosed } from '../../icons/modal-closed.svg';
-import { MainContainer } from '../../Containers/Main-container/Main-container';
+
 
 interface IModal{
   onClose?: any;

@@ -8,9 +8,9 @@ import { ReactComponent as Chevron } from '../../../icons/chevron-down.svg'
 import { Sorting } from './Sorting'
 import { FiltersContext } from '../../../App/App'
 import { useResize } from '../../../Hooks/useResize'
-import { Aside } from '../../../Components/Aside/Aside'
 import { Filters } from './Filters'
-import { Modal } from '../../../Components/Modal/Modal'
+import { Aside } from '../../../Components/Aside/Aside'
+
 
 
 const StyledWrapper = styled.div`
@@ -122,7 +122,9 @@ export const SelectCards:React.FC = () => {
           {
             isScreenMd ? <Filters/> :
             <Aside>
-              
+            sss
+            sss
+            
             </Aside>
           }
         </div>
