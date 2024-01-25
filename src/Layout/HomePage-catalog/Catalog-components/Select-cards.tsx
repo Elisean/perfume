@@ -97,23 +97,23 @@ export const SelectCards:React.FC = () => {
   const {filtersOpen, setFiltersOpen} = useContext(FiltersContext);
   const { isScreenMd, isScreenSm } = useResize();
 
-  const wrapRef = useRef<HTMLInputElement>(null)
+  // const wrapRef = useRef<HTMLInputElement>(null)
 
    
-  const handleClosed = (event:any) =>{
-      if(wrapRef.current && !wrapRef.current.contains(event.target)){
-        setFiltersOpen(!filtersOpen)
-      } 
-  }
+  // const handleClosed = (event:any) =>{
+  //     if(wrapRef.current && !wrapRef.current.contains(event.target)){
+  //       setFiltersOpen(!filtersOpen)
+  //     } 
+  // }
 
-  useEffect(() =>{
-      document.addEventListener('mousedown', handleClosed)
-  }, [])
+  // useEffect(() =>{
+  //     document.addEventListener('mousedown', handleClosed)
+  // }, [])
 
 
   return (
     <StyledWrapper>
-      <FlexContainer filtersResponse align='center' ref={wrapRef}>
+      <FlexContainer filtersResponse align='center'>
         <MainSelect responseSelect left={filtersOpen ? '7px': '0'} padding='10px 20px' width={filtersOpen ? '290px' : '305px'} fontSize='18px' onClick={()=> setFiltersOpen(!filtersOpen)}>
           Фильтры
           <Filter/>

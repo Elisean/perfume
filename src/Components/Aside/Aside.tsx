@@ -25,7 +25,7 @@ const AsideStyledWrapper = styled.section`
     position:fixed;
     top:0;
     left:0;
-    background-color: #22191944;
+    background-color: #33702e44;
     transition:0.5s;
   }
   .hide-aside{
@@ -61,7 +61,7 @@ const AsideStyledWrapper = styled.section`
   }
   
 ` 
-
+// main-color #22191944
 
 export const Aside:React.FC<IAside> = (props:IAside) => {
 
