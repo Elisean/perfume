@@ -95,7 +95,7 @@ const StyledWrapper = styled.div`
 export const SelectCards:React.FC = () => {
   const [openSorting, setOpenSorting] = useState(false);
   const {filtersOpen, setFiltersOpen} = useContext(FiltersContext);
-  const { isScreenMd } = useResize();
+  const { isScreenMd, isScreenSm } = useResize();
 
   const wrapRef = useRef<HTMLInputElement>(null)
 
@@ -120,7 +120,9 @@ export const SelectCards:React.FC = () => {
         </MainSelect>
         <div className={filtersOpen ? `${'show'}` : `${'hide'}` }>
           {
-            isScreenMd ? <Filters/> :
+            
+
+            isScreenMd && isScreenSm ? <Filters/> :
             <Aside>
             sss
             sss
