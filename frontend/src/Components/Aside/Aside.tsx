@@ -66,7 +66,10 @@ export const Aside:React.FC<IAside> = (props:IAside) => {
       <div className={filtersOpen ? 'show-aside' : 'hide-aside'}>
           {props.children}
           <div className='aside-inner'>
-            <div className={filtersOpen ? 'show-aside-response' : 'close-aside-response'} onClick={()=> setFiltersOpen(!filtersOpen)}>🠖</div>
+            <div className={filtersOpen ? 'show-aside-response' : 'close-aside-response'} onClick={()=> setFiltersOpen(!filtersOpen)}>🠖
+              sssssssss
+            
+            </div>
           </div>
       </div>
 
