@@ -118,16 +118,12 @@ export const SelectCards:React.FC = () => {
           Фильтры
           <Filter/>
         </MainSelect>
-        {/* пошарься здесь какая то хуйня */}
         <div className={filtersOpen ? `${'show'}` : `${'hide'}` }>
           {
-            
-
             isScreenMd && isScreenSm ? <Filters/> :
             <Aside>
             sss
-            sss
-            
+            sss 
             </Aside>
           }
         </div>

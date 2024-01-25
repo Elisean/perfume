@@ -2,7 +2,7 @@ import React, {useContext, ReactNode} from 'react'
 import { styled } from 'styled-components'
 import { FiltersContext } from '../../App/App'
 import { createPortal } from 'react-dom'
-
+import { ReactComponent as Arrow } from '../../icons/arrow.svg'
 interface IAside{
   children? : ReactNode
 }
@@ -20,13 +20,13 @@ const AsideStyledWrapper = styled.section`
       align-items:flex-start;
   }
   .show-aside{
-     min-width:100%;
-      min-height:100%;
-      position:fixed;
-      top:0;
-      left:0;
-      background-color: #74c20d44;
-      transition:0.5s;
+    min-width:100%;
+    min-height:100%;
+    position:fixed;
+    top:0;
+    left:0;
+    background-color: #22191944;
+    transition:0.5s;
   }
   .hide-aside{
     min-width:100%;
@@ -38,22 +38,30 @@ const AsideStyledWrapper = styled.section`
     transition:0.5s;
   }
   .show-aside-response{
-    font-size:40px;
-    top:50%;
-    left:25px;
-    color:var(--golden-white);
-    position:absolute;
+      top:50%;
+      left:25px;
+      color:var(--golden-white);
+      position:absolute;
+      transform:rotate(90deg);
+      svg{
+        width:35px;
+        height:35px;
+      }
   }
    .hide-aside-response{
-    font-size:40px;
-    top:50%;
-    position:absolute;
-    left:75px;
-    color:var(--golden-white);
+      top:50%;
+      position:absolute;
+      left:75px;
+      color:var(--golden-white);
+      transform:rotate(-90deg);
+      svg{
+        width:35px;
+        height:35px;
+      }
   }
   
 ` 
-// color #22191944
+
 
 export const Aside:React.FC<IAside> = (props:IAside) => {
 
@@ -69,7 +77,7 @@ export const Aside:React.FC<IAside> = (props:IAside) => {
       <div className={filtersOpen ? 'show-aside' : 'hide-aside'}>
           {props.children}
           <div className='aside-inner'>
-            <button type='button' className={filtersOpen ? 'show-aside-response' : 'hide-aside-response'} onClick={()=> setFiltersOpen(!filtersOpen)}>🠖</button>
+            <button type='button' className={filtersOpen ? 'show-aside-response' : 'hide-aside-response'} onClick={()=> setFiltersOpen(!filtersOpen)}><Arrow/></button>
           </div>
       </div>
     </AsideStyledWrapper>,document.body
