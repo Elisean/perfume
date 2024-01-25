@@ -8,17 +8,11 @@ interface IAside{
 }
 
 const AsideStyledWrapper = styled.section`
-    position: relative;
+    position: fixed;
+    min-width:100vw;
+    min-height:100vh;
     z-index:5;
-
-
-  .show-aside-response{
-    font-size:40px;
-  }
-  .close-aside-response{
-    font-size:40px;
-  }
-
+    
   .aside-inner{
       display:flex;
       flex-direction:column;
@@ -26,39 +20,40 @@ const AsideStyledWrapper = styled.section`
       align-items:flex-start;
   }
   .show-aside{
-      width:100vw;
-      min-height:100vh;
+     min-width:100%;
+      min-height:100%;
       position:fixed;
       top:0;
       left:0;
-      background-color: #22191944;
-      transition:0.3s;
+      background-color: #74c20d44;
+      transition:0.5s;
   }
   .hide-aside{
-    width:100%;
-    min-height:100vh;
+    min-width:100%;
+    min-height:100%;
     position:fixed;
     top:0;
     left:100%;
     background-color: transparent;
-    transition:0.3s;
+    transition:0.5s;
   }
   .show-aside-response{
+    font-size:40px;
     top:50%;
-    left:75px;
+    left:25px;
     color:var(--golden-white);
     position:absolute;
   }
    .hide-aside-response{
+    font-size:40px;
     top:50%;
     position:absolute;
     left:75px;
     color:var(--golden-white);
   }
   
-
 ` 
-
+// color #22191944
 
 export const Aside:React.FC<IAside> = (props:IAside) => {
 
