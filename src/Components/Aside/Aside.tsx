@@ -1,6 +1,7 @@
 import React, {useContext, ReactNode} from 'react'
 import { styled } from 'styled-components'
 import { FiltersContext } from '../../App/App'
+import { createPortal } from 'react-dom'
 
 interface IAside{
   children? : ReactNode
@@ -62,17 +63,19 @@ export const Aside:React.FC<IAside> = (props:IAside) => {
 
 
   return (
-    <AsideStyledWrapper>
+    createPortal(
+      <AsideStyledWrapper>
       <div className={filtersOpen ? 'show-aside' : 'hide-aside'}>
           {props.children}
           <div className='aside-inner'>
             <div className={filtersOpen ? 'show-aside-response' : 'close-aside-response'} onClick={()=> setFiltersOpen(!filtersOpen)}>🠖
               sssssssss
-            
             </div>
           </div>
       </div>
 
-    </AsideStyledWrapper>
+    </AsideStyledWrapper>,document.body
+    )
+   
   )
 }
