@@ -9,7 +9,8 @@ interface IAside{
 
 const AsideStyledWrapper = styled.section`
     position: relative;
-    z-index:12;
+    z-index:5;
+
 
   .show-aside-response{
     font-size:40px;
@@ -19,7 +20,6 @@ const AsideStyledWrapper = styled.section`
   }
 
   .aside-inner{
-      height:100vh;
       display:flex;
       flex-direction:column;
       justify-content:center;
@@ -32,7 +32,6 @@ const AsideStyledWrapper = styled.section`
       top:0;
       left:0;
       background-color: #22191944;
-      z-index:12;
       transition:0.3s;
   }
   .hide-aside{
@@ -42,12 +41,19 @@ const AsideStyledWrapper = styled.section`
     top:0;
     left:100%;
     background-color: transparent;
-    z-index:12;
     transition:0.3s;
   }
   .show-aside-response{
-    position:relative;
+    top:50%;
     left:20px;
+    color:var(--golden-white);
+    position:absolute;
+  }
+   .hide-aside-response{
+    top:50%;
+    position:absolute;
+    left:20px;
+    color:var(--golden-white);
   }
   
 
@@ -68,12 +74,9 @@ export const Aside:React.FC<IAside> = (props:IAside) => {
       <div className={filtersOpen ? 'show-aside' : 'hide-aside'}>
           {props.children}
           <div className='aside-inner'>
-            <div className={filtersOpen ? 'show-aside-response' : 'close-aside-response'} onClick={()=> setFiltersOpen(!filtersOpen)}>🠖
-              sssssssss
-            </div>
+            <button type='button' className={filtersOpen ? 'show-aside-response' : 'hide-aside-response'} onClick={()=> setFiltersOpen(!filtersOpen)}>🠖</button>
           </div>
       </div>
-
     </AsideStyledWrapper>,document.body
     )
    
