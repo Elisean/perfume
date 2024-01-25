@@ -45,14 +45,14 @@ const AsideStyledWrapper = styled.section`
   }
   .show-aside-response{
     top:50%;
-    left:20px;
+    left:75px;
     color:var(--golden-white);
     position:absolute;
   }
    .hide-aside-response{
     top:50%;
     position:absolute;
-    left:20px;
+    left:75px;
     color:var(--golden-white);
   }
   
