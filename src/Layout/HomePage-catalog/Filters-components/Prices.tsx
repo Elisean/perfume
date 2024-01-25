@@ -7,6 +7,11 @@ import { FlexContainer } from '../../../Containers/Flex-container/FlexContainer'
 const StyledPriced = styled.div`
   margin:0 0 10px 0;
 
+  @media (max-width:568px) {
+      margin: 0 auto 0 auto;
+      width:350px;
+  }
+
 .Slider{
   width:280px;
   height: 6px;
@@ -17,10 +22,11 @@ const StyledPriced = styled.div`
       width:225px;
   }
   @media (max-width:568px) {
-      margin: 15px 0 0 0;
-      width:100%;
-   
+      margin: 0 auto 0 auto;
+      width:350px;
   }
+  
+  
   .thumb{
     width:20px;
     height:20px;
@@ -36,9 +42,9 @@ const StyledPriced = styled.div`
 }
 .values{
     margin:10px 12px 0 12px;
-    @media (max-width:567px){
+    @media (max-width:568px){
         margin:20px 0 0 0;
-     
+        
     }
 }
 `

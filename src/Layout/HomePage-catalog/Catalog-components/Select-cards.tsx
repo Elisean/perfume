@@ -1,5 +1,5 @@
 import React from 'react'
-import {useState, useContext, useRef, useEffect} from 'react'
+import {useState, useContext} from 'react'
 import styled from 'styled-components'
 import { FlexContainer } from '../../../Containers/Flex-container/FlexContainer'
 import { MainSelect } from '../../../Components/Main-select/Main-select'
@@ -10,6 +10,10 @@ import { FiltersContext } from '../../../App/App'
 import { useResize } from '../../../Hooks/useResize'
 import { Filters } from './Filters'
 import { Aside } from '../../../Components/Aside/Aside'
+import { Brand } from '../Filters-components/Brand'
+import { Prices } from '../Filters-components/Prices'
+import { Gender } from '../Filters-components/Gender'
+import { Notes } from '../Filters-components/Notes'
 
 
 
@@ -42,14 +46,14 @@ const StyledWrapper = styled.div`
 
   @media (max-width: 568px) {
     .show{
-        overflow-x: hidden;
+      overflow: scroll;
         z-index:5;
         opacity: 1;
         visibility: visible;
         position: static;
   }
     .hide{
-        overflow-x: hidden;
+      overflow: scroll;
         position: static;
         opacity: 1;
         z-index:0;
@@ -81,6 +85,7 @@ const StyledWrapper = styled.div`
     font-size:20px;
     text-align: left;
   } 
+ 
 }
 
 .all-items{
@@ -97,20 +102,6 @@ export const SelectCards:React.FC = () => {
   const {filtersOpen, setFiltersOpen} = useContext(FiltersContext);
   const { isScreenMd, isScreenSm } = useResize();
 
-  // const wrapRef = useRef<HTMLInputElement>(null)
-
-   
-  // const handleClosed = (event:any) =>{
-  //     if(wrapRef.current && !wrapRef.current.contains(event.target)){
-  //       setFiltersOpen(!filtersOpen)
-  //     } 
-  // }
-
-  // useEffect(() =>{
-  //     document.addEventListener('mousedown', handleClosed)
-  // }, [])
-
-
   return (
     <StyledWrapper>
       <FlexContainer filtersResponse align='center'>
@@ -122,8 +113,15 @@ export const SelectCards:React.FC = () => {
           {
             isScreenMd && isScreenSm ? <Filters/> :
             <Aside>
-            sss
-            sss 
+              <div className='before-aside'>
+                <Brand/>
+                <p className='before-aside-description'>Стоимость</p>   
+                <Prices/>
+                <p className='before-aside-description'>Пол</p>  
+                <Gender/>
+                <p className='before-aside-description'>Ноты</p>  
+                <Notes/>
+              </div>
             </Aside>
           }
         </div>

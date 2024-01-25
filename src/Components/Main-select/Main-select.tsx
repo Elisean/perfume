@@ -126,6 +126,11 @@ const StyledSelectInner = styled.div <SelectProps>`
             width: 220px;
             padding:0 10px;
         }
+        @media (max-width: 568px) {
+            width: 340px;
+            padding:0 10px;
+            margin:0 auto;
+        }
 
     `}
 
@@ -178,6 +183,7 @@ const StyledSelectInner = styled.div <SelectProps>`
         border: 1px solid #D6B88D;
         padding: 5px 10px;
         color: var(--txt, #BEAE97);
+        
       @media (max-width: 865px) {
         width: 100%;
       }

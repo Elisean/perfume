@@ -32,6 +32,12 @@ const brandSearchList = [
 
 const BrandWrapperStyled = styled.section`
     position: relative;
+    
+    @media (max-width:568px) {
+        padding:10px 0 0 0;
+        overflow:scroll;
+    }
+
 .brand-icon{
     transform: rotate(180deg)
 }
@@ -41,6 +47,11 @@ const BrandWrapperStyled = styled.section`
     box-shadow: 0px 2px 10px 0px rgba(184, 164, 142, 0.40);
     margin:0 12px;
     padding:5px 0 0 0;
+    
+    @media (max-width:568px) {
+        max-width:340px;
+        margin:0 auto;
+    }
 }
 .brand-search-list{
     height:340px;
@@ -80,6 +91,11 @@ const BrandWrapperStyled = styled.section`
         padding:10px 0;
         width:85%;
     }
+    @media (max-width:568px) {
+        text-align: left;
+        padding:10px 30px;
+        width:88%;
+    }
 }
 .brand-search-item{
     text-align: left;
@@ -91,9 +107,6 @@ const BrandWrapperStyled = styled.section`
     text-transform: uppercase;
     padding:10px 30px 10px 10px;
     margin:0 30px 0 20px;
-
-   
-
 }
 .brand-search-item:hover{
     border-radius: 4px;
@@ -107,6 +120,8 @@ const BrandWrapperStyled = styled.section`
     color: var(--gray);
     font-weight: 700;
 }
+
+
 `
 
 

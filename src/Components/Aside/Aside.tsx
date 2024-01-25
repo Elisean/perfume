@@ -3,6 +3,7 @@ import { styled } from 'styled-components'
 import { FiltersContext } from '../../App/App'
 import { createPortal } from 'react-dom'
 import { ReactComponent as Arrow } from '../../icons/arrow.svg'
+
 interface IAside{
   children? : ReactNode
 }
@@ -12,6 +13,26 @@ const AsideStyledWrapper = styled.section`
     min-width:100vw;
     min-height:100vh;
     z-index:5;
+   
+
+       /* Внешний класс */
+    .before-aside{
+      background-color: var(--bg-color);
+      width:380px;
+      margin: auto;
+      height:100vh;
+      overflow:scroll;
+      margin:90px auto 0 auto;
+      padding:0 0 80px 0;
+      
+    }
+    .before-aside-description{
+      font-family: 'Montserrat', sans-serif;
+      font-size:16px;
+      padding:15px;
+      margin:10px 0 0 0;    
+    }
+     /* Внешний класс */
     
   .aside-inner{
       display:flex;
@@ -25,7 +46,7 @@ const AsideStyledWrapper = styled.section`
     position:fixed;
     top:0;
     left:0;
-    background-color: #33702e44;
+    background-color: #00000075;
     transition:0.5s;
   }
   .hide-aside{
@@ -37,31 +58,34 @@ const AsideStyledWrapper = styled.section`
     background-color: transparent;
     transition:0.5s;
   }
+
   .show-aside-response{
-      top:50%;
-      left:25px;
-      color:var(--golden-white);
       position:absolute;
+      top:2%;
+      left:43%;
+      color:white;
+
       transform:rotate(90deg);
       svg{
-        width:35px;
-        height:35px;
+        width:45px;
+        height:45px;
       }
   }
    .hide-aside-response{
-      top:50%;
       position:absolute;
+      top:50%;
+  
       left:75px;
-      color:var(--golden-white);
+      color:white;
       transform:rotate(-90deg);
       svg{
-        width:35px;
-        height:35px;
+        width:45px;
+        height:45px;
       }
   }
   
 ` 
-// main-color #22191944
+
 
 export const Aside:React.FC<IAside> = (props:IAside) => {
 

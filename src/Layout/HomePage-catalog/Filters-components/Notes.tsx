@@ -35,6 +35,9 @@ export const noteList = [
 
 const StyledNotes = styled.section`
     position: relative;
+
+   
+
 .notes-icon{
     transform: rotate(180deg)
 }
@@ -44,6 +47,9 @@ const StyledNotes = styled.section`
     box-shadow: 0px 2px 10px 0px rgba(184, 164, 142, 0.40);
     margin:0 12px 20px 12px;
     padding:5px 0 0 0;
+
+   
+
 }
 .notes-search-list{
     height:340px;
