@@ -14,7 +14,8 @@ import { Brand } from '../Filters-components/Brand'
 import { Prices } from '../Filters-components/Prices'
 import { Gender } from '../Filters-components/Gender'
 import { Notes } from '../Filters-components/Notes'
-
+import { Button } from '../../../Components/Button/Button'
+import { ReactComponent as Closed } from '../../../icons/closed.svg'
 
 
 const StyledWrapper = styled.div`
@@ -102,6 +103,12 @@ export const SelectCards:React.FC = () => {
   const {filtersOpen, setFiltersOpen} = useContext(FiltersContext);
   const { isScreenMd, isScreenSm } = useResize();
 
+  const resetFilterResponce = () =>{
+    window.location.reload();
+  }
+
+
+
   return (
     <StyledWrapper>
       <FlexContainer filtersResponse align='center'>
@@ -121,6 +128,11 @@ export const SelectCards:React.FC = () => {
                 <Gender/>
                 <p className='before-aside-description'>Ноты</p>  
                 <Notes/>
+
+                <Button onClick={()=> {resetFilterResponce()}} closeFiltersResponce align='center' justify='space-between' padding='5px 15px'>
+                Сбросить 
+                <Closed/>
+              </Button>
               </div>
             </Aside>
           }

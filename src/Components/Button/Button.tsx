@@ -18,6 +18,7 @@ interface IButton{
   btnClosed?:boolean;
   btnSorting?:boolean;
   closeFilters?:boolean;
+  closeFiltersResponce?:boolean;
   onClick?:Function;
   btnCards?:boolean;
   tabIndex?:number;
@@ -129,6 +130,27 @@ const StyledButton = styled.button<IButton>`
     }
 
 `}
+
+${props => props.closeFiltersResponce && css`
+    width:280px;
+    border: 1px solid transparent;
+    box-shadow: none;
+    border-radius:4px;
+    font-weight:400;
+    text-transform: unset;
+    font-size:18px;
+    margin:0 auto 20px auto;
+    
+
+    @media (max-width: 568px) {
+          width: 240px;
+    }
+
+`}
+
+
+
+
 
 
 

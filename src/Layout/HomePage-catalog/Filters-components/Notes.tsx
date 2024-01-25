@@ -47,13 +47,14 @@ const StyledNotes = styled.section`
     box-shadow: 0px 2px 10px 0px rgba(184, 164, 142, 0.40);
     margin:0 12px 20px 12px;
     padding:5px 0 0 0;
-
-   
-
+    @media (max-width:568px) {
+        margin:0 20px 20px 20px;
+    }
 }
 .notes-search-list{
     height:340px;
     overflow-y: scroll;
+   
 }
 
  ::-webkit-scrollbar{
