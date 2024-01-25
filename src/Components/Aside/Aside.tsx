@@ -6,8 +6,6 @@ interface IAside{
   children? : ReactNode
 }
 
-
-
 const AsideStyledWrapper = styled.section`
     position: relative;
     z-index:12;
@@ -28,21 +26,23 @@ const AsideStyledWrapper = styled.section`
   }
   .show-aside{
       width:100vw;
-      min-height:100%;
+      min-height:100vh;
       position:fixed;
       top:0;
       left:0;
-      background-color: red;
+      background-color: #22191944;
       z-index:12;
+      transition:0.3s;
   }
   .hide-aside{
     width:100%;
-    min-height:100%;
+    min-height:100vh;
     position:fixed;
     top:0;
     left:100%;
     background-color: transparent;
     z-index:12;
+    transition:0.3s;
   }
   .show-aside-response{
     position:relative;
