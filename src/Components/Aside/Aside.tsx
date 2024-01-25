@@ -61,11 +61,14 @@ const AsideStyledWrapper = styled.section`
 
   .show-aside-response{
       position:absolute;
-      top:2%;
-      left:43%;
+      top:50%;
+      left:0;
       color:white;
-
       transform:rotate(90deg);
+      @media (max-width:470px) {
+        top:2%;
+        left:43%;
+      }
       svg{
         width:45px;
         height:45px;
@@ -74,10 +77,15 @@ const AsideStyledWrapper = styled.section`
    .hide-aside-response{
       position:absolute;
       top:50%;
-  
       left:75px;
       color:white;
       transform:rotate(-90deg);
+
+      @media (max-width:470px) {
+        top:2%;
+        left:43%;
+      }
+
       svg{
         width:45px;
         height:45px;
