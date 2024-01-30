@@ -19,12 +19,12 @@ export type SelectProps = {
     tabIndex?:string
     onClick?:any
     ref?:any
-    selectFilter?:boolean
-    responseSelect?:boolean
-    responseSelectPop?:boolean
+    selectfilter?:string
+    responseselect?:string
+    responseselectpop?:string
     cardProductSelect?:boolean
-    SelectHeader?:boolean
-    filtersSelect?:boolean
+    selectheader?:string
+    filtersselect?:string
     BrandSelect?:boolean
     isActive?: boolean
     setActive?: (value: boolean) => void
@@ -62,13 +62,13 @@ const StyledSelectInner = styled.div <SelectProps>`
         box-shadow: 0px 2px 10px 0px rgba(184, 164, 142, 0.40);
     }
 
-    ${props => props.selectFilter && css`
+    ${props => props.selectfilter && css`
         border: 1px solid var(--border);
         width:90%;
         padding:5px 20px;
     `}
 
-    ${props => props.SelectHeader && css`
+    ${props => props.selectheader && css`
         width: 175px;
         border: 1px solid var(--border);
         box-shadow: 0px 2px 10px 0px rgba(184, 164, 142, 0.40);
@@ -78,7 +78,7 @@ const StyledSelectInner = styled.div <SelectProps>`
     `}
 
 
-    ${props => props.responseSelect && css`
+    ${props => props.responseselect && css`
         @media (max-width:993px) {
             left: -10px;
             width:305px;
@@ -99,7 +99,7 @@ const StyledSelectInner = styled.div <SelectProps>`
          
     `}
      
-    ${props => props.filtersSelect && css`
+    ${props => props.filtersselect && css`
         display: flex;
         flex-direction: column;
         background-color: transparent;
@@ -137,7 +137,7 @@ const StyledSelectInner = styled.div <SelectProps>`
 
 
 
-    ${props => props.responseSelectPop && css` 
+    ${props => props.responseselectpop && css` 
         @media (max-width:993px) {
             left: 10px;
         }

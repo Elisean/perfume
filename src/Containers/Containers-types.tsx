@@ -12,10 +12,10 @@ export interface ContainersTypes {
     padding?: string;
     flex?: string;
     position?: string;
-    response?:boolean;
-    footerResponse?:boolean;
-    catalogResponse?:boolean;
-    filtersResponse?:boolean;
+    response?:string;
+    footerresponse?:string;
+    catalogresponse?:string;
+    filtersresponse?:string;
     cardResponse?:boolean;
     btnsCardResponse?:boolean;
     ref?:any;

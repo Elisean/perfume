@@ -131,27 +131,27 @@ export const PopularFragrances:React.FC = () => {
 
   return (
     <PopularFragrancesStyled>
-    <MainContainer response>
-            <AsideTitle response top='-40px'>Популярные ароматы</AsideTitle>
+    <MainContainer response={'true'}>
+            <AsideTitle response={'true'} top='-40px'>Популярные ароматы</AsideTitle>
             <ul className='fragrances-inner'>
-            <FlexContainer response justify='space-between' align='center'>
+            <FlexContainer response={'true'} justify='space-between' align='center'>
               <li className='fragrances-item' onMouseOver={()=> setBombshellHover(!bombshellHover)} onMouseLeave={()=> setBombshellHover(!bombshellHover)}>
               <h3 className='card-title'>Для неё</h3>
                 <img className={bombshellHover ? 'card-img-hover' : 'card-img'} src={CardImageBombshel} alt="images" />
                 <p className='card-subtitle'>Victoria Secret Bombshell</p>
-                <Button responseBtn padding='12px 72px' top='85%' left='50%'  position='absolute' transform='translate(-57%, 0)'>в корзину</Button>
+                <Button responsebtn={'true'} padding='12px 72px' top='85%' left='50%'  position='absolute' transform='translate(-57%, 0)'>в корзину</Button>
               </li>
               <li className='fragrances-item' onMouseOver={()=> setCreedHoverHover(!creedHover)} onMouseLeave={()=> setCreedHoverHover(!creedHover)}>
               <h3 className='card-title'>Для него</h3>
                 <img className={creedHover ? 'card-img-hover' : 'card-img'} src={CardImagesCreed} alt="images" />
                 <p className='card-subtitle'>Aventus By Creed</p>
-                <Button responseBtn padding='12px 72px' top='85%' left='50%' position='absolute' transform='translate(-57%, 0)'>в корзину</Button>
+                <Button responsebtn={'true'} padding='12px 72px' top='85%' left='50%' position='absolute' transform='translate(-57%, 0)'>в корзину</Button>
               </li>
               <li className='fragrances-item' onMouseOver={()=> setGenderHover(!genderHover)} onMouseLeave={()=> setGenderHover(!genderHover)}>
               <h3 className='card-title'>Унисекс</h3>
                 <img className={genderHover ? 'card-img-hover' : 'card-img'} src={CardImagesNarcotiqe} alt="images" />
                 <p className='card-subtitle'>Narcotiqe</p>
-                <Button responseBtn padding='12px 72px' top='85%' left='50%' position='absolute'  transform='translate(-57%, 0)'>в корзину</Button>
+                <Button responsebtn={'true'} padding='12px 72px' top='85%' left='50%' position='absolute'  transform='translate(-57%, 0)'>в корзину</Button>
               </li>
             </FlexContainer>
             </ul>

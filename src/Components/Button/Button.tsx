@@ -12,15 +12,15 @@ interface IButton{
   transform?:string;
   width?:string;
   padding?:string;
-  responseBtn?:boolean;
-  responseBonusesBtn?:boolean;
+  responsebtn?:string;
+  responsebonusesbtn?:string;
   cardResponse?:boolean;
   btnClosed?:boolean;
-  btnSorting?:boolean;
-  closeFilters?:boolean;
+  btnsorting?:string;
+  closefilters?:string;
   closeFiltersResponce?:boolean;
   onClick?:Function;
-  btnCards?:boolean;
+  btncards?:string;
   tabIndex?:number;
   type?:string;
 }
@@ -54,7 +54,7 @@ const StyledButton = styled.button<IButton>`
       -webkit-text-fill-color:var(--black);
     }
 
-  ${props => props.responseBtn && css`
+  ${props => props.responsebtn && css`
     @media (max-width:1300px) {
       width:200px;
       padding: 12px 0;
@@ -78,7 +78,7 @@ const StyledButton = styled.button<IButton>`
     }
   `}
 
-  ${props => props.responseBonusesBtn && css`
+  ${props => props.responsebonusesbtn && css`
     @media (max-width: 767px) {
       left:20px;
       top:20px;
@@ -117,7 +117,7 @@ const StyledButton = styled.button<IButton>`
   `}
 
 
-  ${props => props.closeFilters && css`
+  ${props => props.closefilters && css`
     width:280px;
     border: 1px solid transparent;
     box-shadow: none;
@@ -148,14 +148,7 @@ ${props => props.closeFiltersResponce && css`
 
 `}
 
-
-
-
-
-
-
-
-  ${props => props.btnSorting && css`
+  ${props => props.btnsorting && css`
     font-family: 'Open Sans', sans-serif;
     font-size: 14px;
     font-weight: 400;
@@ -189,7 +182,7 @@ ${props => props.closeFiltersResponce && css`
     }
   `}
 
-  ${props => props.btnCards && css`
+  ${props => props.btncards && css`
   @media (max-width:768px) {
       width:210px;
       padding:10px 0;

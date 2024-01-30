@@ -282,7 +282,7 @@ export const CatalogCard:React.FC = () => {
                         <p className='price-title'>Стоимость:</p>
                         <p className='price'>{card.price + '₽'}</p>
                       </FlexContainer>
-                        <Button btnCards top='-70px' padding='12px 72px'>в корзину</Button>
+                        <Button btncards={'true'} top='-70px' padding='12px 72px'>в корзину</Button>
                   </div>
       </CardItem> 
       

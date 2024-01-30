@@ -80,7 +80,7 @@ export const Accordion:React.FC<IAccordion> = (props) => {
   return (
     <StyledAccordion {...props}>
              
-        <MainSelect selectFilter onClick={()=> setAccordionOpen(!accordionOpen)}>
+        <MainSelect selectfilter={'true'} onClick={()=> setAccordionOpen(!accordionOpen)}>
             {props.selectFilter}
            <Chevron />
         </MainSelect>

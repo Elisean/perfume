@@ -82,15 +82,15 @@ export const HeaderSelect:React.FC = () => {
   return (
     <SelectStyledWrapper>
       
-      <MainSelect SelectHeader onMouseEnter={()=>setIsShow(!isShow)} onMouseLeave={()=>setIsShow(isShow)}>
+      <MainSelect selectheader={'true'} onMouseEnter={()=>setIsShow(!isShow)} onMouseLeave={()=>setIsShow(isShow)}>
           <SelectIcon />
             Каталог
       </MainSelect>
 
       <ul ref={navRef} className={isShow && navRef ? 'open-select' : 'closed-select'}>
       {
-        selectItems.map((selectItem) =>(
-          <li className='select-item'><a href="#"> {selectItem} </a></li>
+        selectItems.map((selectItem,index) =>(
+          <li key={index} className='select-item'><a href="#"> {selectItem} </a></li>
         ))
       }
     </ul>

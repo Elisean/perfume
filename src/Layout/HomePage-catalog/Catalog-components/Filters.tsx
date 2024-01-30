@@ -53,7 +53,7 @@ export const Filters:React.FC = () => {
   return (
     <FiltersWrapperStyled>
         
-       <MainSelect filtersSelect width='285px' padding='5px 5px 10px' onClick={()=>setBrandOpen(!brandOpen)} >
+       <MainSelect filtersselect={'true'} width='285px' padding='5px 5px 10px' onClick={()=>setBrandOpen(!brandOpen)} >
             <p>Бренд</p>
             <div className={brandOpen ? 'chevron-up' : 'chevron-down'}>
                 <Chevron/>
@@ -62,7 +62,7 @@ export const Filters:React.FC = () => {
         {
             brandOpen ? <Brand/> : ''
         }
-       <MainSelect filtersSelect width='285px' padding='5px 5px 10px' onClick={()=>setPriceOpen(!priceOpen)}>
+       <MainSelect filtersselect={'true'} width='285px' padding='5px 5px 10px' onClick={()=>setPriceOpen(!priceOpen)}>
             <p>Стоимость</p>    
             <div className={priceOpen ? 'chevron-up' : 'chevron-down'}>
                 <Chevron/>
@@ -73,7 +73,7 @@ export const Filters:React.FC = () => {
         }
 
 
-       <MainSelect filtersSelect width='285px' padding='5px 5px 10px' onClick={()=>setGenderOpen(!genderOpen)}>
+       <MainSelect filtersselect={'true'} width='285px' padding='5px 5px 10px' onClick={()=>setGenderOpen(!genderOpen)}>
             <p>Пол</p>    
             <div className={genderOpen ? 'chevron-up' : 'chevron-down'}>
                 <Chevron/>
@@ -84,7 +84,7 @@ export const Filters:React.FC = () => {
           genderOpen ? <Gender/> : ''
        }   
 
-       <MainSelect filtersSelect width='285px' padding='5px 5px 20px 5px' onClick={()=>setNotesOpen(!notesOpen)}>
+       <MainSelect filtersselect={'true'} width='285px' padding='5px 5px 20px 5px' onClick={()=>setNotesOpen(!notesOpen)}>
             <p>Ноты</p>    
             <div className={notesOpen ? 'chevron-up' : 'chevron-down'}>
                 <Chevron/>
@@ -96,7 +96,7 @@ export const Filters:React.FC = () => {
        } 
 
     
-        <Button onClick={()=> {resetFilter()}} closeFilters align='center' justify='space-between' padding='5px 15px'>
+        <Button onClick={()=> {resetFilter()}} closefilters={'true'} align='center' justify='space-between' padding='5px 15px'>
             Сбросить 
             <Closed/>
         </Button>

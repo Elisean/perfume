@@ -52,8 +52,8 @@ export const Sorting:React.FC = () => {
     <SortWrapper>
       <FlexContainer direction='column'>
        {
-        sortItems.map((sortItem) => (
-          <Button btnSorting tabIndex={0}>{sortItem}</Button>
+        sortItems.map((sortItem, index) => (
+          <Button key={index} btnsorting={'true'} tabIndex={0}>{sortItem}</Button>
         ))
        }
       </FlexContainer>

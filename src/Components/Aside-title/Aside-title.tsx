@@ -5,7 +5,7 @@ import styled, { css } from 'styled-components'
 
 export interface IProps{
     children: React.ReactNode
-    response?:boolean
+    response?:string
     position?:string
     top?:string
     left?:string

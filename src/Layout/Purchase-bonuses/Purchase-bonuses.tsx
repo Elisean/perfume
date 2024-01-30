@@ -82,11 +82,11 @@ export const PurchaseBonuses = () =>{
     return (
         <PurchaseBonusesStyles>
             <div className='purchase-inner'>
-            <MainContainer response>
-            <AsideTitle response top='-70px'>Бонусы от покупок</AsideTitle>
+            <MainContainer response={'true'}>
+            <AsideTitle response={'true'} top='-70px'>Бонусы от покупок</AsideTitle>
                 <h2 className='bonus-title'>Получайте кэшбэк за покупки</h2>
                 <h3 className='bonus-subtitle'>Бонусные баллы за регистрацию и покупки</h3>
-                <Button responseBonusesBtn top='35px' left='90px' padding='12px 0'>Узнать подробнее</Button>
+                <Button responsebonusesbtn={'true'} top='35px' left='90px' padding='12px 0'>Узнать подробнее</Button>
             </MainContainer>
             </div>
         </PurchaseBonusesStyles>

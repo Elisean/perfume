@@ -156,7 +156,7 @@ const FooterNavigationStyled = styled.nav`
 export const FooterNavigation:React.FC = () => {
   return (
     <FooterNavigationStyled>
-        <FlexContainer footerResponse justify='space-between'>
+        <FlexContainer footerresponse={'true'} justify='space-between'>
         <ul className='nav-list'>
             <li className='nav-item'> <span className='item-icon location'> <Location/> </span> г. Астрахань: ул. Свердлова, 106; ул. Победы <br /> 55А, пав. 10.</li>
             <li className='nav-item'> <span className='item-icon time'> <Time/> </span> Ежедневно с 9:00 до 18:00</li>

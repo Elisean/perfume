@@ -15,8 +15,8 @@ export const HomePageCatalog:React.FC = () => {
 
   return (
     <WrapperCatalog>
-      <MainContainer catalogResponse>
-        <AsideTitle response>Каталог</AsideTitle>
+      <MainContainer catalogresponse={'true'}>
+        <AsideTitle response={'true'}>Каталог</AsideTitle>
         <SelectCards/>
         <CatalogCard/>
       </MainContainer>

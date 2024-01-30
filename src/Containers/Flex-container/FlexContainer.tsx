@@ -19,13 +19,13 @@ const FlexContainerStyled = styled.div<ContainersTypes>`
     }
     `}
 
-    ${props => props.footerResponse && css`
+    ${props => props.footerresponse && css`
         @media (max-width:997px) {
             flex-wrap: wrap;
         }
     }
     `}
-    ${props => props.filtersResponse && css`
+    ${props => props.filtersresponse && css`
         @media (max-width:568px) {
             flex: 0 0 auto;
             flex-wrap: wrap;
