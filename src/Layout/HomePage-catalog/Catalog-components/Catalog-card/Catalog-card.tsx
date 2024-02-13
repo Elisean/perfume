@@ -186,28 +186,26 @@ export const CatalogCard:React.FC<any> = observer((filter)=>  {
       }, 1500)
     });
    
-  },[filtersValue, currentPage])
+  },[filtersValue, currentPage, countCards])
  
    
-  useEffect(()=>{
+  // useEffect(()=>{
 
-        fetch(`https://64e6020b09e64530d17f6dd0.mockapi.io/Flavors?filter=${filtersBrand}&`)
-        .then((res) => res.json())
-        .then((data) => {
-          setCards(data) 
-          setIsLoading(true)
+  //       fetch(`https://64e6020b09e64530d17f6dd0.mockapi.io/Flavors?filter=${filtersBrand}&`)
+  //       .then((res) => res.json())
+  //       .then((data) => {
+  //         setCards(data) 
+  //         setIsLoading(true)
          
-          setTimeout(()=>{
-            setIsLoading(false)
-          }, 1500)
-        });
+  //         setTimeout(()=>{
+  //           setIsLoading(false)
+  //         }, 1500)
+  //       });
 
 
-  },[filtersBrand])
+  // },[filtersBrand])
   
     
-
-
 
   return (
     <>
