@@ -6,10 +6,12 @@ import styled, { css } from 'styled-components'
 export interface IProps{
     children: React.ReactNode
     response?:string
+    singleproductresponse?:string
     position?:string
     top?:string
     left?:string
     textAlign?:string
+
 }
 
 

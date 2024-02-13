@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState, useEffect, useRef }  from 'react'
 import styled from 'styled-components'
 import { AsideTitle } from '../Components/Aside-title/Aside-title'
 import { MainContainer } from '../Containers/Main-container/Main-container'
@@ -7,7 +7,6 @@ import { Footer } from '../Components/Footer/Footer'
 import { Breadcrumbs } from '../Components/Breadcrumbs/Breadcrumbs'
 import { FlexContainer } from '../Containers/Flex-container/FlexContainer'
 import { useParams } from 'react-router-dom'
-import { useState, useEffect, useRef } from 'react'
 import { Button } from '../Components/Button/Button'
 import { MainSelect } from '../Components/Main-select/Main-select'
 import { ReactComponent as Chevron } from '../icons/chevron-down.svg'
@@ -29,6 +28,7 @@ const SingleProductWrapperStyled = styled.section`
     margin:25px 0 50px 0;
     @media(max-width:768px) {
         position: relative;
+       
     }
    
   }
@@ -254,7 +254,6 @@ export const SingleProduct:React.FC = () =>{
 
     try {
       const response = await fetch('http://localhost:3004/reviews', {
-     
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -263,24 +262,10 @@ export const SingleProduct:React.FC = () =>{
       })
       console.log(response)
   
-      // if (response.ok) {
-      //   console.log('Product added successfully!')
-      //   form.reset()
-  
-      //   loadJSON() // показываем актуальные данные
-      // } else {
-      //   console.log('Error to add product.')
-      // }
     } catch (error) {
       console.error('Error', error)
     }
-
-
-
   }
-
-
-
 
   const toggleModal = () =>{
     setOpenModal((showModal) => !showModal)
@@ -321,9 +306,9 @@ export const SingleProduct:React.FC = () =>{
     <SingleProductWrapperStyled>
         <Header/>
     {
-      isLoading ? [...new Array(1)] :<MainContainer cardResponse>
+      isLoading ? [...new Array(1)] : <MainContainer cardResponse>
         
-      <AsideTitle>Каталог</AsideTitle>
+      <AsideTitle singleproductresponse={'true'} >Парфюмерия</AsideTitle>
      
         <Breadcrumbs />
           <div className='card-wrapper'>
@@ -392,8 +377,6 @@ export const SingleProduct:React.FC = () =>{
                   </div>
 
                 </form>
-      
-           
 
            </Modal>
           

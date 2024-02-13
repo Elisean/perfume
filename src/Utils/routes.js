@@ -5,5 +5,8 @@ export const ROUTES = {
     BONUSES:"/bonuses",
     DOCUMENTATION:"/documentation",
     ABOUTUS:"/aboutUs",
+    MANCATALOGPAGE:"/manCatalogPage/",
+    WOMENCATALOGPAGE:"/womenCatalogPage/",
+    UNISEX:"/unisexCatalogPage/",
     SINGLEPRODUCT:"/singleProduct/",
 };

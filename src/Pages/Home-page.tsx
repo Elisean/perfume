@@ -8,13 +8,16 @@ import { HomePageCatalog } from '../Layout/HomePage-catalog/HomePage-catalog'
 
 
 export const HomePage:React.FC = () => {
+
+ 
+  
   return (
     <>
       <Header/>
       <Slider/>
       <PopularFragrances/>
       <PurchaseBonuses/>
-      <HomePageCatalog/>
+      <HomePageCatalog />
       <Footer/>
     </>
   )

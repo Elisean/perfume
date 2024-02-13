@@ -17,7 +17,6 @@ export type SelectProps = {
     boxShadow?:string
     Opened?:boolean
     tabIndex?:string
-    onClick?:any
     ref?:any
     selectfilter?:string
     responseselect?:string
@@ -25,11 +24,11 @@ export type SelectProps = {
     cardProductSelect?:boolean
     selectheader?:string
     filtersselect?:string
-    BrandSelect?:boolean
+    brandselect?:string
     isActive?: boolean
     setActive?: (value: boolean) => void
     onMouseEnter?: (event: MouseEvent) => void
-    onMouseLeave?: (event: MouseEvent) => void
+    onClick?: (event: MouseEvent) => void
 }
 
 
@@ -117,7 +116,7 @@ const StyledSelectInner = styled.div <SelectProps>`
         }
     `}
 
-    ${props => props.BrandSelect && css`
+    ${props => props.brandselect && css`
         font-family: 'Open Sans', sans-serif;
         border: 1px solid var(--border);
         font-size:18px;

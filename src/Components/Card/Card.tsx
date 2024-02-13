@@ -1,0 +1,136 @@
+import React from 'react'
+import styled from 'styled-components'
+import { Link } from 'react-router-dom'
+import { FlexContainer } from '../../Containers/Flex-container/FlexContainer'
+import { Button } from '../Button/Button'
+
+const StyledCardWrapper = styled.section`
+
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  border-radius: 4px;
+  background: var(--txt-dark, #36332E);
+ 
+
+  .card-image{
+    width:245px;
+    height:220px;
+    /* object-fit: cover; */
+    border-radius:4px;
+    margin:30px auto 0 auto;
+  }
+  .card-inner{
+    font-family: 'Open Sans', sans-serif;
+    color: var(--txt, #BEAE97);
+    padding:0 30px; 
+    height: 200px;
+  }
+  .card-title{
+    font-size: 16px;
+    position: absolute;
+    top:260px;
+    display: flex;
+    padding:0 20px 0 0;
+  }
+  .card-volume{
+    margin:60px 0 15px 0;
+  }
+  .button-volume{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width:34px;
+    height:34px;
+    border-radius: 4px;
+    border: 1px solid #D6B88D;
+    background: var(--gradient, linear-gradient(118deg, #C09E6C 0%, #FFEBCC 42.62%, #BF936B 100%));
+    box-shadow: 0px 2px 10px 0px rgba(184, 164, 142, 0.40);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin:0 0 15px 0;
+    font-family: Montserrat;
+    font-weight:600;
+    cursor: pointer;
+    &:hover{
+      background: var(--gradient, linear-gradient(118deg, #C09E6C 0%, #FFEBCC 42.62%, #BF936B 100%));
+      -webkit-text-fill-color: #36332E;
+    }
+
+    &:focus{
+      background: var(--gradient, linear-gradient(118deg, #C09E6C 0%, #FFEBCC 42.62%, #BF936B 100%));
+      -webkit-text-fill-color: #36332E;
+    }
+  }
+  .price-title{
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 140%; 
+    margin:0 0 90px 0;
+  }
+  .price{
+    background: var(--gradient, linear-gradient(118deg, #C09E6C 0%, #FFEBCC 42.62%, #BF936B 100%));
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-size: 18px;
+    font-weight: 700;
+    padding: 0 5px 0 0;
+  }
+  @media (max-width: 768px) {
+    .card-inner{
+      padding:0 12px 0 16px;
+    }
+    .card-image{
+      margin:15px auto 0 auto;
+      width:210px;
+      height:210px;
+    }
+    .card-title{
+      top:235px;
+    }
+
+  }
+  @media (max-width: 568px) {
+    .card-inner{
+      padding:0 30px 0 26px;
+    }
+    .card-image{
+      margin:15px auto 0 auto;
+      width:250px;
+      height:250px;
+    }
+    .card-title{
+      top:280px;
+    }
+    .card-volume{
+      margin: 65px 0 15px 0;
+    }
+  }
+
+`
+
+
+export const Card:React.FC<any> = ({param}) => {
+  return (
+         <StyledCardWrapper>
+         <Link style={{display:'flex'}} to={`/perfume/singleProduct/${param.id}`}> <img className='card-image' src={param.url} alt="card-img" /> </Link>
+                    <div className='card-inner'>
+                    <Link  to={`/perfume/singleProduct/${param.id}`}> <h2 className='card-title'>{param.title}</h2> </Link>
+                      <p className='card-volume'>Объем мл.</p>
+                      <FlexContainer wrap='wrap' justify='space-between'>
+                        <button className='button-volume' tabIndex={0}>{param.volumes[0]}</button>
+                        <button className='button-volume' tabIndex={1}>{param.volumes[1]}</button>
+                        <button className='button-volume' tabIndex={2}>{param.volumes[2]}</button>
+                        <button className='button-volume' tabIndex={3}>{param.volumes[3]}</button>
+                      </FlexContainer>
+                      <FlexContainer justify='space-between'>
+                        <p className='price-title'>Стоимость:</p>
+                        <p className='price'>{param.price + '₽'}</p>
+                      </FlexContainer>
+                        <Button btncards={'true'} top='-70px' padding='12px 72px'>в корзину</Button>
+                  </div>
+      </StyledCardWrapper>  
+  )
+}
+

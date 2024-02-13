@@ -40,14 +40,28 @@ const FiltersWrapperStyled = styled.section`
     }
 ` 
 
-export const Filters:React.FC = () => {
+export const Filters:React.FC<any> = ({getBrands, getNotes, getPrices}) => {
     const [brandOpen, setBrandOpen] = useState(false);
     const [priceOpen, setPriceOpen] = useState(false);
     const [genderOpen, setGenderOpen] = useState(false);
     const [notesOpen, setNotesOpen] = useState(false);
-   
+
+    
+    
     const resetFilter = () =>{
         window.location.reload();
+    }
+    // Получение слов из инпута компонента бренд
+   
+    const getChangeBrands = (brand:any) =>{
+        getBrands(brand)
+    }
+
+    const getChangeNotes = (note:any) =>{
+        getNotes(note); 
+    }
+    const getChangePrices = (price:any) =>{
+        getPrices(price)
     }
 
   return (
@@ -60,7 +74,7 @@ export const Filters:React.FC = () => {
             </div>
        </MainSelect>
         {
-            brandOpen ? <Brand/> : ''
+            brandOpen ? <Brand getChangeBrand={getChangeBrands}/> : ''
         }
        <MainSelect filtersselect={'true'} width='285px' padding='5px 5px 10px' onClick={()=>setPriceOpen(!priceOpen)}>
             <p>Стоимость</p>    
@@ -69,19 +83,19 @@ export const Filters:React.FC = () => {
             </div>
        </MainSelect>
         {
-          priceOpen ? <Prices/> : ''
+          priceOpen ? <Prices getChangePrice={getChangePrices}/> : ''
         }
 
 
        <MainSelect filtersselect={'true'} width='285px' padding='5px 5px 10px' onClick={()=>setGenderOpen(!genderOpen)}>
             <p>Пол</p>    
             <div className={genderOpen ? 'chevron-up' : 'chevron-down'}>
-                <Chevron/>
+                <Chevron />
             </div>
        </MainSelect>
 
        {
-          genderOpen ? <Gender/> : ''
+          genderOpen ? <Gender /> : ''
        }   
 
        <MainSelect filtersselect={'true'} width='285px' padding='5px 5px 20px 5px' onClick={()=>setNotesOpen(!notesOpen)}>
@@ -92,7 +106,7 @@ export const Filters:React.FC = () => {
        </MainSelect>
 
        {
-          notesOpen ? <Notes/> : ''
+          notesOpen ? <Notes getChangeNote={getChangeNotes} /> : ''
        } 
 
     

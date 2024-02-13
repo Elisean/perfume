@@ -2,8 +2,8 @@ import React, { ChangeEvent, useContext } from 'react'
 import ReactPaginate from 'react-paginate';
 import styled from 'styled-components';
 import { FiltersContext } from '../../../App/App'
-// import { Breakpoints } from '../../../Breakpoints/Breakpoints';
 import { useResize } from '../../../Hooks/useResize';
+import { useLocation } from 'react-router-dom';
 
 
 interface IPagination{
@@ -73,26 +73,49 @@ const StyledPaginate = styled.div`
 export const Pagination:React.FC<IPagination> = ({onChangePage}) => {
     const {filtersOpen, setFiltersOpen} = useContext(FiltersContext);
     const { width, isScreenSm, isScreenMd, isScreenLg, isScreenXl, isScreenXxl } = useResize();
-
+    const location = useLocation();
 
     let countPage = 0;
 
     if(isScreenXxl){
-        countPage = 4;
+        countPage = 5;
+        if(filtersOpen){
+            countPage = 7;
+        }
     }else if (isScreenXl){
         countPage = 7;
+        if(filtersOpen){
+            countPage = 10;
+        }
     }else if (isScreenLg){
         countPage = 7;
+        if(filtersOpen){
+            countPage = 10;
+        }
+
     }else if (isScreenMd){
         countPage = 7;
+        if(filtersOpen){
+            countPage = 10;
+        }
     }
     else if (isScreenSm){
-        countPage = 8;
+        countPage = 20;
     }else if (width >= 100){
-        countPage = 8;
+        countPage = 20;
     }
 
+    if(location.pathname === '/manCatalogPage/'){
+        countPage = 2;
+    }
+  
+    if(location.pathname === '/womenCatalogPage/'){
+        countPage = 2;
+    }
 
+    if(location.pathname === '/unisexCatalogPage/'){
+        countPage = 2;
+    }
 
     return <StyledPaginate>      
             <div className={filtersOpen ? `${'showFilter'}`: ''}>

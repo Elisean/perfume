@@ -4,6 +4,10 @@ import Slider from 'react-slider'
 import { FlexContainer } from '../../../Containers/Flex-container/FlexContainer';
 
 
+interface IPrices{
+  getChangePrice?:any
+}
+
 const StyledPriced = styled.div`
   margin:0 0 10px 0;
 
@@ -53,13 +57,20 @@ const MAX = 10000;
 
 
 
-export const Prices:React.FC= () => {
+export const Prices:React.FC<IPrices>= ( { getChangePrice } ) => {
+
     const [values, setValues] = useState([MIN, MAX]);
+
+    const handleChangeBrand = (event:any) =>{
+      setValues(event)
+      getChangePrice(values);
+    
+    }
 
   return (
     <StyledPriced>
       <Slider className={'Slider'}
-          onChange={setValues}
+          onChange={(event:any) => handleChangeBrand(event)}
           value={values}
           min={MIN}
           max={MAX}

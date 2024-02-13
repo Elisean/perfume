@@ -1,34 +1,26 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import styled from 'styled-components'
 import { MainSelect } from '../../../Components/Main-select/Main-select'
 import { ReactComponent as Chevron } from '../../../icons/chevron-down.svg'
 import { MainForm } from '../../../Components/Main-Form/Main-Form'
 
-export const noteList = [
-    'Akigalawood',
-    'Ambertonic',
-    'Amberwood',
-    'Ambrettolide',
-    'Anna Sui',
-    'Абрикос',
-    'Akigalawood',
-    'Ambertonic',
-    'Amberwood',
-    'Ambrettolide',
-    'Anna Sui',
-    'Абрикос',
-    'Akigalawood',
-    'Ambertonic',
-    'Amberwood',
-    'Ambrettolide',
-    'Anna Sui',
-    'Абрикос',
-    'Akigalawood',
-    'Ambertonic',
-    'Amberwood',
-    'Ambrettolide',
-    'Anna Sui',
-    'Абрикос',
+
+interface INotes{
+    getChangeNote?:any
+    
+}
+
+export const searchNoteList = [
+   "Абрикос",
+   "Амбровые оттенки",
+   "Агава",
+   "Ананас",
+   "Бразильские махагони",
+   "Болгарская роза",
+   "Ветивер",
+   "Водная мята",
+   "Водная лилия",
+   "Фиалка",
 ]
 
 
@@ -36,7 +28,7 @@ export const noteList = [
 const StyledNotes = styled.section`
     position: relative;
 
-   
+
 
 .notes-icon{
     transform: rotate(180deg)
@@ -111,12 +103,56 @@ const StyledNotes = styled.section`
 
 `
 
-export const Notes:React.FC = () => {
+
+
+
+    
+
+const filtersNote = (searchText:string, noteList:string[]) =>{
+    if(!searchText) {
+        return noteList;
+     }
+    return noteList.filter((note:string)=>
+        note.toLowerCase().includes(searchText.toLowerCase())
+     );
+}
+
+
+
+
+
+export const Notes:React.FC<INotes> = ({getChangeNote}) => {
+
+    const [noteList, setNoteList] = useState(searchNoteList);
+
+   // state для получение данных из search 
+   const [searchItemNote, setSearchItemNote] = useState('');
+   // state для получение данных из search 
+
+
+   const handleChangeLetters = (event:any) =>{
+        setSearchItemNote(event.target.value);
+  
+    }
+    const handleChangeNote = (event:any) =>{
+        getChangeNote(event.currentTarget.textContent)
+    }
+
+    // продолжи прокидывать с контекст
+
+   useEffect(()=>{
+    const Debounce = setTimeout(()=>{
+        const filteredNotes = filtersNote(searchItemNote, searchNoteList);
+        setNoteList(filteredNotes);
+    }, 300)
+    return () => clearTimeout(Debounce)
+}, [searchItemNote])
+
 
   return (
     <StyledNotes>
 
-<MainSelect BrandSelect width='280px' padding='7px 30px'>
+<MainSelect brandselect={'true'} width='280px' padding='7px 30px'>
         Все 
         <div className='notes-icon'>
             <Chevron/>
@@ -124,13 +160,13 @@ export const Notes:React.FC = () => {
     </MainSelect>
 
     <div className='notes-search-wrapper'>
-        <MainForm brandForm placeholder="Найти ноты.." />
+        <MainForm brandform={'true'} placeholder="Найти ноты.." onChange={(event:any)=> handleChangeLetters(event)}/>
         <p className='notes-search-title'>Все</p>
 
     <ul className='notes-search-list'>
         {
             noteList.map((note, index)=>(
-                <li className='notes-search-item' tabIndex={index} key={index}>{note}</li>
+                <li className='notes-search-item' tabIndex={index} key={index} onClick={(event:any)=> handleChangeNote(event)} >{note}</li>
             ))
         }    
     </ul>

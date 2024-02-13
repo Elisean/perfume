@@ -98,30 +98,55 @@ const StyledWrapper = styled.div`
 `
 
 
-export const SelectCards:React.FC = () => {
+
+export const SelectCards:React.FC<any> = ({receiveBrands, receiveNotes, receivePrices}) => {
   const [openSorting, setOpenSorting] = useState(false);
   const {filtersOpen, setFiltersOpen} = useContext(FiltersContext);
   const { isScreenMd, isScreenSm } = useResize();
+
+  const [letter, setLetter] = useState('');
+  const [checked, setChecked] = useState('');
+  const [notes, setNotes] = useState('');
+  const [prices, setPrices] = useState('');
+
 
   const resetFilterResponce = () =>{
     window.location.reload();
   }
 
+  
+  // Если что почистить
 
+  const getBrands = (brand:any) =>{
+    setLetter(letter)
+    receiveBrands(brand) 
+  }
+
+  const getNotes = (note:any) =>{
+    setNotes(note)
+    receiveNotes(note)
+  }
+
+  const getPrices = (price:any) =>{
+    setPrices(price)
+    receivePrices(price)
+  }
+  
+  
 
   return (
     <StyledWrapper>
       <FlexContainer filtersresponse={'true'} align='center'>
         <MainSelect responseselect={'true'} left={filtersOpen ? '7px': '0'} padding='10px 20px' width={filtersOpen ? '290px' : '305px'} fontSize='18px' onClick={()=> setFiltersOpen(!filtersOpen)}>
           Фильтры
-          <Filter/>
+          <Filter />
         </MainSelect>
         <div className={filtersOpen ? `${'show'}` : `${'hide'}` }>
           {
-            isScreenMd && isScreenSm ? <Filters/> :
+            isScreenMd && isScreenSm ? <Filters getBrands={getBrands} getNotes={getNotes} getPrices={getPrices} /> :
             <Aside>
               <div className='before-aside'>
-                <Brand/>
+                <Brand />
                 <p className='before-aside-description'>Стоимость</p>   
                 <Prices/>
                 <p className='before-aside-description'>Пол</p>  

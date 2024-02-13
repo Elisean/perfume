@@ -3,16 +3,8 @@ import { useEffect } from 'react'
 import styled from 'styled-components'
 import { MainSelect } from '../../../Main-select/Main-select'
 import { ReactComponent as SelectIcon } from '../../../../icons/select-icon.svg'
-
-
-
-const selectItems = [
-  'Мужские',
-  'Женские',
-  'Унисекс'
-]
-
-
+import { Link } from 'react-router-dom'
+import { ROUTES } from '../../../../Utils/routes'
 
 const SelectStyledWrapper = styled.section`
     margin:0 0 0 20px;
@@ -67,32 +59,29 @@ const SelectStyledWrapper = styled.section`
 export const HeaderSelect:React.FC = () => {
   const [isShow, setIsShow] = useState(false);
   const navRef = useRef<any>(null)
-
    
-  const handleShow = (event:any) =>{
-      if(navRef.current && navRef.current.contains(event.target)){
-        setIsShow(isShow)
-      }
-  }
-  
-  useEffect(() =>{
-      document.addEventListener('mousedown', handleShow)
-  }, [])
+    const handleShow = (event:any) =>{
+        if(navRef.current && !navRef.current.contains(event.target)){
+          setIsShow(isShow)
+        }
+    }
+    
+    useEffect(() =>{
+        document.addEventListener('mousedown', handleShow)
+    }, [])
 
   return (
     <SelectStyledWrapper>
       
-      <MainSelect selectheader={'true'} onMouseEnter={()=>setIsShow(!isShow)} onMouseLeave={()=>setIsShow(isShow)}>
+      <MainSelect selectheader={'true'} onClick={()=> setIsShow(!isShow)}>
           <SelectIcon />
             Каталог
       </MainSelect>
 
       <ul ref={navRef} className={isShow && navRef ? 'open-select' : 'closed-select'}>
-      {
-        selectItems.map((selectItem,index) =>(
-          <li key={index} className='select-item'><a href="#"> {selectItem} </a></li>
-        ))
-      }
+        <li className='select-item' onClick={()=> window.location.reload()}><Link to={ROUTES.MANCATALOGPAGE}>Мужские</Link></li>
+        <li className='select-item' onClick={()=> window.location.reload()}><Link to={ROUTES.WOMENCATALOGPAGE}>Женские</Link></li>
+        <li className='select-item' onClick={()=> window.location.reload()}><Link to={ROUTES.UNISEX} >Унисекс</Link></li>
     </ul>
     </SelectStyledWrapper>
   )

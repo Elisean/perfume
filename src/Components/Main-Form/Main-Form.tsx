@@ -9,7 +9,8 @@ import styled, {css} from 'styled-components';
 interface IForm{
     placeholder?: string
     className?: string
-    brandForm?:boolean
+    brandform?:string
+    onChange?: any 
 }
 
 const FormWrapperStyled = styled.form<IForm>`
@@ -58,7 +59,7 @@ const FormWrapperStyled = styled.form<IForm>`
         position: relative;
     }   
 
-    ${props => props.brandForm && css`
+    ${props => props.brandform && css`
         margin:6px 12px 0 12px;
         background-color: #1B1816;
        
@@ -75,7 +76,7 @@ const FormWrapperStyled = styled.form<IForm>`
 export const MainForm:React.FC<IForm> = (props) => {
   return (
     <FormWrapperStyled {...props} action="" className='form'>
-        <input className='form-input' type="text" placeholder={props.placeholder}/>
+        <input className='form-input' type="text" placeholder={props.placeholder} onChange={props.onChange} />
         <button className='form-btn-search' type='submit'>
             <Search />
         </button>
