@@ -3,7 +3,7 @@ import styled from 'styled-components'
 import { FlexContainer } from '../../../Containers/Flex-container/FlexContainer'
 import checked from '../../../icons/checked.svg';
 import { observer } from 'mobx-react';
-import  Store  from '../../../Store/FiltersStore'
+import  FiltersStore  from '../../../Store/FiltersStore'
 
 
 
@@ -45,7 +45,7 @@ const StyledGender = styled.div`
 
 export const Gender:React.FC<IGender> = observer(() => {
 
-    const storeContext = useContext(Store)
+    const storeContext = useContext(FiltersStore)
 
   const getValueWomen = (event:any) =>{
     storeContext.getValue(event.target.value)

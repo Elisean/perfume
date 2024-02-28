@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef }  from 'react'
+import React, { useState, useEffect }  from 'react'
 import styled from 'styled-components'
 import { AsideTitle } from '../Components/Aside-title/Aside-title'
 import { MainContainer } from '../Containers/Main-container/Main-container'
@@ -12,48 +12,32 @@ import { MainSelect } from '../Components/Main-select/Main-select'
 import { ReactComponent as Chevron } from '../icons/chevron-down.svg'
 import { Modal } from '../Components/Modal/Modal'
 import { ReactComponent as Bonuses } from '../icons/bonuses-icon.svg';
-import { ReactComponent as UserPhoto } from '../icons/modal-photo.svg';
-import { ReactComponent as UserVideo } from '../icons/modal-video.svg';
-import { Rating } from '../Components/Rating/Rating'
+import { FormReview } from '../Components/Form-review/Form-review'
+import { ReactComponent as Star } from '../icons/stars-icon.svg';
+import { Card } from '../Components/Card/Card'
+import { Skeleton } from '../Layout/HomePage-catalog/Catalog-components/Catalog-card/Skeleton-catalog-card'
 
 
 
 
 
 const SingleProductWrapperStyled = styled.section`
-
+    display:flex;
+    flex-direction:column;
+    justify-content:space-between;
     font-family: 'Montserrat', sans-serif;
-
-  .card-wrapper{
-    margin:25px 0 50px 0;
-    @media(max-width:768px) {
-        position: relative;
-       
-    }
    
+  .card-wrapper{
+    margin:25px 0 50px 0;   
   }
-  .card-inner{
+  .card-inner-product{
     margin:0 0 0 20px;
-    @media (max-width:568px) {
-      margin: 0;
-   }
   }
   .card-image{
    img{
     width:413px;
    }
-   @media (max-width:768px) {
-      img{
-        width:260px;
-        height:280px;
-      }
-   }
-   @media (max-width:568px) {
-      img{
-        width:100%;
-        height:260px;
-      }
-   }
+  
   }
   .card-name{
     font-size: 24px;
@@ -62,17 +46,7 @@ const SingleProductWrapperStyled = styled.section`
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     margin:0 0 40px 0;
-    @media (max-width:840px) {
-      font-size:26px;
-      margin:0 0 7px 0;
-    }
-    @media (max-width:768px) {
-      font-size:20px;
-    }
-    @media (max-width:568px) {
-      margin:10px 0 7px 0;
-      height:50px;
-    }
+   
   }
   .card-subtitle{
     font-family: 'Open Sans', sans-serif;
@@ -81,9 +55,7 @@ const SingleProductWrapperStyled = styled.section`
     font-weight: 400;
     line-height: 22.4px; 
     margin:0 0 10px 0;
-    @media (max-width:568px) {
-      margin:10px 0 10px 0;
-    }
+  
   }
 
 
@@ -104,16 +76,7 @@ const SingleProductWrapperStyled = styled.section`
     width:40px;
     height:40px;
     margin:0 20px 40px 0;
-    @media (max-width:768px) {
-      margin:0 20px 10px 0;
-      width:30px;
-      height:30px;
-    }
-    @media (max-width:568px) {
-      width:40px;
-      height:40px;
-      margin:0;
-    }
+   
   }
   .button-volume:focus{
     background: var(--gradient, linear-gradient(92deg, #C09E6C -1.94%, #FFEBCC 40.99%, #BF936B 98.79%));
@@ -170,12 +133,7 @@ const SingleProductWrapperStyled = styled.section`
     opacity:1;
     visibility: visible;
     width:800px;
-    @media (max-width:864px) {
-      width:100%;
-      br{
-        display: none;
-      }
-    }
+   
    
   }                                     
   .close-window{
@@ -186,86 +144,76 @@ const SingleProductWrapperStyled = styled.section`
     font-size: 16px;
     opacity:0;
     visibility: hidden;
-    width:800px;
-    @media (max-width:864px) {
-      height:65px;
-      width:100%;
-      br{
-        display: none;
-      }
-    }
-   
+    width:800px;   
   }
 
   .open-review{
       margin: 15px 0 20px 0;
-      transition:.5s all;
       opacity:1;
       visibility: visible;
       display: flex;
-      justify-content: flex-end;
+      flex-direction:column;
+      align-items:flex-end;
       width: 850px;
-      @media (max-width:864px) {
-        justify-content: flex-start;
-        width: 100%;
-      }
-      @media (max-width:768px) {
-      margin: 45px 0 20px 0;
-    }
   }
   .close-review{
-       transition:.5s all;
        margin: -50px 0 0 0;
        opacity:0;
        visibility: hidden;   
        display: flex;
-       justify-content: flex-end;
+       flex-direction:column;
+       align-items:flex-end;
        width: 850px;
-       @media (max-width:864px) {
-        justify-content: flex-start;
-        width: 100%;
-      }
+  }
+  .rating-star{
+    width:16px;
+    height:16px;
+  }
+  .reviews-wrapper{
+    font-family: 'Open Sans', sans-serif;
+    background-color: var(--gray);
+    margin:10px 0 0 0;
+    padding:20px 20px;
+    width:100%;
+  }
+  .reviews-closed{
+    height:0;
+  }
+
+  .reviews-username{
+    font-size:14px;
+    margin:0 0 10px 0;
+  }
+  .reviews-date{
+    margin:0 0 16px 0;
   }
  
-  
+ 
 `
 
 export const SingleProduct:React.FC = () =>{
-  const formText = useRef<HTMLFormElement>(null);
-  const reviews = {};
   const [openDescription, setOpenDescription] = useState(false);
   const [openReviews, setOpenReviews] = useState(false);
   const [openModal, setOpenModal] = useState(false);
-
-  const [textValue, setTextValue] = useState('');
-
-  
+  const [product, setProduct] = useState<any>([]);
+  const [isLoading, setIsLoading] = useState(true);
   let [count, setCount] = useState(1);
   const {id} = useParams();
-
-  const send = async(event:{preventDefault: () => void;} ) => {
-
-    
-    event.preventDefault();
-
-    //@ts-ignore
-    reviews.review = textValue;
+  const [allReviews, setAllReviews] = useState([]);
+  const [productLikes, setProductLikes] = useState([]);
+  const [likeProductLoading, setLikeProductLoading] = useState(true)
 
 
-    try {
-      const response = await fetch('http://localhost:3004/reviews', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(reviews),
-      })
-      console.log(response)
-  
-    } catch (error) {
-      console.error('Error', error)
-    }
-  }
+
+  useEffect(() => {
+      fetch(
+        `http://localhost:3004/reviews`
+      )
+      .then((res) => res.json())
+      .then((data) => {
+        setAllReviews(data)
+      });  
+  }, [allReviews]);
 
   const toggleModal = () =>{
     setOpenModal((showModal) => !showModal)
@@ -287,10 +235,6 @@ export const SingleProduct:React.FC = () =>{
  
   }
  
-  const [product, setProduct] = useState<any>([]);
-
-  const [isLoading, setIsLoading] = useState(true);
-  
   useEffect(() => {
     fetch(
       `https://64e6020b09e64530d17f6dd0.mockapi.io/Flavors/${id}`
@@ -300,7 +244,18 @@ export const SingleProduct:React.FC = () =>{
       setIsLoading(false)
       setProduct(data)
      });  
+
+      fetch(
+        `https://64e6020b09e64530d17f6dd0.mockapi.io/Flavors?&filter=${'productLikes'}`
+      )
+      .then((res) => res.json())
+      .then((data) => {
+        setLikeProductLoading(false)
+        setProductLikes(data)
+      });  
+
   }, [id]);
+
  
   return (
     <SingleProductWrapperStyled>
@@ -308,7 +263,7 @@ export const SingleProduct:React.FC = () =>{
     {
       isLoading ? [...new Array(1)] : <MainContainer cardResponse>
         
-      <AsideTitle singleproductresponse={'true'} >Парфюмерия</AsideTitle>
+      <AsideTitle singleproductresponse={'true'}>Парфюмерия</AsideTitle>
      
         <Breadcrumbs />
           <div className='card-wrapper'>
@@ -316,19 +271,14 @@ export const SingleProduct:React.FC = () =>{
               <div className='card-image'>
                   <img src={product.url} alt="img-title" />
               </div>
-              <div className='card-inner'>
+              <div className='card-inner-product'>
                 <h2 className='card-name'>{product.title}</h2>
                 <p className='card-subtitle'>Объем мл.</p>
                 <FlexContainer wrap='wrap' btnsCardResponse>
-               
                   <button className='button-volume' tabIndex={0}>{product.volumes[0]}</button>
-                
                   <button className='button-volume' tabIndex={1}>{product.volumes[1]}</button>
-                
                   <button className='button-volume' tabIndex={2}>{product.volumes[2]}</button>
-                
                   <button className='button-volume' tabIndex={3}>{product.volumes[3]}</button>
-
                 </FlexContainer>
                 <p className='card-subtitle'>Кол-во</p>
                 <div className='card-step'>
@@ -351,13 +301,10 @@ export const SingleProduct:React.FC = () =>{
             Отзывы
            <Chevron/>
           </MainSelect>
-          <div className={openReviews? 'open-review' : 'close-review'}>
-            <Button padding='12px 0' onClick={()=> setOpenModal(!openModal)}>Оставить отзыв</Button>
-          </div>
            <Modal isOpen={openModal} onClose={toggleModal} modalTitle={product.title} >
            <div className='modal-bonuses-wrapper'>
                   <div className='modal-bonuses-icon'>
-                  <Bonuses/>
+                    <Bonuses/>
                   </div>
                   <div className='modal-bonuses-description'>
                     <p className='modal-bonuses'>За текстовый отзыв Вы получите 100 бонусных баллов</p>
@@ -365,28 +312,47 @@ export const SingleProduct:React.FC = () =>{
                     <p className='modal-bonuses'>За видео-отзыв с фото 200 бонусных баллов</p>
                   </div>
             </div>
-
-                <form className='modal-form'>
-                  <div className="modal-form-stars">
-                    <Rating/>
-                    Оцените покупку*
-                  </div>
-                  <div className='modal-form-review'>
-                    отзыв*
-                    <textarea className='review'></textarea>
-                  </div>
-
-                </form>
-
+           <FormReview />
+              
            </Modal>
+           <div className={openReviews? 'open-review' : 'close-review'}>
+            <Button padding='12px 0' onClick={()=> setOpenModal(!openModal)}>Оставить отзыв</Button>
           
-          <AsideTitle textAlign='center'>Вам так же может понравиться</AsideTitle>
+            {
+              allReviews.map((review:any, index:number)=>{
+                return(
+                  <div className={openReviews ? 'reviews-wrapper' : 'reviews-closed'} key={index}>
+                  
+                    <FlexContainer justify='space-between'>
+                      <p className='reviews-username'>{review.userName}</p>
+                      <p>
+                             {[...Array(Number(review.rating))].map(() => {
+                              return (
+                                  <Star className='rating-star' color="#FFEBCC" />
+                              )
+                            })}
+                      </p>
+                    </FlexContainer>
+                    <p className='reviews-date'>{review.userDate}</p>
+                    <p className='reviews-message'>{review.message}</p>
+                </div>
+                )
+              })  
+            }
+          </div>
+          <AsideTitle textAlign='center' margin='100px 0 20px 0'>Вам так же может понравиться</AsideTitle>
+              <FlexContainer justify='space-evenly'>
+              {
+              likeProductLoading ? [...new Array(3)].map((_, index) => <Skeleton key={index}/>) 
+                        : productLikes.map((card, index) => (   
+                        <Card param={card} key={index} className='likes-product'/>
+                )
+              )
+            }
+              </FlexContainer>
       </MainContainer>
     }
         <Footer/>
     </SingleProductWrapperStyled>
   )
 }
-
-
-

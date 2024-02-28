@@ -1,7 +1,15 @@
-import React, {useState} from 'react'
+import React, {useEffect, useState} from 'react'
 import { ReactComponent as Star } from '../../icons/stars-icon.svg';
 import styled from 'styled-components';
 
+
+interface IRating{
+
+  onChange?:any
+  name?:any
+  value?:any
+  activeColor?:any
+}
 
 const RatingStarsStyled = styled.div`
   margin:0 20px 0 0;
@@ -16,10 +24,13 @@ const RatingStarsStyled = styled.div`
 `
 
 
-export const Rating:React.FC = () => {
+export const Rating:React.FC<IRating> = ({name, onChange}) => {
     const [rating, setRating] = useState<any>(null)
     const [hover, setHover] = useState<any>(null)
 
+  const changeRating = (event:any) =>{
+    setRating(event.target.value)
+  }
   return (
     <RatingStarsStyled>
         {[...Array(5)].map((star, index) => {
@@ -28,9 +39,11 @@ export const Rating:React.FC = () => {
             <label>
                 <input
                  type="radio"
-                 name='rating'
+                 name={name}
                  value={currentRating}
-                 onClick={() => setRating(currentRating)}
+                 onClick={(event:any) => changeRating(event)}
+                 onChange={(event:any) => onChange(event)}
+              
                  />
     
                 <Star 
@@ -38,6 +51,7 @@ export const Rating:React.FC = () => {
                     color={currentRating <= (hover || rating) ? "#FFEBCC" : "#211E1C"} 
                     onMouseEnter={()=> setHover(currentRating)}
                     onMouseLeave={()=> setHover(null)}
+                    
                 />
             </label>
           )

@@ -6,7 +6,7 @@ export interface ContainersTypes {
     justify?: string;
     wrap?: string;
     children?: ReactNode;
-    width?: number;
+    width?: string;
     maxWidth?: string;
     margin?: string;
     padding?: string;
@@ -18,6 +18,7 @@ export interface ContainersTypes {
     filtersresponse?:string;
     cardResponse?:boolean;
     btnsCardResponse?:boolean;
+    registrationresponse?:string
     ref?:any;
     onClick?:any;
 }

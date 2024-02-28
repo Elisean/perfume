@@ -2,7 +2,7 @@ import {makeAutoObservable, observable } from "mobx";
 import { createContext } from "react";
 
 
-class Store {
+class FiltersStore {
     checked:boolean = false;
     @observable value:any = "";
     @observable brand:any = "";
@@ -30,5 +30,5 @@ class Store {
     
 }
 
-export default createContext(new Store()) 
+export default createContext(new FiltersStore()) 
 

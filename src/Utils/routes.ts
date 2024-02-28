@@ -1,6 +1,6 @@
 export const ROUTES = {
     HOME:"/perfume",
-    USER:"/user",
+    REGISTRATION:"/registration",
     BASKET:"/basket",
     BONUSES:"/bonuses",
     DOCUMENTATION:"/documentation",
@@ -9,4 +9,11 @@ export const ROUTES = {
     WOMENCATALOGPAGE:"/womenCatalogPage/",
     UNISEX:"/unisexCatalogPage/",
     SINGLEPRODUCT:"/singleProduct/",
+    USERPAGE:"/userPage/",
+    BONUSESPANEL:"/bonusesPanel/",
+    ORDERPANEL:"/orderPanel/",
+    DOWNLOADSPANEL:"/downloadsPanel/",
+    LOCATIONPANEL:"/locationPanel/",
+    USERPANEL:"/userPanel/",
+    NOTFOUNDPAGE:"/*"
 };

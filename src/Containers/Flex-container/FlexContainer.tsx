@@ -45,6 +45,15 @@ const FlexContainerStyled = styled.div<ContainersTypes>`
         }
     }
     `}
+
+    ${props => props.registrationresponse && css`
+        @media (max-width:768px) {
+           flex-wrap:wrap;
+        }
+    }
+    `}
+
+ 
     
     
   

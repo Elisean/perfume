@@ -11,13 +11,11 @@ interface IPagination{
 }
 
 const StyledPaginate = styled.div`
-    margin:20px 0 0 0;
+    margin:45px 0 0 0;
     
     .showFilter{
         margin:50px 0 0 0;
     }
-
-
     li{
         color: var(--txt, #BEAE97);
         font-family: Montserrat;

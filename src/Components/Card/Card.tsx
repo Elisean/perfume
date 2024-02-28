@@ -1,8 +1,12 @@
-import React from 'react'
+import React, { useContext, useEffect, useRef, useState } from 'react'
 import styled from 'styled-components'
 import { Link } from 'react-router-dom'
 import { FlexContainer } from '../../Containers/Flex-container/FlexContainer'
 import { Button } from '../Button/Button'
+import { nanoid } from 'nanoid'
+import BasketStore from '../../Store/BasketStore'
+import { observer } from 'mobx-react-lite'
+
 
 const StyledCardWrapper = styled.section`
 
@@ -24,7 +28,7 @@ const StyledCardWrapper = styled.section`
     font-family: 'Open Sans', sans-serif;
     color: var(--txt, #BEAE97);
     padding:0 30px; 
-    height: 200px;
+    height:295px;
   }
   .card-title{
     font-size: 16px;
@@ -111,26 +115,59 @@ const StyledCardWrapper = styled.section`
 `
 
 
-export const Card:React.FC<any> = ({param}) => {
+
+export const Card:React.FC<any> = observer(({param}) => {
+  const basketContext = useContext(BasketStore);
+
+  console.log(basketContext.cardsData);
+ 
+  const countCharacterForID = 6;
+
+  const [cards, setCards] = useState<{[key:string]: any}>({
+    id:"",
+    imgUrl:"",
+    cardName: "",
+    volume: "",
+    price:"",
+})
+
+
+  const getDataCard = (event?:any) =>{
+    const newCard = {...cards}
+    newCard.id = nanoid(countCharacterForID);
+    newCard.imgUrl = param.url;
+    newCard.cardName = param.title;
+    newCard.volume = event?.target.innerText ?? '1';
+    newCard.price = param.price;
+    basketContext.cardsData = JSON.parse(localStorage.getItem("basketProduct") || '[]')  
+    basketContext.cardsData.push(newCard)
+    localStorage.setItem("basketProduct", JSON.stringify(basketContext.cardsData))
+    setCards(newCard)   
+  }
+
+  
+
+  
+  
   return (
-         <StyledCardWrapper>
-         <Link style={{display:'flex'}} to={`/perfume/singleProduct/${param.id}`}> <img className='card-image' src={param.url} alt="card-img" /> </Link>
+         <StyledCardWrapper >
+         <Link style={{display:'flex'}} to={`/perfume/singleProduct/${param.id}`}> <img className='card-image' src={param.url} alt="card-img"/></Link>
                     <div className='card-inner'>
                     <Link  to={`/perfume/singleProduct/${param.id}`}> <h2 className='card-title'>{param.title}</h2> </Link>
                       <p className='card-volume'>Объем мл.</p>
                       <FlexContainer wrap='wrap' justify='space-between'>
-                        <button className='button-volume' tabIndex={0}>{param.volumes[0]}</button>
-                        <button className='button-volume' tabIndex={1}>{param.volumes[1]}</button>
-                        <button className='button-volume' tabIndex={2}>{param.volumes[2]}</button>
-                        <button className='button-volume' tabIndex={3}>{param.volumes[3]}</button>
+                        <button className='button-volume' name='volume' tabIndex={0} onClick={(event:any) => getDataCard(event)}>{param.volumes[0]}</button>
+                        <button className='button-volume' name='volume' tabIndex={1} onClick={(event:any) => getDataCard(event)}>{param.volumes[1]}</button>
+                        <button className='button-volume' name='volume' tabIndex={2} onClick={(event:any) => getDataCard(event)}>{param.volumes[2]}</button>
+                        <button className='button-volume' name='volume' tabIndex={3} onClick={(event:any) => getDataCard(event)}>{param.volumes[3]}</button>
                       </FlexContainer>
                       <FlexContainer justify='space-between'>
                         <p className='price-title'>Стоимость:</p>
-                        <p className='price'>{param.price + '₽'}</p>
+                        <p className='price' >{param.price + '₽'}</p>
                       </FlexContainer>
-                        <Button btncards={'true'} top='-70px' padding='12px 72px'>в корзину</Button>
+                        <Button btncards={'true'} top='-70px' padding='12px 72px' onClick={()=> getDataCard()}>в корзину</Button>
                   </div>
       </StyledCardWrapper>  
   )
 }
-
+)

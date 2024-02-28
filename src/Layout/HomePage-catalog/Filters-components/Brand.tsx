@@ -3,8 +3,11 @@ import styled from 'styled-components'
 import { MainSelect } from '../../../Components/Main-select/Main-select'
 import { ReactComponent as Chevron } from '../../../icons/chevron-down.svg'
 import { MainForm } from '../../../Components/Main-Form/Main-Form'
-import  Store  from '../../../Store/FiltersStore'
+import  FiltersStore  from '../../../Store/FiltersStore'
 import { observer } from 'mobx-react-lite'
+import { Input } from '../../../Components/Input/Input'
+import { ReactComponent as Search } from '../../../icons/search.svg'
+
 
 interface IBrand{
     getChangeBrand?:any
@@ -126,7 +129,16 @@ const BrandWrapperStyled = styled.section`
     font-weight: 700;
     background-color:red;
 }
+
+
+.input-brand{
+    margin:6px 0 0 0; 
+    width:260px;
+    background-color: #1B1816;
+    display:flex;
+}
 `
+
 
 
 
@@ -150,7 +162,7 @@ export const Brand:React.FC<IBrand> = observer(() => {
         // state для получение данных из search 
         const [searchItem, setSearchItem] = useState('');
         // state для получение данных из search 
-         const storeContext = useContext(Store)
+         const storeContext = useContext(FiltersStore)
  
      
         const [handleClick, setHandleClick] = useState(false);
@@ -186,7 +198,10 @@ export const Brand:React.FC<IBrand> = observer(() => {
                  </MainSelect>
      
                  <div className='brand-search-wrapper'>
-                     <MainForm brandform={'true'} placeholder="Найти парфюм.." onChange={(event:any)=> handleChangeLetters(event)} />
+                     <MainForm >
+                        <Input type="search" placeholder="Найти парфюм.." className='form-input input-brand' onChange={(event:any)=> handleChangeLetters(event)}/>
+                        <button type="submit" className="form-btn-search"><Search/></button>
+                     </MainForm>
                      <p className='brand-search-title'>Все</p>
      
                  <ul className='brand-search-list'>

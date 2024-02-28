@@ -1,9 +1,13 @@
-import { useState, useEffect, useRef, ButtonHTMLAttributes, MutableRefObject, DetailedHTMLProps } from "react"
+import { useState, useEffect, useRef } from "react"
 import { styled } from "styled-components"
 import { MainContainer } from "../../../../Containers/Main-container/Main-container"
 import SearchIconOpen from '../../../../icons/search.svg'
 import { MainForm } from "../../../Main-Form/Main-Form"
-
+import { Input } from "../../../Input/Input"
+import { Button } from "../../../Button/Button"
+import { ReactComponent as Search } from '../../../../icons/search.svg';
+import { Link } from "react-router-dom"
+import { ROUTES } from "../../../../Utils/routes"
 
 
 const FormContainerStyled = styled.div`
@@ -107,23 +111,54 @@ const FormContainerStyled = styled.div`
         }
         
     }
+    .search-results{
+        position:absolute;
+        top:70px;
+        left:0;
+        z-index:5;
+        background-color: var(--bg-color);
+        height:auto;
+        max-height:700px;
+        overflow:scroll;
+        width:100%;
+    }
+    .product-link{
+        display:flex;
+        padding:10px;
+        align-items:center;
+        transition:0.3s all;
+    }
+    .product-link:hover{
+      background: var(--gradient, linear-gradient(118deg, #C09E6C 0%, #FFEBCC 42.62%, #BF936B 100%));
+      -webkit-text-fill-color: #36332E;
+      transition:0.3s all;
+    }
+    .product-image{
+        width:50px;
+        height:50px;
+        margin:0 10px 0 0;
+    }
+    .product-title{
+        text-align:left;
+        flex:0 1 54%;
+    }
+    .product-type{
+        flex:0 1 31%;
+        text-align:left;
+    }
 `
 
 
 export const HeaderSearch:React.FC = () =>{
- 
+    const [input, setInput] = useState("");
+    const [results, setResults] = useState([]);
     const [openSearch, setOpenSearch] = useState(false);
-    
 
     const body = document.body;
+    const boxRef = useRef<HTMLDivElement>(null)
 
     openSearch ? body.classList.add('overflow') : body.classList.remove('overflow');
 
- 
-
-    const boxRef = useRef<HTMLDivElement>(null)
-
-   
     const handleClosed = (event:any) =>{
         if(boxRef.current && boxRef.current.contains(event.target)){
             setOpenSearch(openSearch)
@@ -133,6 +168,30 @@ export const HeaderSearch:React.FC = () =>{
     useEffect(() =>{
         document.addEventListener('mousedown', handleClosed)
     }, [])
+
+   
+    const fetchData = (value:any) =>{
+        fetch(
+            `https://64e6020b09e64530d17f6dd0.mockapi.io/Flavors?`
+          )
+          .then((res) => res.json())
+          .then((data) => {
+            const results = data.filter((product:any)=> {
+                return(
+                    product.title &&
+                    product.title.toLowerCase().includes(value)
+                ) 
+            });
+            setResults(results);
+            
+           });  
+          
+    }
+
+    const handleChange = (value:any) =>{
+        setInput(value);
+        fetchData(value);
+    }
 
 
     return(
@@ -146,10 +205,24 @@ export const HeaderSearch:React.FC = () =>{
             </div>
 
             <div className={openSearch ? 'search-open' : 'search-closed'}>
-                <MainForm placeholder="Найти парфюм.." />
+                <MainForm action={'#'}>
+                    <Input type="search" className="form-input" placeholder="Найти парфюм.." value={input} onChange={(event:any)=> handleChange(event.target.value)}/>
+                    <button type="button" className="form-btn-search"><Search/></button>
+                </MainForm>
+                <div className="search-results">
+                
+                    {
+                     input && results.map((result:any, index:number)=>{
+                            return <Link className="product-link" to={ROUTES.HOME + ROUTES.SINGLEPRODUCT + `${result.id}`} key={index}>
+                                 <img className="product-image" src={result.url} alt="product-image" />
+                                 <h2 className="product-title">{result.title}</h2> 
+                                 <h3 className="product-type">{result.type}</h3>
+                                 <h4 className="product-price">{result.price + ' ' + '₽'} </h4>
+                                 </Link>     
+                        })
+                    }
+                </div>
             </div>
- 
-
         </FormContainerStyled>
         </MainContainer>
     )

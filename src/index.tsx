@@ -61,7 +61,7 @@ textarea {
 	border-radius: 0;
 	border: none;
 	-webkit-border-radius: 0;
-  font-size:16px;
+  	font-size:16px;
 }
 
 input::-ms-clear {

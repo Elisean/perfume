@@ -1,5 +1,5 @@
 import React from 'react'
-import { Link, useLocation,useParams } from 'react-router-dom'
+import { Link, useLocation, useParams } from 'react-router-dom'
 
 import { useEffect, useState } from 'react';
 
@@ -12,7 +12,7 @@ export const Crumb:React.FC = () => {
   const {id} = useParams();
   const location = useLocation()
 
-
+    
     useEffect(() => {
       fetch(
         `https://64e6020b09e64530d17f6dd0.mockapi.io/Flavors/${id}`

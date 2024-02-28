@@ -6,7 +6,7 @@ import { useResize } from '../../../../Hooks/useResize';
 import { Skeleton } from './Skeleton-catalog-card';
 import { Card } from '../../../../Components/Card/Card';
 import { observer } from 'mobx-react-lite';
-import  Store  from '../../../../Store/FiltersStore';
+import  filtersStore  from '../../../../Store/FiltersStore';
 
 
 const StyledCatalogWrapper = styled.div`
@@ -110,7 +110,7 @@ const StyledCatalogWrapper = styled.div`
 export const CatalogCard:React.FC<any> = observer((filter)=>  {
   
   
-  const storeContext = useContext(Store);
+  const storeContext = useContext(filtersStore);
 
   const filtersValue = storeContext.value;
   const filtersBrand = storeContext.brand;
@@ -187,25 +187,8 @@ export const CatalogCard:React.FC<any> = observer((filter)=>  {
     });
    
   },[filtersValue, currentPage, countCards])
- 
    
-  // useEffect(()=>{
-
-  //       fetch(`https://64e6020b09e64530d17f6dd0.mockapi.io/Flavors?filter=${filtersBrand}&`)
-  //       .then((res) => res.json())
-  //       .then((data) => {
-  //         setCards(data) 
-  //         setIsLoading(true)
-         
-  //         setTimeout(()=>{
-  //           setIsLoading(false)
-  //         }, 1500)
-  //       });
-
-
-  // },[filtersBrand])
-  
-    
+   
 
   return (
     <>

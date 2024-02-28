@@ -23,6 +23,8 @@ interface IButton{
   btncards?:string;
   tabIndex?:number;
   type?:string;
+  className?:string
+  sendbutton?:string
 }
 
 
@@ -53,6 +55,13 @@ const StyledButton = styled.button<IButton>`
       background: var(--gradient, linear-gradient(92deg, #C09E6C -1.94%, #FFEBCC 40.99%, #BF936B 98.79%));
       -webkit-text-fill-color:var(--black);
     }
+    
+
+    ${props => props.sendbutton && css`
+      margin:15px 0 0 0;
+      padding:10px 0;
+    `}
+
 
   ${props => props.responsebtn && css`
     @media (max-width:1300px) {

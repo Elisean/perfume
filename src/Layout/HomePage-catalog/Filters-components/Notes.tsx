@@ -3,6 +3,8 @@ import styled from 'styled-components'
 import { MainSelect } from '../../../Components/Main-select/Main-select'
 import { ReactComponent as Chevron } from '../../../icons/chevron-down.svg'
 import { MainForm } from '../../../Components/Main-Form/Main-Form'
+import { Input } from '../../../Components/Input/Input'
+import { ReactComponent as Search } from '../../../icons/search.svg'
 
 
 interface INotes{
@@ -100,11 +102,14 @@ const StyledNotes = styled.section`
     color: var(--gray);
     font-weight: 700;
 }
+.input-notes{
+    margin:6px 0 0 0; 
+    width:260px;
+    background-color: #1B1816;
+    display:flex;
+}
 
 `
-
-
-
 
     
 
@@ -116,9 +121,6 @@ const filtersNote = (searchText:string, noteList:string[]) =>{
         note.toLowerCase().includes(searchText.toLowerCase())
      );
 }
-
-
-
 
 
 export const Notes:React.FC<INotes> = ({getChangeNote}) => {
@@ -160,7 +162,11 @@ export const Notes:React.FC<INotes> = ({getChangeNote}) => {
     </MainSelect>
 
     <div className='notes-search-wrapper'>
-        <MainForm brandform={'true'} placeholder="Найти ноты.." onChange={(event:any)=> handleChangeLetters(event)}/>
+        <MainForm >
+            <Input type="search" placeholder="Найти ноты.." className='form-input input-notes' onChange={(event:any)=> handleChangeLetters(event)}/>
+            <button type="submit" className="form-btn-search"><Search/></button>
+        </MainForm>
+    
         <p className='notes-search-title'>Все</p>
 
     <ul className='notes-search-list'>

@@ -1,5 +1,5 @@
-import React from 'react'
-import { ReactComponent as Search } from '../../icons/search.svg';
+import React, { ReactNode } from 'react'
+
 import styled, {css} from 'styled-components';
 
 
@@ -7,10 +7,12 @@ import styled, {css} from 'styled-components';
 
 
 interface IForm{
-    placeholder?: string
-    className?: string
-    brandform?:string
-    onChange?: any 
+    placeholder?: string;
+    className?: string;
+    brandform?:string;
+    onChange?: any;
+    children?:ReactNode;
+    action?:any
 }
 
 const FormWrapperStyled = styled.form<IForm>`
@@ -22,7 +24,7 @@ const FormWrapperStyled = styled.form<IForm>`
         width:100%;
         border-radius:4px;
         color: var(--text);
-        margin:0 0 0 0;
+        margin:0;
  
         
         &:focus{
@@ -59,27 +61,15 @@ const FormWrapperStyled = styled.form<IForm>`
         position: relative;
     }   
 
-    ${props => props.brandform && css`
-        margin:6px 12px 0 12px;
-        background-color: #1B1816;
-       
-    `}
-
-
-
-
-
-
 `
 
 
-export const MainForm:React.FC<IForm> = (props) => {
+export const MainForm:React.FC<IForm> = ({children, action, className}) => {
   return (
-    <FormWrapperStyled {...props} action="" className='form'>
-        <input className='form-input' type="text" placeholder={props.placeholder} onChange={props.onChange} />
-        <button className='form-btn-search' type='submit'>
-            <Search />
-        </button>
+    <FormWrapperStyled action={action} className='form'>
+            {children}
     </FormWrapperStyled>
   )
 }
+
+
