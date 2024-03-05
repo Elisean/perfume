@@ -24,8 +24,7 @@ export const FiltersContext = createContext<any>('');
 
 export const App:React.FC = () => {
   const [filtersOpen, setFiltersOpen] = useState(false);
-  
-  
+
 
   return (
     <>
