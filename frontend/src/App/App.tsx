@@ -10,7 +10,7 @@ import { NotFoundPage } from "../Pages/NotFoundPage";
 import { ManCatalogPage } from "../Pages/ManCatalog-page";
 import { WomenCatalogPage } from "../Pages/WomenCatalog-page";
 import { SingleProduct } from "../Pages/SingleProduct";
-import { UserPage } from "../Pages/User-Page";
+import { UserPage } from "../Pages/User-page";
 import { UnisexCatalogPage } from "../Pages/UnisexCatalog-page";
 import { ROUTES } from "../Utils/routes";
 import { BonusesPanel } from "../Pages/Сontrol-panel/Bonuses-panel";
