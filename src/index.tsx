@@ -54,6 +54,10 @@ aside {
 	display: block;
 }
 
+
+
+
+
 input,
 button,
 textarea {
@@ -66,6 +70,9 @@ textarea {
 
 input::-ms-clear {
 	display: none;
+}
+input:disabled {
+	background-color: var(--gray);
 }
 
 button {
@@ -198,6 +205,28 @@ input[type="search"]::-webkit-search-cancel-button,
 input[type="search"]::-webkit-search-results-button,
 input[type="search"]::-webkit-search-results-decoration {
   -webkit-appearance:none;
+}
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover, 
+input:-webkit-autofill:focus, 
+input:-webkit-autofill:active{
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: #ffffff;
+    transition: background-color 5000s ease-in-out 0s;
+    box-shadow: inset 0 0 20px 20px #23232329;
+	-webkit-text-fill-color: var(--text) !important;
 }
 `
 

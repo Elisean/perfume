@@ -24,7 +24,7 @@ const TitleStyled = styled.div<IProps>`
     background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    margin:${props => props.margin || '50px 0 0 0'};
+    margin:${props => props.margin || '35px 0 0 0'};
     padding:0 0 10px 0;
     position:${props => props.position || 'relative'};
     top:${props => props.top || '0'};

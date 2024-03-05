@@ -7,21 +7,54 @@ import { Breadcrumbs } from '../../Components/Breadcrumbs/Breadcrumbs'
 import { FlexContainer } from '../../Containers/Flex-container/FlexContainer'
 import { AsidePanel } from '../../Components/Aside-panel/AsidePanel'
 
+import { ReactComponent as NoDownloadsIcon } from '../../icons/no-orders.svg'
+import styled from 'styled-components'
+
+const StyledDownLoadsPanelWrapper = styled.section`
+
+ .downloadsPanel-inner{
+    margin:0 0 0 20px;
+  }
+  .no-downloads{
+    display:flex;
+    background-color: var(--gray);
+    padding:10px 12px;
+    align-items:center;
+    margin:40px 0 0 0;
+    svg{
+      margin:0 10px 0 0;
+    }
+  }
+
+
+` 
+
+
 export const DownloadsPanel = () => {
+
   return (
-    <div>
-          <Header/>
-<MainContainer>
- <AsideTitle>Мой аккаунт</AsideTitle>  
- <Breadcrumbs/>
-<FlexContainer>
- <AsidePanel/> 
- Это страница загрузки
-</FlexContainer>
- 
-</MainContainer>
-<Footer/>
-    </div>
+
+        <StyledDownLoadsPanelWrapper>
+    <Header/>
+      <MainContainer>
+        <AsideTitle>Мой аккаунт</AsideTitle>  
+        <Breadcrumbs/>
+
+      <FlexContainer>
+        <AsidePanel/> 
+        <div className='downloadsPanel-inner'>
+            <AsideTitle>Загрузки</AsideTitle>
+            <p className='no-downloads'>
+              <NoDownloadsIcon/>
+              Доступных загрузок нет
+            </p>
+        </div>
+      </FlexContainer>
+
+      </MainContainer>
+      <Footer/>  
+    </StyledDownLoadsPanelWrapper>
+
   )
 }
 

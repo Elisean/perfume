@@ -119,7 +119,7 @@ const FormContainerStyled = styled.div`
         background-color: var(--bg-color);
         height:auto;
         max-height:700px;
-        overflow:scroll;
+        overflow: auto;
         width:100%;
     }
     .product-link{

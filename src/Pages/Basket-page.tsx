@@ -11,6 +11,7 @@ import BasketStore from '../Store/BasketStore'
 import { FlexContainer } from '../Containers/Flex-container/FlexContainer'
 import { Input } from '../Components/Input/Input'
 import checked from '../icons/checked.svg';
+import { observer } from 'mobx-react-lite'
 
 
 
@@ -42,6 +43,7 @@ const StyledWrapperBasketPage = styled.section`
   .product-image{
     width:80px;
     height:80px;
+    margin:0 45px;
   }
   .product-remove{
       color:var(--text);
@@ -51,20 +53,59 @@ const StyledWrapperBasketPage = styled.section`
       height: 24px;
       border: 1px solid var(--border);
       border-radius:5px;
-      
   }
   .product-check:checked{
       background-image: url(${checked});   
+  }
+  .product-name{
+    margin:10px 0 25px 0;
+  }
+  .product-price{
+    margin:10px 0 0 0;
+  }
+
+  .card-step{
+    display: flex;
+    align-items: center;
+    margin:0 0 20px 140px;
+    background-color: #2B2624;
+    border-radius: 4px;
+    width: 144px;
+    justify-content: center;
+  }
+
+  .step-count{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--text);
+    font-family: 'Montserrat', sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    width:56px;
+    height: 32px;
+    border-radius: 4px;
+    border: 1px solid #565147;
+    margin: 0 10px;
+  }
+  .step-minus,.step-plus{
+    font-size:40px;
+    color: var(--text);
+  }
+  .step-minus{
+    margin: -5px 0 0 0;
   }
 
 
 ` 
 
-export const BasketPage = () => {
-  
+export const BasketPage = observer(() => {
+
   const basketProductsContext = useContext(BasketStore);
   
-  const basketProducts = basketProductsContext.cardsData
+  const basketProducts = basketProductsContext.cardsData  
+
+
 
   return (
     <StyledWrapperBasketPage>
@@ -81,24 +122,32 @@ export const BasketPage = () => {
           </div>
 
         {
-          basketProducts.map((product:{id:number, cardName:string, price:string, volume?:string, imgUrl:string})=>{
+          basketProducts.map((product:{id:string, cardName:string, price:string, volume:number, imgUrl:string})=>{
+            
             return (
               <div className='product-inner' key={product.id}>
-                <MainContainer width='955px' margin='0'>
-                  <FlexContainer>
+                  <MainContainer padding='0' width='955px' margin='0'>
+                  <FlexContainer >
+                    <FlexContainer align='center'>
+                      <Input type='checkbox' className='product-check' />
+                      <img className='product-image' src={product.imgUrl} alt="perfume" />
+                    </FlexContainer>
+             
+                    <FlexContainer direction='column' align='flex-start' flex='0 1 46%'>
+                      <h2 className='product-name'>{product.cardName}, {product.volume + 'мл'}</h2>
 
-                    <Input type='checkbox' className='product-check' />
-                    <img className='product-image' src={product.imgUrl} alt="perfume" />
-
-                    <FlexContainer direction='column' align='flex-start'>
-                      <h2>{product.cardName}</h2>
-                      <button className='product-remove'>удалить x</button>
+                      <button className='product-remove' onClick={() => basketProductsContext.deleteCard(product.id)}>удалить x</button>
                     </FlexContainer>
                     <FlexContainer>
-                      <p>{product.price}</p>
+                      <p className='product-price'>{product.price}</p>
                     </FlexContainer>
+                    <div className='card-step'>
+                      <button className='step-minus' onClick={()=> basketProductsContext.decrease(product.id, product.volume)}>-</button>
+                      <button className='step-count'>{product.volume}</button>
+                      <button className='step-plus' onClick={()=> basketProductsContext.increase(product.volume)}>+</button>
+                    </div>
                   </FlexContainer>
-                </MainContainer>
+                  </MainContainer>
               </div>
             )
           })
@@ -107,4 +156,6 @@ export const BasketPage = () => {
     <Footer/>
     </StyledWrapperBasketPage>
   )
-}
+})
+// onClick={(event)=> decrease(event)}
+// onClick={(event)=> increase(event)}

@@ -132,9 +132,7 @@ const SingleProductWrapperStyled = styled.section`
     font-size: 16px;
     opacity:1;
     visibility: visible;
-    width:800px;
-   
-   
+    width:800px; 
   }                                     
   .close-window{
     transition:.5s all;

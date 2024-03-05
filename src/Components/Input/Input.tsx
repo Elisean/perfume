@@ -9,12 +9,15 @@ interface Iinput{
     onBlur?:any
     onFocus?:any
     onInput?:any
+    onClick?:any
     id?:string
     className?:string
     name?:string
     value?:string | number
     required?:boolean
     error?:string
+    disabled?:boolean
+    autocomplete?:string
     brandform?:any
 }
 
@@ -22,6 +25,9 @@ interface Iinput{
 
 
 const StyldeInputWraper = styled.div`
+
+
+
 
     .main-input{
         border:2px solid #514941;
@@ -50,14 +56,17 @@ const StyldeInputWraper = styled.div`
             border: 2px solid var(--border);
             box-shadow: 0px 0px 20px 0px rgba(160, 149, 133, 0.20);
         }
-
     }
-
+    .input-error{
+        color:red;
+        margin:5px 0 0 0;
+    }
+ 
     
 `
 
 
-export const Input:React.FC<Iinput> = ( { type, placeholder, onChange, id, className, name, value, required, error, onBlur, onFocus, onInput } ) => {
+export const Input:React.FC<Iinput> = ( { type, placeholder, onChange, id, className, name, value, required, error, onBlur, onFocus, onInput, disabled, autocomplete, onClick } ) => {
    
     const handleChange = (event:any) => {
         onChange && onChange(event);
@@ -72,6 +81,10 @@ export const Input:React.FC<Iinput> = ( { type, placeholder, onChange, id, class
     const handleInput = (event:any) => {
         onInput && onInput(event);
     };
+    const handleClick = (event:any) => {
+        onClick && onClick(event);
+    };
+    
 
   return ( 
     <StyldeInputWraper>
@@ -81,6 +94,7 @@ export const Input:React.FC<Iinput> = ( { type, placeholder, onChange, id, class
             type={type}
             placeholder={placeholder}
             onChange={handleChange}
+            onClick={handleClick}
             onInput={handleInput}
             onBlur={handleBlur}
             onFocus={handleFocus}
@@ -88,9 +102,11 @@ export const Input:React.FC<Iinput> = ( { type, placeholder, onChange, id, class
             name={name}
             value={value}
             required={required}
+            disabled={disabled}
+            autoComplete={autocomplete}
         />   
         {error && (
-             <span className="text-red-500 text-xs italic mt-1">{error}</span>
+             <div className="input-error">{error}</div>
         )}
 
     </StyldeInputWraper>
