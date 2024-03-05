@@ -42,7 +42,6 @@ export const App:React.FC = () => {
                   <Route element={<WomenCatalogPage />} path={ROUTES.WOMENCATALOGPAGE}/>
                   <Route element={<UnisexCatalogPage />} path={ROUTES.UNISEX}/>
                   <Route element={<UserPage/>} path={ROUTES.USERPAGE}/>
-                  <Route element={<BonusesPanel/>} path={ROUTES.BONUSESPANEL}/>
                   <Route element={<OrderPanel/>} path={ROUTES.ORDERPANEL}/>
                   <Route element={<BonusesPanel/>} path={ROUTES.BONUSESPANEL}/>
                   <Route element={<DownloadsPanel/>} path={ROUTES.DOWNLOADSPANEL}/>
