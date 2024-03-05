@@ -3,6 +3,7 @@ import { styled } from "styled-components";
 import { ROUTES } from "../../../../Utils/routes";
 import { NavLink } from "react-router-dom";
 
+
 const UserIconWrapper = styled.div`
     margin:0 0 0 15px;
     cursor: pointer;
@@ -20,7 +21,7 @@ const UserIconWrapper = styled.div`
 export const HeaderUser:React.FC = () =>{
     return (
         <UserIconWrapper>
-            <NavLink to={ROUTES.REGISTRATION}>
+            <NavLink to={ROUTES.REGISTRATION} state='Регистрация'>
                 <UserIcon/>
             </NavLink>
         </UserIconWrapper>

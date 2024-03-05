@@ -1,4 +1,4 @@
-import React from 'react'
+import React,{ useState } from 'react'
 import { Input } from '../Input/Input'
 import { FlexContainer } from '../../Containers/Flex-container/FlexContainer'
 import { Button } from '../Button/Button'
@@ -61,8 +61,23 @@ export const SingUp:React.FC = () => {
     
   const {formData, errors, handleChange} : {formData : any; errors : any; handleChange : any} = useForm({
     email: "",
- 
   });
+
+  // const userEmail = localStorage.setItem('userEmail', formData.email)
+
+  const [userEmail, setUserEmail] = useState<{[key:string]: any}>({
+    userMail:"",
+})
+
+const getUserEmail = (event?:any) =>{
+  const newEmail = {...userEmail}
+  process.env.USERMAIL = JSON.parse(localStorage.getItem("userEmail") || '[]')  
+
+  localStorage.setItem("userEmail", formData.email)
+  setUserEmail(newEmail)
+}
+
+  
 
   return (
     <StyledSingUpUser >
@@ -101,7 +116,7 @@ export const SingUp:React.FC = () => {
       </FlexContainer>
       <p className='user-description'>Ссылка для установки нового пароля будет отправлена на ваш email</p>
      
-     <Button type='submit' padding='12px 58px'>Регистрация</Button>
+     <Button type='submit' padding='12px 58px' onClick={()=> getUserEmail()}>Регистрация</Button>
     </form>
   </StyledSingUpUser>
 

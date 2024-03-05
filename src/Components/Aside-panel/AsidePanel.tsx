@@ -65,13 +65,13 @@ export const AsidePanel:React.FC= () => {
     <StyledWrapperAsidePanel>
       <nav className='aside-nav'>
             <ul className='nav-list'>
-                <NavLink to='/userPage' className={({isActive}) => isActive ? 'nav-item-active' : 'nav-item'}>Панель управления <Panel/></NavLink>
-                <NavLink to='/BonusesPanel/' className={({isActive}) => isActive ? 'nav-item-active' : 'nav-item'}>Бонусы <Bonuses/></NavLink>
-                <NavLink to='/OrderPanel' className={({isActive}) => isActive ? 'nav-item-active' : 'nav-item'}>Заказы <Order/></NavLink>
-                <NavLink to='/DownloadsPanel' className={({isActive}) => isActive ? 'nav-item-active' : 'nav-item'}>Загрузки <Downloads/></NavLink>
-                <NavLink to='/LocationPanel' className={({isActive}) => isActive ? 'nav-item-active' : 'nav-item'}>Адрес <LocationPanel/></NavLink>
-                <NavLink to='/UserPanel' className={({isActive}) => isActive ? 'nav-item-active' : 'nav-item'}>Детали профиля <UserPanel/></NavLink>
-                <NavLink to='/exid' className={({isActive}) => isActive ? 'nav-item-active' : 'nav-item'}>Выход <Exid/></NavLink>
+                <NavLink state='Панель управления' to='/userPage' className={({isActive}) => isActive ? 'nav-item-active' : 'nav-item'}>Панель управления <Panel/></NavLink>
+                <NavLink state='Бонусы' to='/BonusesPanel/' className={({isActive}) => isActive ? 'nav-item-active' : 'nav-item'}>Бонусы <Bonuses/></NavLink>
+                <NavLink state='Заказы' to='/OrderPanel' className={({isActive}) => isActive ? 'nav-item-active' : 'nav-item'}>Заказы <Order/></NavLink>
+                <NavLink state='Загрузки' to='/DownloadsPanel' className={({isActive}) => isActive ? 'nav-item-active' : 'nav-item'}>Загрузки <Downloads/></NavLink>
+                <NavLink state='Адрес' to='/LocationPanel' className={({isActive}) => isActive ? 'nav-item-active' : 'nav-item'}>Адрес <LocationPanel/></NavLink>
+                <NavLink state='Детали профиля' to='/UserPanel' className={({isActive}) => isActive ? 'nav-item-active' : 'nav-item'}>Детали профиля <UserPanel/></NavLink>
+                <NavLink state='' to='/exid' className={({isActive}) => isActive ? 'nav-item-active' : 'nav-item'}>Выход <Exid/></NavLink>
             </ul>
       </nav>
     </StyledWrapperAsidePanel>

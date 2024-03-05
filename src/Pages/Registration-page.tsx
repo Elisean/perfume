@@ -30,7 +30,7 @@ export const RegistationPage = () => {
         <Header/>
           <MainContainer>
 
-          <AsideTitle  margin='0 0 50px 0'> Мой аккаунт </AsideTitle>
+          <AsideTitle margin='0 0 50px 0'> Мой аккаунт </AsideTitle>
           <Breadcrumbs />
 
             <FlexContainer registrationresponse={'true'} justify='space-between'>

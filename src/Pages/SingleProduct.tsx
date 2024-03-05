@@ -57,9 +57,6 @@ const SingleProductWrapperStyled = styled.section`
     margin:0 0 10px 0;
   
   }
-
-
-   
   .button-volume{
     font-family: 'Montserrat', sans-serif;
     border-radius: 4px;
@@ -76,7 +73,6 @@ const SingleProductWrapperStyled = styled.section`
     width:40px;
     height:40px;
     margin:0 20px 40px 0;
-   
   }
   .button-volume:focus{
     background: var(--gradient, linear-gradient(92deg, #C09E6C -1.94%, #FFEBCC 40.99%, #BF936B 98.79%));
@@ -210,7 +206,9 @@ export const SingleProduct:React.FC = () =>{
       .then((res) => res.json())
       .then((data) => {
         setAllReviews(data)
-      });  
+      }).catch((e)=>{
+        console.log(e)
+     });
   }, [allReviews]);
 
   const toggleModal = () =>{
@@ -241,7 +239,7 @@ export const SingleProduct:React.FC = () =>{
     .then((data) => {
       setIsLoading(false)
       setProduct(data)
-     });  
+     })
 
       fetch(
         `https://64e6020b09e64530d17f6dd0.mockapi.io/Flavors?&filter=${'productLikes'}`
@@ -250,7 +248,7 @@ export const SingleProduct:React.FC = () =>{
       .then((data) => {
         setLikeProductLoading(false)
         setProductLikes(data)
-      });  
+      })
 
   }, [id]);
 

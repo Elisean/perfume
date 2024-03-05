@@ -50,7 +50,7 @@ export const HeaderBasket:React.FC = observer(() =>{
     
     return (
         <BasketIconWrapper>
-            <NavLink to={ROUTES.BASKET}>
+            <NavLink to={ROUTES.BASKET} state='Корзина'>
                 <span className="count">{basketContext.cardsData.length}</span>
             <BasketIcon />
             </NavLink>
