@@ -4,6 +4,7 @@ import { MainSelect } from '../../../Main-select/Main-select'
 import { ReactComponent as SelectIcon } from '../../../../icons/select-icon.svg'
 import { Link } from 'react-router-dom'
 import { ROUTES } from '../../../../Utils/routes'
+import { NavLink } from 'react-router-dom'
 
 const SelectStyledWrapper = styled.section`
     margin:0 0 0 20px;
@@ -78,9 +79,9 @@ export const HeaderSelect:React.FC = () => {
       </MainSelect>
 
       <ul ref={navRef} className={isShow && navRef ? 'open-select' : 'closed-select'}>
-        <li className='select-item' onClick={()=> window.location.reload()}><Link to={ROUTES.MANCATALOGPAGE}>Мужские</Link></li>
-        <li className='select-item' onClick={()=> window.location.reload()}><Link to={ROUTES.WOMENCATALOGPAGE}>Женские</Link></li>
-        <li className='select-item' onClick={()=> window.location.reload()}><Link to={ROUTES.UNISEX} >Унисекс</Link></li>
+        <li className='select-item' onClick={()=> window.location.reload()}><NavLink to={ROUTES.MANCATALOGPAGE}>Мужские</NavLink></li>
+        <li className='select-item' onClick={()=> window.location.reload()}><NavLink to={ROUTES.WOMENCATALOGPAGE}>Женские</NavLink></li>
+        <li className='select-item' onClick={()=> window.location.reload()}><NavLink to={ROUTES.UNISEX} >Унисекс</NavLink></li>
     </ul>
     </SelectStyledWrapper>
   )
