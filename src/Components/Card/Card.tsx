@@ -6,6 +6,7 @@ import { Button } from '../Button/Button'
 import { nanoid } from 'nanoid'
 import { observer } from 'mobx-react-lite'
 import BasketStore from '../../Store/BasketStore'
+import { scrollTop } from '../../Utils/scrollTop'
 
 
 const StyledCardWrapper = styled.section`
@@ -118,8 +119,6 @@ const StyledCardWrapper = styled.section`
 export const Card:React.FC<any> = observer(({param}) => {
   const basketContext = useContext(BasketStore);
 
-  
- 
   const countCharacterForID = 6;
 
   const [cards, setCards] = useState<{[key:string]: any}>({
@@ -132,22 +131,22 @@ export const Card:React.FC<any> = observer(({param}) => {
 
 
   const getDataCard = (event?:any) =>{
-    const newCard = {...cards}
-    newCard.id = nanoid(countCharacterForID);
-    newCard.imgUrl = param.url;
-    newCard.cardName = param.title;
-    newCard.volume = event?.target.innerText ?? '1';
-    newCard.price = param.price;
-    basketContext.cardsData = JSON.parse(localStorage.getItem("basketProduct") || '[]')  
-    basketContext.cardsData.push(newCard)
-    localStorage.setItem("basketProduct", JSON.stringify(basketContext.cardsData))
-    setCards(newCard)   
+    const newCard = {...cards} // формирование нового объекта с последующей заменой старого
+    newCard.id = nanoid(countCharacterForID); // добавление id к новому объекту 
+    newCard.imgUrl = param.url; // добавление url к новому объекту 
+    newCard.cardName = param.title; // добавление имени к новому объекту 
+    newCard.volume = event?.target.innerText ?? '1'; // добавление количества продукта к новому объекту 
+    newCard.price = param.price; // добавление цены к новому объекту 
+    basketContext.cardsData = JSON.parse(localStorage.getItem("basketProduct") || '[]') // получение объекта из localStorage [] - значение по умолчанию, если не будет найден basketProduct
+    basketContext.cardsData.push(newCard) // добавление нового объекта в массив стора
+    localStorage.setItem("basketProduct", JSON.stringify(basketContext.cardsData)) // фиксация нового объекта в locaStorage
+    setCards(newCard) // замена старого объекта на новый
   }
 
   
   return (
          <StyledCardWrapper >
-         <Link style={{display:'flex'}} to={`/perfume/singleProduct/${param.id}`}> <img className='card-image' src={param.url} alt="card-img"/></Link>
+         <Link style={{display:'flex'}} to={`/perfume/singleProduct/${param.id}`}> <img className='card-image' src={param.url} onClick={()=> scrollTop()} alt="card-img"/></Link>
                     <div className='card-inner'>
                     <Link  to={`/perfume/singleProduct/${param.id}`}> <h2 className='card-title'>{param.title}</h2> </Link>
                       <p className='card-volume'>Объем мл.</p>

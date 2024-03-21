@@ -121,7 +121,7 @@ export const Pagination:React.FC<IPagination> = ({onChangePage}) => {
                 breakLabel="..."
                 nextLabel=">"
                 onPageChange={(event:any)=> onChangePage(event.selected + 1)}
-                pageRangeDisplayed={12}
+                pageRangeDisplayed={1}
                 pageCount={countPage}
                 previousLabel="<"
                 renderOnZeroPageCount={null}/>

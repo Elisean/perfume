@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from 'react'
+import React, { useState, useEffect } from 'react'
 import { Header } from '../../Components/Header/Header'
 import { Footer } from '../../Components/Footer/Footer'
 import { MainContainer } from '../../Containers/Main-container/Main-container'
@@ -8,7 +8,7 @@ import { Card } from '../../Components/Card/Card'
 import { Pagination } from '../HomePage-catalog/Catalog-components/Pagination'
 import styled from 'styled-components'
 import { observer } from 'mobx-react-lite'
-import FiltersStore from '../../Store/FiltersStore'
+
 
 
 interface ICatalogLayout{

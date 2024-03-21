@@ -28,8 +28,6 @@ const SortWrapper = styled.div`
       top:60px;
 
     }
-   
-    
     .btn-sort{
         font-family: 'Open Sans', sans-serif;
         background:#2B2825;

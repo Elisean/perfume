@@ -1,3 +1,3 @@
-export const scrollTop = () =>{
-    window.scrollTo(0, 0);
+export const scrollTop = (top?: number) =>{
+    window.scrollTo(0, top ?? 0);
 }

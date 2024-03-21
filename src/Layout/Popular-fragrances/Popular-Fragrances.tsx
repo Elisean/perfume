@@ -7,6 +7,9 @@ import { FlexContainer } from '../../Containers/Flex-container/FlexContainer'
 import CardImageBombshel from "../../images/bombshel.png"
 import CardImagesCreed from "../../images/aventus.png"
 import CardImagesNarcotiqe from "../../images/fleur.png"
+import { Link } from 'react-router-dom'
+import { ROUTES } from '../../Utils/routes'
+
 
 
 
@@ -45,17 +48,19 @@ const PopularFragrancesStyled = styled.div`
        transition: .5s;
        padding:0 20px 0 0;
        margin:0 20px 0 0;
-    
     }
-    .card-img:hover{
+   
+    .fragrances-item:hover{
+      .card-img{
       transform: scaleX(1.5);
       height: 500px;
       transition: .5s;
       padding:0 20px 0 0;
       margin:0 100px;
-      
+    }
     }
    
+  
  
   @media (max-width: 1300px) {
     pointer-events: none;
@@ -139,19 +144,19 @@ export const PopularFragrances:React.FC = () => {
               <h3 className='card-title'>Для неё</h3>
                 <img className='card-img' src={CardImageBombshel} alt="images" />
                 <p className='card-subtitle'>Victoria Secret Bombshell</p>
-                <Button responsebtn={'true'} padding='12px 72px' top='85%' left='50%'  position='absolute' transform='translate(-57%, 0)'>в корзину</Button>
+                <Button responsebtn={'true'} padding='12px 72px' top='85%' left='50%' position='absolute' transform='translate(-57%, 0)'><Link className='card-link' to={`/perfume${ROUTES.SINGLEPRODUCT + '61'}`}>в корзину</Link></Button>
               </li>
               <li className='fragrances-item'>
               <h3 className='card-title'>Для него</h3>
                 <img className='card-img' src={CardImagesCreed} alt="images" />
                 <p className='card-subtitle'>Aventus By Creed</p>
-                <Button responsebtn={'true'} padding='12px 72px' top='85%' left='50%' position='absolute' transform='translate(-57%, 0)'>в корзину</Button>
+                <Button responsebtn={'true'} padding='12px 72px' top='85%' left='50%' position='absolute' transform='translate(-57%, 0)'><Link className='card-link' to={`/perfume${ROUTES.SINGLEPRODUCT + '62'}`}>в корзину</Link></Button>
               </li>
               <li className='fragrances-item'>
               <h3 className='card-title'>Унисекс</h3>
                 <img className='card-img' src={CardImagesNarcotiqe} alt="images" />
                 <p className='card-subtitle'>Narcotiqe</p>
-                <Button responsebtn={'true'} padding='12px 72px' top='85%' left='50%' position='absolute'  transform='translate(-57%, 0)'>в корзину</Button>
+                <Button responsebtn={'true'} padding='12px 72px' top='85%' left='50%' position='absolute'  transform='translate(-57%, 0)'><Link className='card-link' to={`/perfume${ROUTES.SINGLEPRODUCT + '63'}`}>в корзину</Link></Button>
               </li>
             </FlexContainer>
             </ul>

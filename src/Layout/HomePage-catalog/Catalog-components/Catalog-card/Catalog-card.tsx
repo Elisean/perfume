@@ -6,6 +6,7 @@ import { Skeleton } from './Skeleton-catalog-card';
 import { Card } from '../../../../Components/Card/Card';
 import FiltersStore from '../../../../Store/FiltersStore';
 import { observer } from 'mobx-react-lite';
+import { scrollTop } from '../../../../Utils/scrollTop';
 
 
 const StyledCatalogWrapper = styled.div`
@@ -160,8 +161,11 @@ export const CatalogCard:React.FC<any> = observer(()=>  {
        });
   }, [currentPage]);
 
-    
-  
+
+  const changeCurrentPage = (number:number) =>{
+    setCurrentPage(number)
+    scrollTop(1900);
+  }
   return (
     <>
     <StyledCatalogWrapper>
@@ -177,7 +181,7 @@ export const CatalogCard:React.FC<any> = observer(()=>  {
  
     </div>
     </StyledCatalogWrapper>
-    <Pagination onChangePage={(number:any) => setCurrentPage(number)}/>
+    <Pagination onChangePage={(number:number) => changeCurrentPage(number)}/>
     </>
   )
 }

@@ -6,7 +6,6 @@ import { MainSelect } from '../../../Components/Main-select/Main-select'
 import { ReactComponent as Filter } from '../../../icons/filters.svg'
 import { ReactComponent as Chevron } from '../../../icons/chevron-down.svg'
 import { Sorting } from './Sorting'
-import FiltersStore from '../../../Store/FiltersStore'
 import { useResize } from '../../../Hooks/useResize'
 import { Filters } from './Filters'
 import { Aside } from '../../../Components/Aside/Aside'
@@ -17,6 +16,7 @@ import { Notes } from '../Filters-components/Notes'
 import { Button } from '../../../Components/Button/Button'
 import { ReactComponent as Closed } from '../../../icons/closed.svg'
 import { observer } from 'mobx-react-lite';
+import FiltersStore from '../../../Store/FiltersStore'
 
 
 const StyledWrapper = styled.div`
@@ -27,7 +27,6 @@ const StyledWrapper = styled.div`
     display: flex;
     justify-content: center;
   }
-
 
   .show{
         position: absolute;
@@ -49,17 +48,17 @@ const StyledWrapper = styled.div`
   @media (max-width: 568px) {
     .show{
       overflow: scroll;
-        z-index:5;
-        opacity: 1;
-        visibility: visible;
-        position: static;
+      z-index:5;
+      opacity: 1;
+      visibility: visible;
+      position: static;
   }
     .hide{
       overflow: scroll;
-        position: static;
-        opacity: 1;
-        z-index:0;
-        visibility: visible;
+      position: static;
+      opacity: 1;
+      z-index:0;
+      visibility: visible;
     }
   }
   .wrapper-scroll{
@@ -98,8 +97,6 @@ const StyledWrapper = styled.div`
 
 `
 
-
-
 export const SelectCards:React.FC<any> = observer(() => {
   const [openSorting, setOpenSorting] = useState(false);
   const filtersContext = useContext(FiltersStore);
@@ -135,8 +132,7 @@ export const SelectCards:React.FC<any> = observer(() => {
                 <Gender/>
                 <p className='before-aside-description'>Ноты</p>  
                 <Notes/>
-
-                <Button onClick={()=> {resetFilterResponce()}} closeFiltersResponce align='center' justify='space-between' padding='5px 15px'>
+              <Button onClick={()=> {resetFilterResponce()}} closeFiltersResponce align='center' justify='space-between' padding='5px 15px'>
                 Сбросить 
                 <Closed/>
               </Button>

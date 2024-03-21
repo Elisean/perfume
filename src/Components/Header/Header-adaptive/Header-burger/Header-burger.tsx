@@ -239,15 +239,18 @@ export const HeaderBurger:React.FC = () => {
     <>
     <HeaderBurgerWrapper>
       <div ref={wrapRef} className={openBurger ? 'header-bg' : 'header-bg-closed'} ></div>
-    <BurgerStyled onClick={()=> setOpenBurger(!openBurger)}>
-        <span className={openBurger ? 'burger-open' : 'burger-item'}></span>
-        <span className={openBurger ? 'burger-open' : 'burger-item'}></span>
-        <span className={openBurger ? 'burger-open' : 'burger-item'}></span>
-      </BurgerStyled>
+        <BurgerStyled onClick={()=> setOpenBurger(!openBurger)}>
+            <span className={openBurger ? 'burger-open' : 'burger-item'}></span>
+            <span className={openBurger ? 'burger-open' : 'burger-item'}></span>
+            <span className={openBurger ? 'burger-open' : 'burger-item'}></span>
+        </BurgerStyled>
       <HeaderBurgerMenuStyled>
         <div  className={openBurger ? 'menu-open': 'menu-closed'}>
           <div className={openBurger ? 'menu-inner': 'menu-inner-closed'}>
+            <Link to={ROUTES.HOME}>
               <img className='burger-logo' src={BurgerLogo} alt="logo" />
+            </Link>
+          
              <nav className='burger-nav'>
                 <ul className='nav-list'>
                   <li className='navigation-item'><Link to={ROUTES.MANCATALOGPAGE} className='nav-link'>Мужские</Link></li>

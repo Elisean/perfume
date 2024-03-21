@@ -1,4 +1,4 @@
-import React, { useState, useEffect }  from 'react'
+import React, { useState, useEffect, useContext }  from 'react'
 import styled from 'styled-components'
 import { AsideTitle } from '../Components/Aside-title/Aside-title'
 import { MainContainer } from '../Containers/Main-container/Main-container'
@@ -16,8 +16,9 @@ import { FormReview } from '../Components/Form-review/Form-review'
 import { ReactComponent as Star } from '../icons/stars-icon.svg';
 import { Card } from '../Components/Card/Card'
 import { Skeleton } from '../Layout/HomePage-catalog/Catalog-components/Catalog-card/Skeleton-catalog-card'
-
-
+import BasketStore from '../Store/BasketStore'
+import { nanoid } from 'nanoid'
+import { scrollTop } from '../Utils/scrollTop'
 
 
 
@@ -35,7 +36,8 @@ const SingleProductWrapperStyled = styled.section`
   }
   .card-image{
    img{
-    width:413px;
+    width:410px;
+    height:410px;
    }
   
   }
@@ -186,6 +188,21 @@ const SingleProductWrapperStyled = styled.section`
 `
 
 export const SingleProduct:React.FC = () =>{
+
+  const basketContext = useContext(BasketStore);
+
+  const countCharacterForID = 6;
+
+  const [cards, setCards] = useState<{[key:string]: any}>({
+    id:"",
+    imgUrl:"",
+    cardName: "",
+    volume: "",
+    price:"",
+})
+
+
+
   const [openDescription, setOpenDescription] = useState(false);
   const [openReviews, setOpenReviews] = useState(false);
   const [openModal, setOpenModal] = useState(false);
@@ -198,7 +215,7 @@ export const SingleProduct:React.FC = () =>{
   const [likeProductLoading, setLikeProductLoading] = useState(true)
 
 
-
+  // Комментарии к продукту
   useEffect(() => {
       fetch(
         `http://localhost:3004/reviews`
@@ -210,11 +227,13 @@ export const SingleProduct:React.FC = () =>{
         console.log(e)
      });
   }, [allReviews]);
-
+ // Комментарии к продукту
+  // открытие закрытие окна для отправки комментариев
   const toggleModal = () =>{
     setOpenModal((showModal) => !showModal)
   }
-
+  // открытие закрытие окна для отправки комментариев
+  // степпер на уменьшение продукта
   const decrease = () =>{
       if(count <= 1){
         setCount(count = 0)
@@ -222,6 +241,8 @@ export const SingleProduct:React.FC = () =>{
         setCount(count - 1)
       }
   }
+   // степпер на уменьшение продукта
+  // степпер на увеличение продукта
   const increase = () =>{
     setCount(count + 1)
     if(count === 100){
@@ -229,7 +250,9 @@ export const SingleProduct:React.FC = () =>{
     }
  
   }
+   // степпер на увеличение продукта
  
+   // подгрузка комментариев с бд
   useEffect(() => {
     fetch(
       `https://64e6020b09e64530d17f6dd0.mockapi.io/Flavors/${id}`
@@ -250,8 +273,24 @@ export const SingleProduct:React.FC = () =>{
       })
 
   }, [id]);
-
+   // подгрузка комментариев с бд
  
+
+  // формирование объекта для корзины товаров
+  const getDataCard = (event?:any) =>{
+    const newCard = {...cards} // формирование нового объекта с последующей заменой старого
+    newCard.id = nanoid(countCharacterForID); // добавление id к новому объекту 
+    newCard.imgUrl = product.url; // добавление url к новому объекту 
+    newCard.cardName = product.title; // добавление имени к новому объекту 
+    newCard.volume = event?.target.innerText ?? count; // добавление количества продукта к новому объекту (значение по умолчанию число внутри переменной count)
+    newCard.price = product.price; // добавление цены к новому объекту 
+    basketContext.cardsData = JSON.parse(localStorage.getItem("basketProduct") || '[]') // получение объекта из localStorage [] - значение по умолчанию, если не будет найден basketProduct
+    basketContext.cardsData.push(newCard) // добавление нового объекта в массив стора
+    localStorage.setItem("basketProduct", JSON.stringify(basketContext.cardsData)) // фиксация нового объекта в locaStorage
+    setCards(newCard) // замена старого объекта на новый
+  }
+ // формирование объекта для корзины товаров
+
   return (
     <SingleProductWrapperStyled>
         <Header/>
@@ -270,10 +309,10 @@ export const SingleProduct:React.FC = () =>{
                 <h2 className='card-name'>{product.title}</h2>
                 <p className='card-subtitle'>Объем мл.</p>
                 <FlexContainer wrap='wrap' btnsCardResponse>
-                  <button className='button-volume' tabIndex={0}>{product.volumes[0]}</button>
-                  <button className='button-volume' tabIndex={1}>{product.volumes[1]}</button>
-                  <button className='button-volume' tabIndex={2}>{product.volumes[2]}</button>
-                  <button className='button-volume' tabIndex={3}>{product.volumes[3]}</button>
+                  <button className='button-volume' tabIndex={0} onClick={(event:any) => getDataCard(event)}>{product.volumes[0]}</button>
+                  <button className='button-volume' tabIndex={1} onClick={(event:any) => getDataCard(event)}>{product.volumes[1]}</button>
+                  <button className='button-volume' tabIndex={2} onClick={(event:any) => getDataCard(event)}>{product.volumes[2]}</button>
+                  <button className='button-volume' tabIndex={3} onClick={(event:any) => getDataCard(event)}>{product.volumes[3]}</button>
                 </FlexContainer>
                 <p className='card-subtitle'>Кол-во</p>
                 <div className='card-step'>
@@ -283,7 +322,7 @@ export const SingleProduct:React.FC = () =>{
                 </div>
                 <p className='card-subtitle'>Стоимость</p>
                 <p className='card-price'>{product.price}₽</p>
-                <Button cardResponse padding='12px 72px'>В корзину</Button>
+                <Button cardResponse padding='12px 72px' onClick={() => getDataCard()}>В корзину</Button>
               </div>
           </FlexContainer>
           </div>
@@ -336,11 +375,11 @@ export const SingleProduct:React.FC = () =>{
             }
           </div>
           <AsideTitle textAlign='center' margin='100px 0 20px 0'>Вам так же может понравиться</AsideTitle>
-              <FlexContainer justify='space-evenly'>
+              <FlexContainer justify='space-between'>
               {
-              likeProductLoading ? [...new Array(3)].map((_, index) => <Skeleton key={index}/>) 
+              likeProductLoading ? [...new Array(4)].map((_, index) => <Skeleton key={index}/>) 
                         : productLikes.map((card, index) => (   
-                        <Card param={card} key={index} className='likes-product'/>
+                        <Card param={card} key={index} className='likes-product' />
                 )
               )
             }
