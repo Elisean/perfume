@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import { Header } from '../Components/Header/Header'
 import { Footer } from '../Components/Footer/Footer'
 import styled from 'styled-components'
@@ -22,7 +22,6 @@ const StyledWrapperUserPage = styled.section`
 `
 
 export const UserPage = () => {
- 
   return (
     <StyledWrapperUserPage>
       <Header/>

@@ -4,8 +4,8 @@ import { Link } from 'react-router-dom'
 import { FlexContainer } from '../../Containers/Flex-container/FlexContainer'
 import { Button } from '../Button/Button'
 import { nanoid } from 'nanoid'
-import BasketStore from '../../Store/BasketStore'
 import { observer } from 'mobx-react-lite'
+import BasketStore from '../../Store/BasketStore'
 
 
 const StyledCardWrapper = styled.section`
@@ -20,7 +20,6 @@ const StyledCardWrapper = styled.section`
   .card-image{
     width:245px;
     height:220px;
-    /* object-fit: cover; */
     border-radius:4px;
     margin:30px auto 0 auto;
   }

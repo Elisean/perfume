@@ -2,6 +2,8 @@ import React from 'react'
 import { MainContainer } from '../../Containers/Main-container/Main-container';
 import { styled } from 'styled-components';
 import { Swiper, SwiperSlide } from 'swiper/react';
+import { register } from 'swiper/element/bundle';
+import { Pagination } from'swiper/modules';
 import SliderBannerOne from "./../../images/slider-banner-1.png"
 import SliderBannerTwo from "./../../images/slider-banner-2.png"
 import SliderBannerThree from "./../../images/slider-banner-3.png"
@@ -12,8 +14,6 @@ import SliderBannerTwoResponse from "./../../images/slider-banner-2-768px.png"
 import SliderBannerThreeResponse from "./../../images/slider-banner-3-768px.png"
 import SliderBannerFourResponse from "./../../images/slider-banner-4-768px.png"
 import SliderBannerFiveResponse from "./../../images/slider-banner-5-768px.png"
-import { register } from 'swiper/element/bundle';
-import { Pagination } from'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/pagination';
 
@@ -220,7 +220,6 @@ const params = {
       },
   }
 
-
 export const Slider:React.FC = () => {
   return (
    
@@ -247,7 +246,7 @@ export const Slider:React.FC = () => {
 
                 <picture>
                 <source srcSet={SliderBannerOne} media="(min-width:768px)" />
-                <img className='slide-image' src={SliderBannerOneResponse} alt="image" />
+                <img className='slide-image' src={SliderBannerOneResponse} alt="slide-img" />
                 </picture>
 
             </SwiperSlide>
@@ -263,7 +262,7 @@ export const Slider:React.FC = () => {
 
                 <picture>
                 <source srcSet={SliderBannerTwo} media="(min-width:768px)" />
-                <img className='slide-image' src={SliderBannerTwoResponse} alt="image" />
+                <img className='slide-image' src={SliderBannerTwoResponse} alt="slide-img" />
                 </picture>
 
             </SwiperSlide>
@@ -281,7 +280,7 @@ export const Slider:React.FC = () => {
 
                 <picture>
                 <source srcSet={SliderBannerThree} media="(min-width:768px)" />
-                <img className='slide-image' src={SliderBannerThreeResponse} alt="image" />
+                <img className='slide-image' src={SliderBannerThreeResponse} alt="slide-img" />
                 </picture>
 
 
@@ -299,7 +298,7 @@ export const Slider:React.FC = () => {
 
                 <picture>
                 <source srcSet={SliderBannerFour} media="(min-width:768px)" />
-                <img className='slide-image' src={SliderBannerFourResponse} alt="image" />
+                <img className='slide-image' src={SliderBannerFourResponse} alt="slide-img" />
                 </picture>
 
             </SwiperSlide>
@@ -316,7 +315,7 @@ export const Slider:React.FC = () => {
 
                 <picture>
                 <source srcSet={SliderBannerFive} media="(min-width:768px)" />
-                <img className='slide-image' src={SliderBannerFiveResponse} alt="image" />
+                <img className='slide-image' src={SliderBannerFiveResponse} alt="slide-img" />
                 </picture>
 
 

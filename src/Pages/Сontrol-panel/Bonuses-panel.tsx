@@ -114,7 +114,7 @@ const StyledBonusesPanelWrapper = styled.section`
 `
 
 
-export const BonusesPanel = () => {
+export const BonusesPanel:React.FC = () => {
 
   const [statusStart, setStatusStart] = useState(true)
   const [statusMiddle, setStatusMiddle] = useState(false)

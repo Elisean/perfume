@@ -34,7 +34,7 @@ const StyledUserPanelWrapper = styled.section`
 
 `
 
-export const UserPanel = () => {
+export const UserPanel:React.FC = () => {
 
 
 // формирование полей для валидации

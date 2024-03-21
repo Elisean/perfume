@@ -4,7 +4,7 @@ export const ROUTES = {
     BASKET:"/basket",
     BONUSES:"/bonuses",
     DOCUMENTATION:"/documentation",
-    ABOUTUS:"/aboutUs",
+    ABOUTUS:"/aboutus",
     MANCATALOGPAGE:"/mancatalogpage",
     WOMENCATALOGPAGE:"/womencatalogpage",
     UNISEX:"/unisexcatalogpage",

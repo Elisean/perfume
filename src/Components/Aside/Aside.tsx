@@ -97,7 +97,6 @@ const AsideStyledWrapper = styled.section`
 
 export const Aside:React.FC<IAside> = (props:IAside) => {
 
-  // const {filtersOpen, setFiltersOpen} = useContext(FiltersContext);
   const filtersContext = useContext(FiltersStore);
 
   const body = document.body;

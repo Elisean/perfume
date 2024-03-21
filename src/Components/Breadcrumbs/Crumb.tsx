@@ -1,6 +1,5 @@
 import React from 'react'
 import { Link, useLocation, useParams } from 'react-router-dom'
-
 import { useEffect, useState } from 'react';
 
 
@@ -8,7 +7,6 @@ import { useEffect, useState } from 'react';
 
 export const Crumb:React.FC = () => {  
   const [data, setData] = useState<any>([]);
-
   const {id} = useParams();
   const location = useLocation()
 

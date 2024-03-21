@@ -6,7 +6,7 @@ import {ReactComponent as Logo} from '../../icons/logo.svg';
 import { FooterNavigation } from './Footer-navigation/Footer-navigation';
 import { Link } from 'react-router-dom';
 import { ROUTES } from '../../Utils/routes';
-
+import { scrollTop } from '../../Utils/scrollTop';
 
 
 const FooterStyled = styled.div`
@@ -31,16 +31,14 @@ const FooterStyled = styled.div`
     }
 ` 
 
-const linkBonuses = () =>{
-    window.scrollTo(0, 0);
-}
+
 
 export const Footer:React.FC = () => {
   return (
     <FooterStyled>
         <MainContainer footerresponse={'true'}>
             <FlexContainer direction='column'>
-                <div onClick={() => linkBonuses()} className='footer-logo'>
+                <div onClick={() => scrollTop()} className='footer-logo'>
                     <Link to={ROUTES.HOME}>
                         <Logo/>
                     </Link>

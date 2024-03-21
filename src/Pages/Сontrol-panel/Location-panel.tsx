@@ -6,13 +6,9 @@ import { AsideTitle } from '../../Components/Aside-title/Aside-title'
 import { Breadcrumbs } from '../../Components/Breadcrumbs/Breadcrumbs'
 import { FlexContainer } from '../../Containers/Flex-container/FlexContainer'
 import { AsidePanel } from '../../Components/Aside-panel/AsidePanel'
-import styled from 'styled-components'
-import { MainForm } from '../../Components/Main-Form/Main-Form'
-import { Input } from '../../Components/Input/Input'
-import { Button } from '../../Components/Button/Button'
 import { LocationForm } from './Location-form/LocationForm'
 import { LocationUserData } from './Location-form/LocationUserData'
-
+import styled from 'styled-components'
 
 const StyledLocationPanelWrapper = styled.section`
   .locationPanel-inner{
@@ -38,7 +34,7 @@ const StyledLocationPanelWrapper = styled.section`
   }
 `
 
-export const LocationPanel = () => {
+export const LocationPanel:React.FC = () => {
 
   const [openEditAddress, setOpenEditAddress] = useState(false);
   const [userData, setAuthUser] = useState<any>([])

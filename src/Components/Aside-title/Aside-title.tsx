@@ -12,7 +12,6 @@ export interface IProps{
     left?:string
     textAlign?:string
     margin?:string
-
 }
 
 
@@ -29,7 +28,7 @@ const TitleStyled = styled.div<IProps>`
     position:${props => props.position || 'relative'};
     top:${props => props.top || '0'};
     left:${props => props.left || '0'};
-    text-align:${props => props.textAlign || 'left '}
+    text-align:${props => props.textAlign || 'left '};
 
     ${props => props.response && css`
 
@@ -45,16 +44,12 @@ const TitleStyled = styled.div<IProps>`
         @media (max-width: 450px) {
             text-align:center;
             margin:20px 0;
-           
         }
     `}
     
 `
 
-
-
-
-export const AsideTitle:React.FC<IProps> = (props) =>{
+export const AsideTitle:React.FC<IProps> = (props) => {
     return (
     <TitleStyled {...props}>
         {props.children}

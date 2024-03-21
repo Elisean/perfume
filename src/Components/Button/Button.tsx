@@ -19,7 +19,7 @@ interface IButton{
   btnsorting?:string;
   closefilters?:string;
   closeFiltersResponce?:boolean;
-  onClick?:Function;
+  onClick?: (event: MouseEvent) => void
   btncards?:string;
   tabIndex?:number;
   type?:string;

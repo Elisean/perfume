@@ -1,6 +1,6 @@
 import React, { ReactNode } from 'react'
 
-import styled, {css} from 'styled-components';
+import styled from 'styled-components';
 
 
 
@@ -64,7 +64,7 @@ const FormWrapperStyled = styled.form<IForm>`
 `
 
 
-export const MainForm:React.FC<IForm> = ({children, action, className}) => {
+export const MainForm:React.FC<IForm> = ({children, action}) => {
   return (
     <FormWrapperStyled action={action} className='form'>
             {children}

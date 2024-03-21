@@ -20,5 +20,5 @@ export interface ContainersTypes {
     btnsCardResponse?:boolean;
     registrationresponse?:string
     ref?:any;
-    onClick?:any;
+    onClick?:(event: MouseEvent) => void;
 }

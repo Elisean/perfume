@@ -3,29 +3,28 @@ import styled from 'styled-components'
 import { Header } from '../Components/Header/Header'
 import { Footer } from '../Components/Footer/Footer'
 import { MainContainer } from '../Containers/Main-container/Main-container'
+import { Breadcrumbs } from '../Components/Breadcrumbs/Breadcrumbs'
+import { AsideTitle } from '../Components/Aside-title/Aside-title'
 import bonusesExampleOne from '../images/bonuses-example-1.png'
 import bonusesExampleTwo from '../images/bonuses-example-2.png'
 import bonusesExampleThree from '../images/bonuses-example-3.png'
 import bonusesExampleFour from '../images/bonuses-example-4.png'
 import bonusesExampleFive from '../images/bonuses-example-5.png'
-import { Breadcrumbs } from '../Components/Breadcrumbs/Breadcrumbs'
-import { AsideTitle } from '../Components/Aside-title/Aside-title'
 
 
 const BonusesPageStyled = styled.section`
   font-family: 'Open Sans', sans-serif;
   color: var(--text);
   font-size: 16px;
-  line-height: 140%;
 
   .title-page{
     font-family: 'Montserrat', sans-serif;
+    font-size:30px;
+    margin:50px 0 10px 0;
     background: linear-gradient(92deg, #C09E6C -1.94%, #FFEBCC 40.99%, #BF936B 98.79%);
     background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    font-size:30px;
-    margin:50px 0 10px 0;
   }
   .breadcrumps{
     margin:0 0 20px 0;

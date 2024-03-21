@@ -1,5 +1,4 @@
 import { useState, useEffect } from 'react';
-import { Breakpoints } from '../Breakpoints/Breakpoints.js';
 
 export const useResize = () => {
   const [width, setWidth] = useState(window.innerWidth);
@@ -16,10 +15,10 @@ export const useResize = () => {
 
   return {
     width,
-    isScreenSm: width >= Breakpoints.SCREEN_SM,
-    isScreenMd: width >= Breakpoints.SCREEN_MD,
-    isScreenLg: width >= Breakpoints.SCREEN_LG,
-    isScreenXl: width >= Breakpoints.SCREEN_XL,
-    isScreenXxl: width >= Breakpoints.SCREEN_XXL,
+    isScreenSm: width >= 320,
+    isScreenMd: width >= 568,
+    isScreenLg: width >= 768,
+    isScreenXl: width >= 993,
+    isScreenXxl: width >= 1300,
   };
 };

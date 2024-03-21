@@ -215,15 +215,14 @@ export const SingleProduct:React.FC = () =>{
     setOpenModal((showModal) => !showModal)
   }
 
-  const decrease = (event:any) =>{
-    
+  const decrease = () =>{
       if(count <= 1){
         setCount(count = 0)
       }else{
         setCount(count - 1)
       }
   }
-  const increase = (event:any) =>{
+  const increase = () =>{
     setCount(count + 1)
     if(count === 100){
       setCount(count = 100)
@@ -278,9 +277,9 @@ export const SingleProduct:React.FC = () =>{
                 </FlexContainer>
                 <p className='card-subtitle'>Кол-во</p>
                 <div className='card-step'>
-                  <button className='step-minus' onClick={(event)=> decrease(event)}>-</button>
+                  <button className='step-minus' onClick={()=> decrease()}>-</button>
                   <button className='step-count'>{count}</button>
-                  <button className='step-plus'onClick={(event)=> increase(event)}>+</button>
+                  <button className='step-plus'onClick={()=> increase()}>+</button>
                 </div>
                 <p className='card-subtitle'>Стоимость</p>
                 <p className='card-price'>{product.price}₽</p>

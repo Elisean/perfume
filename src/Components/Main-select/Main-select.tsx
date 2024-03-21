@@ -1,4 +1,4 @@
-import React, { ReactNode, createContext, useState } from 'react'
+import React, { ReactNode } from 'react'
 import styled, { css } from 'styled-components'
 import { FlexContainer } from '../../Containers/Flex-container/FlexContainer'
 
@@ -194,17 +194,13 @@ const StyledSelectInner = styled.div <SelectProps>`
 
 
 export const MainSelect:React.FC<SelectProps> = (props:SelectProps) => {
-    
   return (
-  
     <StyledSelectInner {...props} tabIndex='0'>
         <FlexContainer justify='space-between' align='center'>
             {props.name}
             {props.children}
         </FlexContainer>
     </StyledSelectInner>
-
-    
   )
 }
 

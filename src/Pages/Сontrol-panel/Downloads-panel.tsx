@@ -30,7 +30,7 @@ const StyledDownLoadsPanelWrapper = styled.section`
 ` 
 
 
-export const DownloadsPanel = () => {
+export const DownloadsPanel:React.FC = () => {
 
   return (
 

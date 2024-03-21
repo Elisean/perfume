@@ -6,10 +6,10 @@ interface Iinput{
     type:string;
     placeholder?:string;
     onChange?:any;
-    onBlur?:any
-    onFocus?:any
-    onInput?:any
-    onClick?:any
+    onBlur?:(event: MouseEvent) => void;
+    onFocus?:(event: MouseEvent) => void;
+    onInput?:(event: MouseEvent) => void;
+    onClick?: (event: MouseEvent) => void
     id?:string
     className?:string
     name?:string
@@ -25,9 +25,6 @@ interface Iinput{
 
 
 const StyldeInputWraper = styled.div`
-
-
-
 
     .main-input{
         border:2px solid #514941;

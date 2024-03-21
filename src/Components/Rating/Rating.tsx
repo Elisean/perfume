@@ -1,10 +1,9 @@
-import React, {useEffect, useState} from 'react'
+import React, {useState} from 'react'
 import { ReactComponent as Star } from '../../icons/stars-icon.svg';
 import styled from 'styled-components';
 
 
 interface IRating{
-
   onChange?:any
   name?:any
   value?:any
@@ -22,8 +21,6 @@ const RatingStarsStyled = styled.div`
     }
 
 `
-
-
 export const Rating:React.FC<IRating> = ({name, onChange}) => {
     const [rating, setRating] = useState<any>(null)
     const [hover, setHover] = useState<any>(null)
@@ -33,7 +30,7 @@ export const Rating:React.FC<IRating> = ({name, onChange}) => {
   }
   return (
     <RatingStarsStyled>
-        {[...Array(5)].map((star, index) => {
+        {[...Array(5)].map((index) => {
             const currentRating = index + 1
           return (
             <label>
@@ -51,7 +48,6 @@ export const Rating:React.FC<IRating> = ({name, onChange}) => {
                     color={currentRating <= (hover || rating) ? "#FFEBCC" : "#211E1C"} 
                     onMouseEnter={()=> setHover(currentRating)}
                     onMouseLeave={()=> setHover(null)}
-                    
                 />
             </label>
           )
