@@ -59,6 +59,7 @@ const DocumentationPageStyled = styled.section`
 `
 
 export const DocumentationPage = () => {
+  
   return (
     <DocumentationPageStyled>
       <Header/>

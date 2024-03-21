@@ -5,6 +5,8 @@ import  BurgerLogo from '../../../../icons/logo.svg'
 import { HeaderLocation } from '../../Header-top/Header-location/Header-location'
 import { HeaderPhone } from '../../Header-top/Header-phone/Header-phone'
 import { HeaderMenu } from '../../Header-top/Header-menu/Header-menu'
+import { Link } from 'react-router-dom'
+import { ROUTES } from '../../../../Utils/routes'
 
 
 const HeaderBurgerWrapper = styled.div`
@@ -218,7 +220,8 @@ const HeaderBurgerMenuStyled = styled.div`
 
 export const HeaderBurger:React.FC = () => {
   const [openBurger, setOpenBurger] = useState(false);
-  
+  const body = document.body;
+  openBurger ? body.classList.add('overflow') : body.classList.remove('overflow');
   const wrapRef = useRef<HTMLDivElement>(null)
 
   const handleClosed = (event:any) =>{
@@ -247,9 +250,9 @@ export const HeaderBurger:React.FC = () => {
               <img className='burger-logo' src={BurgerLogo} alt="logo" />
              <nav className='burger-nav'>
                 <ul className='nav-list'>
-                  <li className='navigation-item'><a href="#" className='nav-link'>Мужские</a></li>
-                  <li className='navigation-item'><a href="#" className='nav-link'>Женские</a></li>
-                  <li className='navigation-item'><a href="#" className='nav-link'>Унисекс</a></li>
+                  <li className='navigation-item'><Link to={ROUTES.MANCATALOGPAGE} className='nav-link'>Мужские</Link></li>
+                  <li className='navigation-item'><Link to={ROUTES.WOMENCATALOGPAGE} className='nav-link'>Женские</Link></li>
+                  <li className='navigation-item'><Link to={ROUTES.UNISEX} className='nav-link'>Унисекс</Link></li>
                 </ul>
              </nav>
              <div className='burger-location'>

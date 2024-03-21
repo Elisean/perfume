@@ -1,4 +1,4 @@
-import React, {useRef, useState} from 'react'
+import React, { useContext } from 'react'
 import styled from 'styled-components'
 import { ReactComponent as Panel } from '../../icons/panel.svg' 
 import { ReactComponent as  Bonuses} from '../../icons/bonuses-icon.svg' 
@@ -6,9 +6,9 @@ import { ReactComponent as  Order} from '../../icons/order.svg'
 import { ReactComponent as  Downloads} from '../../icons/downloads.svg' 
 import { ReactComponent as  LocationPanel} from '../../icons/location-panel.svg' 
 import { ReactComponent as  UserPanel} from '../../icons/user-panel.svg'
-import { ReactComponent as  Exid} from '../../icons/exid.svg'
+import { ReactComponent as  Exit} from '../../icons/exit.svg'
 import { NavLink } from 'react-router-dom'
-
+import { useAuthContext } from '../../App/App'
 
 
 
@@ -42,12 +42,6 @@ const StyledWrapperAsidePanel = styled.section`
             color: var(--gradient, linear-gradient(92deg, #C09E6C -1.94%, #FFEBCC 40.99%, #BF936B 98.79%));
         }
     }
-    /* .nav-item:focus{
-        background-color: var(--gray);
-        svg{
-            color: var(--gradient, linear-gradient(92deg, #C09E6C -1.94%, #FFEBCC 40.99%, #BF936B 98.79%));
-        }
-    } */
     .nav-item:hover{
         background-color: var(--gray);
         svg{
@@ -57,9 +51,13 @@ const StyledWrapperAsidePanel = styled.section`
   
 `
 
-export const AsidePanel:React.FC= () => {
-   
+export const AsidePanel:React.FC = () => {
 
+    const authContext = useContext(useAuthContext)
+
+    const exit = () =>{
+        authContext.setUseAuth(false)
+    }
   
   return (
     <StyledWrapperAsidePanel>
@@ -71,7 +69,7 @@ export const AsidePanel:React.FC= () => {
                 <NavLink state='Загрузки' to='/DownloadsPanel' className={({isActive}) => isActive ? 'nav-item-active' : 'nav-item'}>Загрузки <Downloads/></NavLink>
                 <NavLink state='Адрес' to='/LocationPanel' className={({isActive}) => isActive ? 'nav-item-active' : 'nav-item'}>Адрес <LocationPanel/></NavLink>
                 <NavLink state='Детали профиля' to='/UserPanel' className={({isActive}) => isActive ? 'nav-item-active' : 'nav-item'}>Детали профиля <UserPanel/></NavLink>
-                <NavLink state='' to='/exid' className={({isActive}) => isActive ? 'nav-item-active' : 'nav-item'}>Выход <Exid/></NavLink>
+                <NavLink to='/registration' className='nav-item' onClick={()=> exit()}>Выход <Exit/></NavLink>
             </ul>
       </nav>
     </StyledWrapperAsidePanel>

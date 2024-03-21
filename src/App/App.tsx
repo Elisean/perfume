@@ -20,16 +20,17 @@ import { LocationPanel } from "../Pages/Сontrol-panel/Location-panel";
 import { UserPanel } from "../Pages/Сontrol-panel/User-panel";
 
 
-export const FiltersContext = createContext<any>('');
+export const useAuthContext = createContext<any>('');
 
 export const App:React.FC = () => {
-  const [filtersOpen, setFiltersOpen] = useState(false);
+  const [useAuth, setUseAuth] = useState(false);
 
+  
 
   return (
     <>
       <div className='app'>
-            <FiltersContext.Provider value={{filtersOpen, setFiltersOpen}}>
+            <useAuthContext.Provider value={{useAuth, setUseAuth}}>
               <Routes>
                   <Route element={<HomePage />}  path={ROUTES.HOME} />
                   <Route element={<RegistationPage/>}  path={ROUTES.REGISTRATION} />
@@ -49,7 +50,7 @@ export const App:React.FC = () => {
                   <Route element={<SingleProduct/>} path={ROUTES.HOME + ROUTES.SINGLEPRODUCT + ':id/'}/>
                   <Route element={<NotFoundPage/>} path={ROUTES.NOTFOUNDPAGE} />
               </Routes>  
-            </FiltersContext.Provider>
+            </useAuthContext.Provider>
       </div>
     </>
 

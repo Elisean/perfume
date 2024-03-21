@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import styled from 'styled-components'
 import { Header } from '../Components/Header/Header'
 import { Footer } from '../Components/Footer/Footer'
@@ -24,15 +24,17 @@ const StyledUserPageWrapper = styled.section`
 
 export const RegistationPage = () => {
 
-  return (
-    <StyledUserPageWrapper>
 
+  return (
+        
+
+    <StyledUserPageWrapper>
         <Header/>
           <MainContainer>
 
           <AsideTitle margin='0 0 50px 0'> Мой аккаунт </AsideTitle>
           <Breadcrumbs />
-
+      
             <FlexContainer registrationresponse={'true'} justify='space-between'>
             <SingIn/>
             <SingUp/>
@@ -42,7 +44,6 @@ export const RegistationPage = () => {
 
     
         <Footer/>
-      
     </StyledUserPageWrapper>
   )
 }

@@ -57,9 +57,9 @@ export const HeaderMenu:React.FC = () => {
     <FlexContainer>
         <nav className='header-nav'>
             <ul className='nav-list'>
-                <Link to={{pathname:"/bonuses"}} state="Бонусы" className='nav-item'><li>Бонусы</li></Link>
-                <Link to={{pathname:"/documentation"}} state="Документация" className='nav-item'><li>Документация</li></Link>
-                <Link to={{pathname:"/aboutUs"}} state="О нас" className='nav-item'><li>О нас</li></Link> 
+                <Link to={{pathname: ROUTES.BONUSES}} state="Бонусы" className='nav-item'><li>Бонусы</li></Link>
+                <Link to={{pathname:ROUTES.DOCUMENTATION}} state="Документация" className='nav-item'><li>Документация</li></Link>
+                <Link to={{pathname:ROUTES.ABOUTUS}} state="О нас" className='nav-item'><li>О нас</li></Link> 
             </ul>
         </nav>
     </FlexContainer>    

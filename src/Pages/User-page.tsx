@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Header } from '../Components/Header/Header'
 import { Footer } from '../Components/Footer/Footer'
 import styled from 'styled-components'
@@ -22,8 +22,7 @@ const StyledWrapperUserPage = styled.section`
 `
 
 export const UserPage = () => {
-
-
+ 
   return (
     <StyledWrapperUserPage>
       <Header/>
@@ -33,7 +32,7 @@ export const UserPage = () => {
         <FlexContainer>
           <AsidePanel/> 
           <p className='user-description'>
-          Добро пожаловать, USER! <br />
+          Добро пожаловать, User <br />
           Из главной страницы аккаунта вы можете посмотреть ваши недавние заказы, настроить платежный адрес и адрес доставки, а также изменить пароль и основную информацию
           </p>
         </FlexContainer>

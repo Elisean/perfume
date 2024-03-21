@@ -4,7 +4,6 @@ import { ReactComponent as PhoneSVG } from '../../../../icons/phone-call.svg'
 import styled from 'styled-components'
 
 const PhoneStyled = styled.div`
-
     .header-phone{
         padding: 0 0 0 10px;
     }
@@ -24,7 +23,5 @@ export const HeaderPhone:React.FC = () => {
         <a className='header-phone' href="tel:7(937)1367766" type='phone'>7(937) 136 - 77 - 66</a>
     </FlexContainer>
     </PhoneStyled>
-   
-
   )
 }

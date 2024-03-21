@@ -1,8 +1,8 @@
-import React, {useContext, ReactNode} from 'react'
+import React, { ReactNode, useContext } from 'react'
 import { styled } from 'styled-components'
-import { FiltersContext } from '../../App/App'
 import { createPortal } from 'react-dom'
 import { ReactComponent as Arrow } from '../../icons/arrow.svg'
+import FiltersStore from '../../Store/FiltersStore'
 
 interface IAside{
   children? : ReactNode
@@ -97,19 +97,20 @@ const AsideStyledWrapper = styled.section`
 
 export const Aside:React.FC<IAside> = (props:IAside) => {
 
-  const {filtersOpen, setFiltersOpen} = useContext(FiltersContext);
+  // const {filtersOpen, setFiltersOpen} = useContext(FiltersContext);
+  const filtersContext = useContext(FiltersStore);
 
   const body = document.body;
-  filtersOpen ? body.classList.add('overflow') : body.classList.remove('overflow');
+  filtersContext.isFilters ? body.classList.add('overflow') : body.classList.remove('overflow');
 
 
   return (
     createPortal(
       <AsideStyledWrapper>
-      <div className={filtersOpen ? 'show-aside' : 'hide-aside'}>
+      <div className={filtersContext.isFilters ? 'show-aside' : 'hide-aside'}>
           {props.children}
           <div className='aside-inner'>
-            <button type='button' className={filtersOpen ? 'show-aside-response' : 'hide-aside-response'} onClick={()=> setFiltersOpen(!filtersOpen)}><Arrow/></button>
+            <button type='button' className={filtersContext.isFilters ? 'show-aside-response' : 'hide-aside-response'} onClick={()=> filtersContext.setFilters(!filtersContext.isFilters)}><Arrow/></button>
           </div>
       </div>
     </AsideStyledWrapper>,document.body

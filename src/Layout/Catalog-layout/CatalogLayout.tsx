@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useContext } from 'react'
 import { Header } from '../../Components/Header/Header'
 import { Footer } from '../../Components/Footer/Footer'
 import { MainContainer } from '../../Containers/Main-container/Main-container'
@@ -7,6 +7,9 @@ import { Skeleton } from '../HomePage-catalog/Catalog-components/Catalog-card/Sk
 import { Card } from '../../Components/Card/Card'
 import { Pagination } from '../HomePage-catalog/Catalog-components/Pagination'
 import styled from 'styled-components'
+import { observer } from 'mobx-react-lite'
+import FiltersStore from '../../Store/FiltersStore'
+
 
 interface ICatalogLayout{
     title?:string
@@ -62,13 +65,15 @@ const StyledLayoutWrapper = styled.section`
   }
 `
 
-export const CatalogLayout:React.FC<ICatalogLayout> = ({title, filter}) => {
+export const CatalogLayout:React.FC<ICatalogLayout> = observer(({filter,title}) => {
+
+   
     const [cards, setCards] = useState<any[]>([]);
     const [isLoading, setIsLoading] = useState(true);
     const [currentPage, setCurrentPage] = useState(1);
     const countCards = 12;
     
-  
+ 
 
   useEffect(() => {
     fetch(`https://64e6020b09e64530d17f6dd0.mockapi.io/Flavors?page=${currentPage}&filter=${filter}&limit=${countCards}&`)
@@ -100,7 +105,7 @@ export const CatalogLayout:React.FC<ICatalogLayout> = ({title, filter}) => {
         <Footer/>
      </StyledLayoutWrapper>
   )
-}
+})
 
 
 

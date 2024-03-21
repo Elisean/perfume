@@ -3,6 +3,8 @@ import { Button } from '../../Components/Button/Button';
 import { MainContainer } from '../../Containers/Main-container/Main-container';
 import bgStar from '../../images/bg-stars.png';
 import { AsideTitle } from '../../Components/Aside-title/Aside-title';
+import { Link } from 'react-router-dom';
+import { ROUTES } from '../../Utils/routes';
 
 
 const PurchaseBonusesStyles = styled.div`
@@ -79,6 +81,11 @@ const PurchaseBonusesStyles = styled.div`
 `
 
 export const PurchaseBonuses = () =>{
+
+    const linkBonuses = () =>{
+        window.scrollTo(0, 0);
+    }
+
     return (
         <PurchaseBonusesStyles>
             <div className='purchase-inner'>
@@ -86,7 +93,7 @@ export const PurchaseBonuses = () =>{
             <AsideTitle response={'true'} top='-70px'>Бонусы от покупок</AsideTitle>
                 <h2 className='bonus-title'>Получайте кэшбэк за покупки</h2>
                 <h3 className='bonus-subtitle'>Бонусные баллы за регистрацию и покупки</h3>
-                <Button responsebonusesbtn={'true'} top='35px' left='90px' padding='12px 0'>Узнать подробнее</Button>
+                <Button responsebonusesbtn={'true'} top='35px' left='90px' padding='12px 0'> <Link state='бонусы' to={ROUTES.BONUSES} onClick={()=> linkBonuses()}> Узнать подробнее </Link> </Button>
             </MainContainer>
             </div>
         </PurchaseBonusesStyles>

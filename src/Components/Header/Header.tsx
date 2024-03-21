@@ -26,7 +26,6 @@ const HeaderStyledWrapper = styled.div`
 
 `
 
-
 export const Header:React.FC = () => {
   return (
     <HeaderStyledWrapper>

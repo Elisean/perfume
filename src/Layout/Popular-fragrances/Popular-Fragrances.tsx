@@ -47,13 +47,16 @@ const PopularFragrancesStyled = styled.div`
        margin:0 20px 0 0;
     
     }
-    .card-img-hover{
-        transform: scaleX(1.5);
-        height: 500px;
-        transition: .5s;
-        padding:0 20px 0 0;
-        margin:0 100px;
+    .card-img:hover{
+      transform: scaleX(1.5);
+      height: 500px;
+      transition: .5s;
+      padding:0 20px 0 0;
+      margin:0 100px;
+      
     }
+   
+ 
   @media (max-width: 1300px) {
     pointer-events: none;
     .card-img{
@@ -76,11 +79,11 @@ const PopularFragrancesStyled = styled.div`
     .card-title{
       transform: translate(-50%);
     }
-      .card-img{
-        padding: 0;
-        margin:0 10px 0 10px;
-        height: 295px;
-      }
+    .card-img{
+      padding: 0;
+      margin:0 10px 0 10px;
+      height: 295px;
+    }
   }
   @media (max-width: 768px) {
     .fragrances-item{
@@ -125,9 +128,6 @@ const PopularFragrancesStyled = styled.div`
 `
 
 export const PopularFragrances:React.FC = () => {
-    const [bombshellHover, setBombshellHover] = React.useState(false);
-    const [creedHover, setCreedHoverHover] = React.useState(false);
-    const [genderHover, setGenderHover] = React.useState(false);
 
   return (
     <PopularFragrancesStyled>
@@ -135,21 +135,21 @@ export const PopularFragrances:React.FC = () => {
             <AsideTitle response={'true'} top='-40px'>Популярные ароматы</AsideTitle>
             <ul className='fragrances-inner'>
             <FlexContainer response={'true'} justify='space-between' align='center'>
-              <li className='fragrances-item' onMouseOver={()=> setBombshellHover(!bombshellHover)} onMouseLeave={()=> setBombshellHover(!bombshellHover)}>
+              <li className='fragrances-item'>
               <h3 className='card-title'>Для неё</h3>
-                <img className={bombshellHover ? 'card-img-hover' : 'card-img'} src={CardImageBombshel} alt="images" />
+                <img className='card-img' src={CardImageBombshel} alt="images" />
                 <p className='card-subtitle'>Victoria Secret Bombshell</p>
                 <Button responsebtn={'true'} padding='12px 72px' top='85%' left='50%'  position='absolute' transform='translate(-57%, 0)'>в корзину</Button>
               </li>
-              <li className='fragrances-item' onMouseOver={()=> setCreedHoverHover(!creedHover)} onMouseLeave={()=> setCreedHoverHover(!creedHover)}>
+              <li className='fragrances-item'>
               <h3 className='card-title'>Для него</h3>
-                <img className={creedHover ? 'card-img-hover' : 'card-img'} src={CardImagesCreed} alt="images" />
+                <img className='card-img' src={CardImagesCreed} alt="images" />
                 <p className='card-subtitle'>Aventus By Creed</p>
                 <Button responsebtn={'true'} padding='12px 72px' top='85%' left='50%' position='absolute' transform='translate(-57%, 0)'>в корзину</Button>
               </li>
-              <li className='fragrances-item' onMouseOver={()=> setGenderHover(!genderHover)} onMouseLeave={()=> setGenderHover(!genderHover)}>
+              <li className='fragrances-item'>
               <h3 className='card-title'>Унисекс</h3>
-                <img className={genderHover ? 'card-img-hover' : 'card-img'} src={CardImagesNarcotiqe} alt="images" />
+                <img className='card-img' src={CardImagesNarcotiqe} alt="images" />
                 <p className='card-subtitle'>Narcotiqe</p>
                 <Button responsebtn={'true'} padding='12px 72px' top='85%' left='50%' position='absolute'  transform='translate(-57%, 0)'>в корзину</Button>
               </li>

@@ -1,17 +1,15 @@
-import React, { useState, useEffect, useRef, useContext } from 'react'
+import React, { useState, useEffect, useContext } from 'react'
 import styled from 'styled-components'
 import { MainSelect } from '../../../Components/Main-select/Main-select'
 import { ReactComponent as Chevron } from '../../../icons/chevron-down.svg'
 import { MainForm } from '../../../Components/Main-Form/Main-Form'
-import  FiltersStore  from '../../../Store/FiltersStore'
 import { observer } from 'mobx-react-lite'
 import { Input } from '../../../Components/Input/Input'
 import { ReactComponent as Search } from '../../../icons/search.svg'
-
+import FiltersStore from '../../../Store/FiltersStore'
 
 interface IBrand{
     getChangeBrand?:any
-    
 }
 
 const brandSearchList = [
@@ -28,15 +26,13 @@ const brandSearchList = [
 ]
 
 
-
-
 const BrandWrapperStyled = styled.section`
     position: relative;
     
-    @media (max-width:568px) {
-        padding:10px 0 0 0;
-        overflow:scroll;
-    }
+@media (max-width:568px) {
+    padding:10px 0 0 0;
+    overflow:scroll;
+}
 
 .brand-icon{
     transform: rotate(180deg)
@@ -54,7 +50,7 @@ const BrandWrapperStyled = styled.section`
     }
 }
 .brand-search-list{
-    margin:40px 0 0 0;
+    padding:45px 0 0 0;
     height:340px;
     overflow-y: scroll;
 }
@@ -108,6 +104,7 @@ const BrandWrapperStyled = styled.section`
     text-transform: uppercase;
     padding:10px 30px 10px 10px;
     margin:0 30px 0 20px;
+    cursor: pointer;
 }
 .brand-search-item:hover{
     border-radius: 4px;
@@ -115,22 +112,12 @@ const BrandWrapperStyled = styled.section`
     color: var(--gray);
     font-weight: 700;
 }
-// .brand-search-item:focus{
-//     border-radius: 4px;
-//     background: var(--gradient, linear-gradient(92deg, #C09E6C -1.94%, #FFEBCC 40.99%, #BF936B 98.79%));
-//     color: var(--gray);
-//     font-weight: 700;
-// }
-
-.brand-search-item-target{
+.brand-search-item:focus{
     border-radius: 4px;
-    // background: var(--gradient, linear-gradient(92deg, #C09E6C -1.94%, #FFEBCC 40.99%, #BF936B 98.79%));
+    background: var(--gradient, linear-gradient(92deg, #C09E6C -1.94%, #FFEBCC 40.99%, #BF936B 98.79%));
     color: var(--gray);
     font-weight: 700;
-    background-color:red;
 }
-
-
 .input-brand{
     margin:6px 0 0 0; 
     width:260px;
@@ -140,9 +127,6 @@ const BrandWrapperStyled = styled.section`
 `
 
 
-
-
-
 const filtersBrand = (searchText:string, brandSearchList:string[]) =>{
     if(!searchText) {
         return brandSearchList;
@@ -150,45 +134,28 @@ const filtersBrand = (searchText:string, brandSearchList:string[]) =>{
     return brandSearchList.filter((brand:string)=>
         brand.toLowerCase().includes(searchText.toLowerCase())
      );
-}
-
-
-
+} 
 
 export const Brand:React.FC<IBrand> = observer(() => {
-   
-        const [brandList, setBrandList] = useState(brandSearchList);
-     
-        // state для получение данных из search 
-        const [searchItem, setSearchItem] = useState('');
-        // state для получение данных из search 
-         const storeContext = useContext(FiltersStore)
- 
-     
-        const [handleClick, setHandleClick] = useState(false);
-     
-        const refItem = useRef<HTMLLIElement>(null);
+    const filtersContext = useContext(FiltersStore) // получаем контекст из стора
+    const [searchBrandList, setSearchBrandList] = useState(brandSearchList)
 
+    const [searchItemBrand, setSearchItemBrand] = useState<any>('')
 
-        const handleChangeLetters = (event:any) =>{
-            setSearchItem(event.target.value);
-        }
+    const handleChangeLetters = (event:any) =>{
+        setSearchItemBrand(event.target.value);
+    }
+
+    useEffect(()=>{
+        const Debounce = setTimeout(()=>{
+            const filteredBrands = filtersBrand(searchItemBrand, brandSearchList);
+            setSearchBrandList(filteredBrands);
+        }, 300)
+        return () => clearTimeout(Debounce)
+    }, [searchItemBrand])
     
-        const getAllBrands = (event:any) =>{
-           storeContext.getBrands(event.target.textContent) 
-        }
-     
-        useEffect(()=>{
-             const Debounce = setTimeout(()=>{
-                 const filteredBrands = filtersBrand(searchItem, brandSearchList);
-                 setBrandList(filteredBrands);
-             }, 300)
-             return () => clearTimeout(Debounce)
-        }, [searchItem])
-     
+    
        return (
-       
-        
          <BrandWrapperStyled>
                  <MainSelect brandselect={'true'} width='280px' padding='7px 30px'>
                      Все бренды
@@ -199,15 +166,15 @@ export const Brand:React.FC<IBrand> = observer(() => {
      
                  <div className='brand-search-wrapper'>
                      <MainForm >
-                        <Input type="search" placeholder="Найти парфюм.." className='form-input input-brand' onChange={(event:any)=> handleChangeLetters(event)}/>
+                        <Input type="search" placeholder="Найти парфюм.." className='form-input input-brand' onChange={(event:any)=> handleChangeLetters(event)} /> 
                         <button type="submit" className="form-btn-search"><Search/></button>
                      </MainForm>
                      <p className='brand-search-title'>Все</p>
      
                  <ul className='brand-search-list'>
                      {
-                         brandList.map((perfume, index)=>(
-                             <li ref={refItem} className='brand-search-item' tabIndex={index} key={index} onClick={(event:any)=> getAllBrands(event)}>{perfume}</li>
+                         searchBrandList.map((perfume, index)=>(
+                             <li className='brand-search-item' tabIndex={index} key={index} onClick={(event:any) => filtersContext.getBrands(event.target.textContent)}>{perfume}</li>
                          ))
                      }    
                  </ul>
@@ -217,6 +184,6 @@ export const Brand:React.FC<IBrand> = observer(() => {
        )
      }
      
-
-
 )
+
+

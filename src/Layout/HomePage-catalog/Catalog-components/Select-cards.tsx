@@ -6,7 +6,7 @@ import { MainSelect } from '../../../Components/Main-select/Main-select'
 import { ReactComponent as Filter } from '../../../icons/filters.svg'
 import { ReactComponent as Chevron } from '../../../icons/chevron-down.svg'
 import { Sorting } from './Sorting'
-import { FiltersContext } from '../../../App/App'
+import FiltersStore from '../../../Store/FiltersStore'
 import { useResize } from '../../../Hooks/useResize'
 import { Filters } from './Filters'
 import { Aside } from '../../../Components/Aside/Aside'
@@ -16,6 +16,7 @@ import { Gender } from '../Filters-components/Gender'
 import { Notes } from '../Filters-components/Notes'
 import { Button } from '../../../Components/Button/Button'
 import { ReactComponent as Closed } from '../../../icons/closed.svg'
+import { observer } from 'mobx-react-lite';
 
 
 const StyledWrapper = styled.div`
@@ -99,51 +100,32 @@ const StyledWrapper = styled.div`
 
 
 
-export const SelectCards:React.FC<any> = ({receiveBrands, receiveNotes, receivePrices}) => {
+export const SelectCards:React.FC<any> = observer(() => {
   const [openSorting, setOpenSorting] = useState(false);
-  const {filtersOpen, setFiltersOpen} = useContext(FiltersContext);
+  const filtersContext = useContext(FiltersStore);
   const { isScreenMd, isScreenSm } = useResize();
 
-  const [letter, setLetter] = useState('');
-  const [checked, setChecked] = useState('');
-  const [notes, setNotes] = useState('');
-  const [prices, setPrices] = useState('');
-
-
+ 
   const resetFilterResponce = () =>{
     window.location.reload();
   }
 
-  
-  // Если что почистить
-
-  const getBrands = (brand:any) =>{
-    setLetter(letter)
-    receiveBrands(brand) 
+  const changeFilters = () =>{
+    filtersContext.setFilters(!filtersContext.isFilters)
+    filtersContext.filters();
   }
 
-  const getNotes = (note:any) =>{
-    setNotes(note)
-    receiveNotes(note)
-  }
-
-  const getPrices = (price:any) =>{
-    setPrices(price)
-    receivePrices(price)
-  }
-  
-  
 
   return (
     <StyledWrapper>
       <FlexContainer filtersresponse={'true'} align='center'>
-        <MainSelect responseselect={'true'} left={filtersOpen ? '7px': '0'} padding='10px 20px' width={filtersOpen ? '290px' : '305px'} fontSize='18px' onClick={()=> setFiltersOpen(!filtersOpen)}>
+        <MainSelect responseselect={'true'} left={filtersContext.isFilters ? '7px': '0'} padding='10px 20px' width={filtersContext.isFilters ? '290px' : '305px'} fontSize='18px' onClick={()=> changeFilters()}>
           Фильтры
           <Filter />
         </MainSelect>
-        <div className={filtersOpen ? `${'show'}` : `${'hide'}` }>
+        <div className={filtersContext.isFilters ? 'show' : 'hide' }>
           {
-            isScreenMd && isScreenSm ? <Filters getBrands={getBrands} getNotes={getNotes} getPrices={getPrices} /> :
+            isScreenMd && isScreenSm ? <Filters /> :
             <Aside>
               <div className='before-aside'>
                 <Brand />
@@ -162,7 +144,7 @@ export const SelectCards:React.FC<any> = ({receiveBrands, receiveNotes, receiveP
             </Aside>
           }
         </div>
-        <MainSelect responseselectpop={'true'} padding='10px 30px' width='305px' left={filtersOpen ? '35px' : '20px'} fontSize='18px' onClick={() => setOpenSorting(!openSorting)}>
+        <MainSelect responseselectpop={'true'} padding='10px 30px' width='305px' left={filtersContext.isFilters ? '35px' : '20px'} fontSize='18px' onClick={() => setOpenSorting(!openSorting)}>
           По популярности
           <Chevron/>
         </MainSelect>
@@ -172,4 +154,4 @@ export const SelectCards:React.FC<any> = ({receiveBrands, receiveNotes, receiveP
       </FlexContainer>
     </StyledWrapper>
   )
-}
+})

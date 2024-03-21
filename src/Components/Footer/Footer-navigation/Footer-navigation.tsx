@@ -18,6 +18,7 @@ const FooterNavigationStyled = styled.nav`
     margin:27.5px 0 0 0;
     display: flex;
     align-items: center;
+    cursor: pointer;
 
     .location{
         position: relative;

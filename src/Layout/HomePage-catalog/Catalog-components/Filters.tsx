@@ -40,7 +40,7 @@ const FiltersWrapperStyled = styled.section`
     }
 ` 
 
-export const Filters:React.FC<any> = ({getBrands, getNotes, getPrices}) => {
+export const Filters:React.FC<any> = () => {
     const [brandOpen, setBrandOpen] = useState(false);
     const [priceOpen, setPriceOpen] = useState(false);
     const [genderOpen, setGenderOpen] = useState(false);
@@ -51,18 +51,8 @@ export const Filters:React.FC<any> = ({getBrands, getNotes, getPrices}) => {
     const resetFilter = () =>{
         window.location.reload();
     }
-    // Получение слов из инпута компонента бренд
-   
-    const getChangeBrands = (brand:any) =>{
-        getBrands(brand)
-    }
 
-    const getChangeNotes = (note:any) =>{
-        getNotes(note); 
-    }
-    const getChangePrices = (price:any) =>{
-        getPrices(price)
-    }
+
 
   return (
     <FiltersWrapperStyled>
@@ -74,7 +64,7 @@ export const Filters:React.FC<any> = ({getBrands, getNotes, getPrices}) => {
             </div>
        </MainSelect>
         {
-            brandOpen ? <Brand getChangeBrand={getChangeBrands}/> : ''
+            brandOpen ? <Brand/> : ''
         }
        <MainSelect filtersselect={'true'} width='285px' padding='5px 5px 10px' onClick={()=>setPriceOpen(!priceOpen)}>
             <p>Стоимость</p>    
@@ -83,7 +73,7 @@ export const Filters:React.FC<any> = ({getBrands, getNotes, getPrices}) => {
             </div>
        </MainSelect>
         {
-          priceOpen ? <Prices getChangePrice={getChangePrices}/> : ''
+          priceOpen ? <Prices/> : ''
         }
 
 
@@ -95,7 +85,7 @@ export const Filters:React.FC<any> = ({getBrands, getNotes, getPrices}) => {
        </MainSelect>
 
        {
-          genderOpen ? <Gender /> : ''
+          genderOpen ? <Gender/> : ''
        }   
 
        <MainSelect filtersselect={'true'} width='285px' padding='5px 5px 20px 5px' onClick={()=>setNotesOpen(!notesOpen)}>
@@ -106,10 +96,9 @@ export const Filters:React.FC<any> = ({getBrands, getNotes, getPrices}) => {
        </MainSelect>
 
        {
-          notesOpen ? <Notes getChangeNote={getChangeNotes} /> : ''
+          notesOpen ? <Notes /> : ''
        } 
-
-    
+           
         <Button onClick={()=> {resetFilter()}} closefilters={'true'} align='center' justify='space-between' padding='5px 15px'>
             Сбросить 
             <Closed/>

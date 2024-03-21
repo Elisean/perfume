@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import { MainForm } from '../../../Components/Main-Form/Main-Form'
 import { FlexContainer } from '../../../Containers/Flex-container/FlexContainer'
 import { Input } from '../../../Components/Input/Input'
@@ -6,8 +6,8 @@ import { Button } from '../../../Components/Button/Button'
 import styled from 'styled-components'
 import { useForm } from '../../../Hooks/useForm'
 import { observer } from 'mobx-react-lite'
-import UserDataStore from '../../../Store/UserDataStore'
-
+import { UserData } from '../../../Store/UserDataStore'
+import { nanoid } from 'nanoid'
 
 const StyledLocationFormWrapper = styled.section`
   .location-form-inner{
@@ -93,9 +93,12 @@ const StyledLocationFormWrapper = styled.section`
   }
  
 `
-
+const userStore = new UserData();
+  const countId = 8;
 
 export const LocationForm:React.FC = observer(() => {
+
+
   // формирование полей для валидации
     const {formData, errors, handleChange} : {formData : any; errors : any; handleChange : any} = useForm({
         name:"",
@@ -105,10 +108,11 @@ export const LocationForm:React.FC = observer(() => {
         number:"",
     });
   // формирование полей для валидации
-    const UserDataContext = useContext(UserDataStore);
-     // формирование полей для отправки в localStorage
+
+      // формирование полей для отправки на бд
 
     const [userData, setUserData] = useState<{[key:string]: any}>({
+      id:"",
       name:"",
       surName:"",
       country: "",
@@ -119,29 +123,32 @@ export const LocationForm:React.FC = observer(() => {
       phone:"",
       email:"",
     })
-
    
-    const getDataUser = () =>{
-      if(JSON.parse(localStorage.getItem("userData") || '[]').length !== 0){
-        localStorage.removeItem("userData")
-      }
-        const newUserData = {...userData}
-        newUserData.name = formData.name
-        newUserData.surName = formData.surName
-        newUserData.country = UserDataContext.countryletter
-        newUserData.address = formData.address
-        newUserData.area = UserDataContext.areaLetter
-        newUserData.city = UserDataContext.cityLetter
-        newUserData.postcode = formData.number
-        newUserData.phone = formData.phone
-        newUserData.email = formData.email
-        UserDataContext.userData = JSON.parse(localStorage.getItem("userData") || '[]')  
-        UserDataContext.userData.push(newUserData)
-        localStorage.setItem("userData", JSON.stringify(UserDataContext.userData))
-        setUserData(newUserData)
+    const getDataUser = async () =>{
+      
+          // обновление пользовательских данныъх
+        await fetch(`https://65e9dfcec9bf92ae3d3a80b3.mockapi.io/Users/${1}`, {
+          method: 'PUT',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            userName:formData.name,
+            userSurName:formData.surName,
+            userCountry:userStore.countryletter,
+            userAddress:formData.address,
+            userArea:userStore.areaLetter,
+            userCity:userStore.cityLetter,
+            userPostcode:formData.number,
+            userPhone:formData.phone,
+            userMail:formData.email,
+          }),
+        })
+           // обновление пользовательских данныъх
         window.location.reload()
     }
-     // формирование полей для отправки в localStorage
+
+     // формирование полей для отправки на бд
   return (
     <StyledLocationFormWrapper>
 
@@ -164,12 +171,12 @@ export const LocationForm:React.FC = observer(() => {
 
       <label htmlFor="country" className='user-input'>
           Страна / регион*
-          <Input type='text' id='country' className="form-input mb-10" name='country' value={UserDataContext.countryletter} autocomplete={'off'} onChange={(event:any) => UserDataContext.openAllCountries(event.target.value)}/>
+          <Input type='text' id='country' className="form-input mb-10" name='country' value={userStore.countryletter} autocomplete={'off'} onChange={(event:any) => userStore.openAllCountries(event.target.value)}/>
 
-          <ul className={UserDataContext.isOpenChange ? 'countries-list' : 'countries-list-none'}>
+          <ul className={userStore.isOpenChange ? 'countries-list' : 'countries-list-none'}>
           {
-              UserDataContext.isOpenChange && UserDataContext.countries?.map((country:any, index:number)=>{
-                  return <li className='areas-item' key={index} onClick={((event:any)=> UserDataContext.insertUserCountry(event.target.textContent))}>{country.name}</li> 
+              userStore.isOpenChange && userStore.countries?.map((country:any, index:number)=>{
+                  return <li className='areas-item' key={index} onClick={((event:any)=> userStore.insertUserCountry(event.target.textContent))}>{country.name}</li> 
               })
           }
       </ul>
@@ -183,12 +190,12 @@ export const LocationForm:React.FC = observer(() => {
 
       <label htmlFor="locality" className='user-input'>
         Населенный пункт *
-          <Input type='text' id='locality' className="form-input mb-10" value={UserDataContext.areaLetter} autocomplete={'off'} onChange={(event:any) => UserDataContext.openAllAreas(event.target.value)} disabled={UserDataContext.isDisabled} />
+          <Input type='text' id='locality' className="form-input mb-10" value={userStore.areaLetter} autocomplete={'off'} onChange={(event:any) => userStore.openAllAreas(event.target.value)} disabled={userStore.isDisabled} />
 
-          <ul className={UserDataContext.isOpenChangeArea ? 'areas-list' : 'areas-list-none'}>
+          <ul className={userStore.isOpenChangeArea ? 'areas-list' : 'areas-list-none'}>
             {
-                UserDataContext.isOpenChangeArea && UserDataContext.areas?.map((area:any, index:number)=>{
-                    return <li className='areas-item' key={index} onClick={((event:any)=> UserDataContext.insertUserArea(event.target.textContent))}>{area.name}</li> 
+                userStore.isOpenChangeArea && userStore.areas?.map((area:any, index:number)=>{
+                    return <li className='areas-item' key={index} onClick={((event:any)=> userStore.insertUserArea(event.target.textContent))}>{area.name}</li> 
                 })
             }
         </ul>
@@ -197,12 +204,12 @@ export const LocationForm:React.FC = observer(() => {
        
         <label htmlFor="area" className='user-input'>
         Область / район *
-          <Input type='text' id='area' className='form-input mb-10' name='area' value={UserDataContext.cityLetter} autocomplete={'off'} onChange={(event:any)=> UserDataContext.openAllCities(event.target.value)} disabled={UserDataContext.isDisabled}/>
+          <Input type='text' id='area' className='form-input mb-10' name='area' value={userStore.cityLetter} autocomplete={'off'} onChange={(event:any)=> userStore.openAllCities(event.target.value)} disabled={userStore.isDisabled}/>
 
-          <ul className={UserDataContext.isOpenChangeCity ? 'cities-list' : 'cities-list-none'}>
+          <ul className={userStore.isOpenChangeCity ? 'cities-list' : 'cities-list-none'}>
               {
-                  UserDataContext.isOpenChangeCity && UserDataContext.cities?.map((city:any, index:number)=>{
-                      return <li className='areas-item' key={index} onClick={((event:any)=> UserDataContext.insertUserCity(event.target.textContent))}>{city.name}</li> 
+                  userStore.isOpenChangeCity && userStore.cities?.map((city:any, index:number)=>{
+                      return <li className='areas-item' key={index} onClick={((event:any)=> userStore.insertUserCity(event.target.textContent))}>{city.name}</li> 
                   })
               }
           </ul>
@@ -242,3 +249,16 @@ export const LocationForm:React.FC = observer(() => {
 
 
 
+// const newUserData = {...userData}
+        // newUserData.userId = nanoid(countId)
+        // newUserData.name = formData.name
+        // newUserData.surName = formData.surName
+        // newUserData.country = userStore.countryletter
+        // newUserData.address = formData.address
+        // newUserData.area = userStore.areaLetter
+        // newUserData.city = userStore.cityLetter
+        // newUserData.postcode = formData.number
+        // newUserData.phone = formData.phone
+        // newUserData.email = formData.email
+
+        // setUserData(newUserData)

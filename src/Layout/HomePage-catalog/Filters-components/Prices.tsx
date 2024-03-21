@@ -1,8 +1,8 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import styled from 'styled-components'
 import Slider from 'react-slider' 
 import { FlexContainer } from '../../../Containers/Flex-container/FlexContainer';
-
+import FiltersStore from '../../../Store/FiltersStore';
 
 interface IPrices{
   getChangePrice?:any
@@ -57,14 +57,14 @@ const MAX = 10000;
 
 
 
-export const Prices:React.FC<IPrices>= ( { getChangePrice } ) => {
+export const Prices:React.FC<IPrices>= () => {
+  const filtersContext = useContext(FiltersStore) // получаем контекст из стора
 
     const [values, setValues] = useState([MIN, MAX]);
 
     const handleChangeBrand = (event:any) =>{
       setValues(event)
-      getChangePrice(values);
-    
+      filtersContext.getPrice(event.target.value)
     }
 
   return (

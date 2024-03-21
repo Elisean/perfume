@@ -1,9 +1,15 @@
-import React from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { Input } from '../Input/Input'
 import { Button } from '../Button/Button'
 import styled from 'styled-components'
 import checked from '../../icons/checked.svg';
 import { useForm } from '../../Hooks/useForm';
+import { observer } from 'mobx-react-lite';
+import { useNavigate } from 'react-router-dom';
+import { ROUTES } from '../../Utils/routes';
+import { useAuthContext } from '../../App/App';
+
+
 
 const StyledSingInUser = styled.section`
 
@@ -47,19 +53,40 @@ const StyledSingInUser = styled.section`
 
 `
 
-export const SingIn:React.FC = () => {
 
-        
+export const SingIn:React.FC = observer(() => {
+    const navigate = useNavigate()
+
+    const [authUser, setAuthUser] = useState<any>([])
+ 
+    const authContext = useContext(useAuthContext)
+   
+
   const {formData, errors, handleChange} : {formData : any; errors : any; handleChange : any} = useForm({
     email: "",
     password: "",
   });
 
+  useEffect(()=>{
+    fetch('https://65e9dfcec9bf92ae3d3a80b3.mockapi.io/Users')
+    .then((res) => res.json())
+    .then((data) => setAuthUser(data))
+  }, [])
 
+  const SingIn = () =>{
+    for(let key of authUser){
+      if(formData.email === key.userMail && formData.password === key.userPassword){
+        authContext.setUseAuth(true)
+        navigate(ROUTES.USERPAGE)
+      }else{
+        return false
+      }
+    }
+  }
+  
   return (
-
     <StyledSingInUser>
-
+  
         <h2 className='user-title'>Вход</h2>
         <form action="#" className='user-form'>
         <label htmlFor="singIn-user-email" className='input-wrapper'>
@@ -73,7 +100,8 @@ export const SingIn:React.FC = () => {
             onChange={handleChange}
             error={errors.email}
             placeholder='Email адрес'
-            required/>
+            required
+            />
         </label>
         <label htmlFor="singIn-user-password" className='input-wrapper'>
             Пароль *
@@ -95,11 +123,11 @@ export const SingIn:React.FC = () => {
             <Input className='input-check' id='user-remember' type='checkbox' value={'Запомнить меня'} />
             Запомнить меня
         </label>
-        <Button padding='12px 91px'>Войти</Button>
+        <Button type='button' padding='12px 91px' onClick={()=> SingIn()}>Войти</Button>
     </form>
-
+    
     </StyledSingInUser>
   )
-}
+})
 
 

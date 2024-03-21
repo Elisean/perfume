@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useRef, useState } from 'react'
+import React, { useContext, useState } from 'react'
 import styled from 'styled-components'
 import { Link } from 'react-router-dom'
 import { FlexContainer } from '../../Containers/Flex-container/FlexContainer'
@@ -119,7 +119,7 @@ const StyledCardWrapper = styled.section`
 export const Card:React.FC<any> = observer(({param}) => {
   const basketContext = useContext(BasketStore);
 
-  console.log(basketContext.cardsData);
+  
  
   const countCharacterForID = 6;
 
@@ -145,9 +145,6 @@ export const Card:React.FC<any> = observer(({param}) => {
     setCards(newCard)   
   }
 
-  
-
-  
   
   return (
          <StyledCardWrapper >

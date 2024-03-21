@@ -1,10 +1,9 @@
 import React, { ChangeEvent, useContext } from 'react'
 import ReactPaginate from 'react-paginate';
 import styled from 'styled-components';
-import { FiltersContext } from '../../../App/App'
 import { useResize } from '../../../Hooks/useResize';
 import { useLocation } from 'react-router-dom';
-
+import FiltersStore from '../../../Store/FiltersStore';
 
 interface IPagination{
   onChangePage:any
@@ -69,7 +68,7 @@ const StyledPaginate = styled.div`
 `
 
 export const Pagination:React.FC<IPagination> = ({onChangePage}) => {
-    const {filtersOpen, setFiltersOpen} = useContext(FiltersContext);
+    const filtersContext = useContext(FiltersStore);
     const { width, isScreenSm, isScreenMd, isScreenLg, isScreenXl, isScreenXxl } = useResize();
     const location = useLocation();
 
@@ -77,23 +76,23 @@ export const Pagination:React.FC<IPagination> = ({onChangePage}) => {
 
     if(isScreenXxl){
         countPage = 5;
-        if(filtersOpen){
+        if(filtersContext.isFilters){
             countPage = 7;
         }
     }else if (isScreenXl){
         countPage = 7;
-        if(filtersOpen){
+        if(filtersContext.isFilters){
             countPage = 10;
         }
     }else if (isScreenLg){
         countPage = 7;
-        if(filtersOpen){
+        if(filtersContext.isFilters){
             countPage = 10;
         }
 
     }else if (isScreenMd){
         countPage = 7;
-        if(filtersOpen){
+        if(filtersContext.isFilters){
             countPage = 10;
         }
     }
@@ -116,7 +115,7 @@ export const Pagination:React.FC<IPagination> = ({onChangePage}) => {
     }
 
     return <StyledPaginate>      
-            <div className={filtersOpen ? `${'showFilter'}`: ''}>
+            <div className={filtersContext.isFilters ? `${'showFilter'}`: ''}>
             <ReactPaginate
                 className='paginate'
                 breakLabel="..."

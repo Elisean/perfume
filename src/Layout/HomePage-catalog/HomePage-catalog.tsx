@@ -16,46 +16,16 @@ const WrapperCatalog = styled.div`
 `
 
 
-const BrandContext = createContext<any>('')
-
 export const HomePageCatalog:React.FC<IHomePage> = () => {
-
-  const [allFilters, setAllFilters] = useState({
-    brand:'',
-    notes:'',
-    price:[]
-  });
-
-  const getBrands = (brandItem:any) =>{
-    setAllFilters({...allFilters,
-      brand:brandItem
-    });
-    
-  }
-  
-  const getNotes = (noteItem:any) =>{
-    setAllFilters({...allFilters,
-      notes:noteItem
-    })
-  }
-
-    const getPrices = (priceItem:[]) =>{
-      setAllFilters({...allFilters,
-        price:priceItem
-      }) 
-    }
-      
- 
-
   return (
     <WrapperCatalog>
     
       <MainContainer catalogresponse={'true'}>
-      <BrandContext.Provider value={{allFilters, setAllFilters}}>
+    
         <AsideTitle response={'true'}>Каталог</AsideTitle>
-        <SelectCards receiveBrands={getBrands} receiveNotes={getNotes} receivePrices={getPrices} />
-        <CatalogCard setSearch={setAllFilters} search={allFilters} />
-        </BrandContext.Provider>
+        <SelectCards />
+        <CatalogCard />
+
       </MainContainer>
     </WrapperCatalog>
   )

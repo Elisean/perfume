@@ -2,7 +2,8 @@ import { ReactComponent as UserIcon } from "../../../../icons/user.svg"
 import { styled } from "styled-components";
 import { ROUTES } from "../../../../Utils/routes";
 import { NavLink } from "react-router-dom";
-
+import { useAuthContext } from "../../../../App/App";
+import { useContext } from "react";
 
 const UserIconWrapper = styled.div`
     margin:0 0 0 15px;
@@ -19,11 +20,17 @@ const UserIconWrapper = styled.div`
 `
 
 export const HeaderUser:React.FC = () =>{
+    const authContext = useContext(useAuthContext)
+  
     return (
         <UserIconWrapper>
-            <NavLink to={ROUTES.REGISTRATION} state='Регистрация'>
+            <NavLink to={authContext.useAuth? ROUTES.USERPAGE : ROUTES.REGISTRATION } state='Регистрация'>
                 <UserIcon/>
             </NavLink>
         </UserIconWrapper>
     )
 }
+
+   
+   
+   

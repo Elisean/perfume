@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import styled from 'styled-components'
 import { ReactComponent as Circle } from '../../../icons/check-circle.svg'
 import { LocationForm } from './LocationForm'
@@ -35,10 +35,14 @@ const StyledWrapperUserData = styled.section`
 export const LocationUserData:React.FC = () => {
 
   const [userChange, setUserChange] = useState(false)
+  const [userData, setUserData] = useState([])
 
-  const userData = JSON.parse(localStorage.getItem("userData") || '[]')
+  useEffect(()=>{
+    fetch('https://65e9dfcec9bf92ae3d3a80b3.mockapi.io/Users')
+    .then((res) => res.json())
+    .then((data) => setUserData(data))
+  },[])
 
- 
 
   return (
     <StyledWrapperUserData>
@@ -55,12 +59,12 @@ export const LocationUserData:React.FC = () => {
             userData.map((userData:any, index:number)=>{
               return (
                 <ul key={index} className='user-address-list'>
-                    <li className='user-address-item'>{userData.name}</li>
-                    <li className='user-address-item'>{userData.surName}</li>
-                    <li className='user-address-item'>{userData.address}</li>
-                    <li className='user-address-item'>{userData.city}</li>
-                    <li className='user-address-item'>{userData.area}</li>
-                    <li className='user-address-item'>{userData.postcode}</li>
+                    <li className='user-address-item'>{userData.userName}</li>
+                    <li className='user-address-item'>{userData.userSurName}</li>
+                    <li className='user-address-item'>{userData.userAddress}</li>
+                    <li className='user-address-item'>{userData.userCity}</li>
+                    <li className='user-address-item'>{userData.userArea}</li>
+                    <li className='user-address-item'>{userData.userPostcode}</li>
                     <button type='button' className='user-change' onClick={()=> setUserChange(!userChange)}>Изменить</button>
                 </ul>
               )

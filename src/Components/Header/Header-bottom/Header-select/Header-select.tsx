@@ -1,5 +1,4 @@
-import React, { useState, useRef } from 'react'
-import { useEffect } from 'react'
+import React, { useState, useRef, useEffect } from 'react'
 import styled from 'styled-components'
 import { MainSelect } from '../../../Main-select/Main-select'
 import { ReactComponent as SelectIcon } from '../../../../icons/select-icon.svg'

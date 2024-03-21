@@ -1,7 +1,7 @@
 import React from 'react'
 import { FlexContainer } from '../../../../Containers/Flex-container/FlexContainer';
-import styled from 'styled-components';
 import { ReactComponent as LocationSvg } from '../../../../icons/location.svg'
+import styled from 'styled-components';
 
 const LocationStyled = styled.div`
   font-family: 'Montserrat', sans-serif;

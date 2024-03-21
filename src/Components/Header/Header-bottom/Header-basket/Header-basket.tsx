@@ -2,9 +2,10 @@ import { ReactComponent as BasketIcon } from "../../../../icons/basket.svg"
 import { styled } from "styled-components"
 import { NavLink } from "react-router-dom"
 import { ROUTES } from "../../../../Utils/routes"
-import BasketStore from "../../../../Store/BasketStore"
-import { useContext, useEffect } from "react"
+import { useContext } from "react"
 import { observer } from "mobx-react-lite"
+import BasketStore from "../../../../Store/BasketStore"
+
 
 const BasketIconWrapper = styled.div`
     margin:0 0 0 30px;

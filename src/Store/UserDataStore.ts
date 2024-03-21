@@ -1,10 +1,8 @@
 import { action, makeAutoObservable, observable } from "mobx";
-import { createContext } from "react";
 
+export class UserData{
 
-class UserData{
-
-    @observable userData = JSON.parse(localStorage.getItem("userData") || '[]');
+    
 
     @observable countryletter:string = "" // отдельный символ в строке 
     @observable countries:[] = [] // массив стран
@@ -22,8 +20,6 @@ class UserData{
     @observable isOpenChangeCity:boolean = false // предикат на открытие select у input
     @observable cityId = [] // id конкретной области
 
-
-    
     
     constructor(){
         makeAutoObservable(this)
@@ -43,6 +39,7 @@ class UserData{
                 });       
                 this.isOpenChange = true           
                 this.isDisabled = false
+          
         });
     
     }
@@ -111,4 +108,3 @@ class UserData{
 
 } 
 
-export default createContext(new UserData())

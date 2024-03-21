@@ -4,7 +4,7 @@ import { createContext } from "react";
 
 class BasketStore {
 
-    @observable cardsData = JSON.parse(localStorage.getItem("basketProduct") || '[]');
+    @observable cardsData = JSON.parse(localStorage.getItem("basketProduct") || '[]')  
    
     
     constructor(){
@@ -13,22 +13,33 @@ class BasketStore {
     @action getCardsData(card:any){
         this.cardsData = card;
     }    
-    @action deleteCard(id:string){
-        console.log(id)    
-        //  this.cardsData.splice(id, 1);
-    }
-    @action decrease(id:string, volume:number){
-
-       let products = this.cardsData.map((product:any) => {
-            return Number(product.volume)
-    }).find((productVolume:number)=>{
-       return productVolume === volume
-    })
     
-      
+    @action deleteCard(id:string){ // прилетает индекс нужного элемента
+      const findObject = this.cardsData.find((obj:any)=> obj.id === id) // поиск нужного элемента
+      this.cardsData.splice(this.cardsData.indexOf(findObject), 1) // удаление нужного элемента
+   
+    if(findObject){
+        localStorage.removeItem(findObject.id) //удаляем элемент по id 
+        localStorage.setItem("basketProduct", JSON.stringify(this.cardsData)) // фиксируем изменение 
     }
-    @action increase(volume:number){
-     
+    }
+
+
+
+    @action decrease(id:string){ // прилетает индекс нужного элемента
+        const findObject = this.cardsData.find((obj:any)=> obj.id === id) // поиск нужного элемента
+        findObject.volume--; // функция уменьшения
+        if(findObject.volume <= 0){ // если меньше 0 присвой к переменной 0
+            findObject.volume = 1
+        }
+    }
+    @action increase(id:string){ // прилетает индекс нужного элемента
+        const findObject = this.cardsData.find((obj:any)=> obj.id === id) // поиск нужного элемента
+        findObject.volume++; // функция добавления
+        if(findObject.volume >= 100){ // если больше 100 присвой к переменной 100
+            findObject.volume = 100
+        }
+      
     }
 }
 

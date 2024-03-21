@@ -1,12 +1,11 @@
 import React, { useState, useEffect, useContext} from 'react'
 import styled from 'styled-components'
 import { Pagination } from '../Pagination';
-import { FiltersContext } from '../../../../App/App'
 import { useResize } from '../../../../Hooks/useResize';
 import { Skeleton } from './Skeleton-catalog-card';
 import { Card } from '../../../../Components/Card/Card';
+import FiltersStore from '../../../../Store/FiltersStore';
 import { observer } from 'mobx-react-lite';
-import  filtersStore  from '../../../../Store/FiltersStore';
 
 
 const StyledCatalogWrapper = styled.div`
@@ -107,100 +106,75 @@ const StyledCatalogWrapper = styled.div`
 
 
 
-export const CatalogCard:React.FC<any> = observer((filter)=>  {
+export const CatalogCard:React.FC<any> = observer(()=>  {
+  const filtersContext = useContext(FiltersStore);
   
-  
-  const storeContext = useContext(filtersStore);
-
-  const filtersValue = storeContext.value;
-  const filtersBrand = storeContext.brand;
-
-  console.log(filtersValue);
- 
-  const [cards, setCards] = useState<any[]>([]);
+  const [cards, setCards] = useState<any>([]);
   const [currentPage, setCurrentPage] = useState(1);
   const { width, isScreenSm, isScreenMd, isScreenLg, isScreenXl, isScreenXxl } = useResize();
   
   const [isLoading, setIsLoading] = useState(true);
-  const {filtersOpen, setFiltersOpen} = useContext(FiltersContext);
-  
+
 
 
   let countCards = 0;
 
-    if(isScreenXxl && !filtersOpen){
+    if(isScreenXxl && !filtersContext.isFilters){
       countCards = 12;
-    }else if (isScreenXxl && filtersOpen){
+    }else if (isScreenXxl && filtersContext.isFilters){
       countCards = 9;
-    }else if(isScreenXl && !filtersOpen ){
+    }else if(isScreenXl && !filtersContext.isFilters){
       countCards = 9;
-    }else if(isScreenXl && filtersOpen ){
+    }else if(isScreenXl && filtersContext.isFilters){
       countCards = 6;
-    }else if(isScreenLg && !filtersOpen ){
+    }else if(isScreenLg && !filtersContext.isFilters){
       countCards = 6;
-    }else if(isScreenLg && filtersOpen ){
+    }else if(isScreenLg && filtersContext.isFilters){
       countCards = 6;
-    }else if(isScreenMd && !filtersOpen ){
+    }else if(isScreenMd && !filtersContext.isFilters){
       countCards = 6;
-    }else if(isScreenMd && filtersOpen ){
+    }else if(isScreenMd && filtersContext.isFilters){
       countCards = 6;
-    }else if(isScreenSm && filtersOpen ){
+    }else if(isScreenSm && filtersContext.isFilters){
       countCards = 3;
-    }else if(isScreenSm && !filtersOpen ){
+    }else if(isScreenSm && !filtersContext.isFilters){
       countCards = 3;
-    }else if(width >= 100 && filtersOpen ){
+    }else if(width >= 100 && filtersContext.isFilters){
       countCards = 3;
-    }else if(width >= 100 && !filtersOpen ){
+    }else if(width >= 100 && !filtersContext.isFilters){
       countCards = 3;
     }
- 
+
   useEffect(() => {  
       fetch(
         `https://64e6020b09e64530d17f6dd0.mockapi.io/Flavors?page=${currentPage}&limit=${countCards}&`
       )
       .then((res) => res.json())
       .then((data) => {
-    
             setCards(data)
             setIsLoading(true)
             
             setTimeout(()=>{
               setIsLoading(false)
             }, 1500)      
-      
        });
-      
-  }, [currentPage, countCards, filtersOpen, isScreenSm, isScreenMd, isScreenLg, isScreenXl, isScreenXxl]);
+  }, [currentPage]);
 
+    
   
-  useEffect(()=>{
-
-    fetch(`https://64e6020b09e64530d17f6dd0.mockapi.io/Flavors?page=${currentPage}&filter=${filtersValue}&limit=${countCards}&`)
-    .then((res) => res.json())
-    .then((data) => {
-      setCards(data) 
-      setIsLoading(true)
-
-      setTimeout(()=>{
-        setIsLoading(false)
-      }, 1500)
-    });
-   
-  },[filtersValue, currentPage, countCards])
-   
-   
-
   return (
     <>
     <StyledCatalogWrapper>
-    <div className={filtersOpen ? 'filterOpen' : 'filterClosed'}>
+    <div className={filtersContext.isFilters ? 'filterOpen' : 'filterClosed'}>
+
     {
       isLoading ? [...new Array(12)].map((_, index) => <Skeleton key={index}/>) 
-                : cards.map((card, index) => (   
+                : cards.map((card:any, index:number) => (   
                 <Card param={card} key={index} />
-        )
+        ) 
       )
     }
+ 
     </div>
     </StyledCatalogWrapper>
     <Pagination onChangePage={(number:any) => setCurrentPage(number)}/>

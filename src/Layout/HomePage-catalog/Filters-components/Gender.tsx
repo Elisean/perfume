@@ -6,13 +6,6 @@ import { observer } from 'mobx-react';
 import  FiltersStore  from '../../../Store/FiltersStore'
 
 
-
-
-
-
-
-
-
 interface IGender{
   getChecked?:any
   getChangeChecked?:any
@@ -45,35 +38,21 @@ const StyledGender = styled.div`
 
 export const Gender:React.FC<IGender> = observer(() => {
 
-    const storeContext = useContext(FiltersStore)
-
-  const getValueWomen = (event:any) =>{
-    storeContext.getValue(event.target.value)
-  }
-
-   const getValueMan = (event:any) =>{
-    storeContext.getValue(event.target.value)
-
-   }
-
-   const getValueUnisex = (event:any) =>{
-    storeContext.getValue(event.target.value)
-
-   }
+  const filtersContext = useContext(FiltersStore) // получаем контекст из стора
 
   return (
     <StyledGender>
         <FlexContainer direction='column' align='flex-start'>
           <label className='title-input' htmlFor="women">
-            <input className='input-check' id='women' type='checkbox' onChange={()=> storeContext.checkedChange()} onClick={(event:any)=> getValueWomen(event)} value={'Женские'}/>
+            <input className='input-check' id='women' type='checkbox' onClick={(event:any)=> filtersContext.getGender(event.target.value)} value={'Женские'}/>
               Женские
           </label>
           <label className='title-input' htmlFor="man">
-            <input className='input-check' id='man' type='checkbox'  onChange={()=> storeContext.checkedChange()} onClick={(event:any)=> getValueMan(event)} value={'Мужские'}/>
+            <input className='input-check' id='man' type='checkbox' onClick={(event:any)=> filtersContext.getGender(event.target.value)} value={'Мужские'}/>
               Мужские
           </label>
           <label className='title-input' htmlFor="gender">
-            <input className='input-check' id='gender' type='checkbox'  onChange={()=> storeContext.checkedChange()} onClick={(event:any)=> getValueUnisex(event)} value={'Унисекс'}/>
+            <input className='input-check' id='gender' type='checkbox' onClick={(event:any)=> filtersContext.getGender(event.target.value)} value={'Унисекс'}/>
               Унисекс
           </label>
         </FlexContainer>

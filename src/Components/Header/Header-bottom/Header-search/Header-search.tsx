@@ -4,7 +4,6 @@ import { MainContainer } from "../../../../Containers/Main-container/Main-contai
 import SearchIconOpen from '../../../../icons/search.svg'
 import { MainForm } from "../../../Main-Form/Main-Form"
 import { Input } from "../../../Input/Input"
-import { Button } from "../../../Button/Button"
 import { ReactComponent as Search } from '../../../../icons/search.svg';
 import { Link } from "react-router-dom"
 import { ROUTES } from "../../../../Utils/routes"
@@ -170,7 +169,7 @@ export const HeaderSearch:React.FC = () =>{
     }, [])
 
    
-    const fetchData = (value:any) =>{
+    const fetchData = (value:string) =>{
         fetch(
             `https://64e6020b09e64530d17f6dd0.mockapi.io/Flavors?`
           )
@@ -188,7 +187,7 @@ export const HeaderSearch:React.FC = () =>{
           
     }
 
-    const handleChange = (value:any) =>{
+    const handleChange = (value:string) =>{
         setInput(value);
         fetchData(value);
     }
@@ -206,7 +205,7 @@ export const HeaderSearch:React.FC = () =>{
 
             <div className={openSearch ? 'search-open' : 'search-closed'}>
                 <MainForm action={'#'}>
-                    <Input type="search" className="form-input" placeholder="Найти парфюм.." value={input} onChange={(event:any)=> handleChange(event.target.value)}/>
+                    <Input type="search" className="form-input" placeholder="Найти парфюм.." value={input} onChange={(event:React.ChangeEvent<HTMLInputElement>)=> handleChange(event.target.value)}/>
                     <button type="button" className="form-btn-search"><Search/></button>
                 </MainForm>
                 <div className="search-results">
@@ -214,7 +213,7 @@ export const HeaderSearch:React.FC = () =>{
                     {
                      input && results.map((result:any, index:number)=>{
                             return <Link className="product-link" to={ROUTES.HOME + ROUTES.SINGLEPRODUCT + `${result.id}`} key={index}>
-                                 <img className="product-image" src={result.url} alt="product-image" />
+                                 <img className="product-image" src={result.url} alt="product-img" />
                                  <h2 className="product-title">{result.title}</h2> 
                                  <h3 className="product-type">{result.type}</h3>
                                  <h4 className="product-price">{result.price + ' ' + '₽'} </h4>

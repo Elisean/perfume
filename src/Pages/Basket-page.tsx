@@ -16,12 +16,21 @@ import { observer } from 'mobx-react-lite'
 
 
 const StyledWrapperBasketPage = styled.section`
+  
+  display: flex;
+  flex-direction: column;
+  .basket-content{
+    min-height:31vh;
+  }
+ 
   .basket-points{
+  
     background-color: var(--gray);
     padding:30px;
     margin:23px 0 0 0;
     border-radius:5px;
     width:955px;
+   
     svg{
       margin:0 10px 0 0;
     }
@@ -95,8 +104,6 @@ const StyledWrapperBasketPage = styled.section`
   .step-minus{
     margin: -5px 0 0 0;
   }
-
-
 ` 
 
 export const BasketPage = observer(() => {
@@ -104,14 +111,13 @@ export const BasketPage = observer(() => {
   const basketProductsContext = useContext(BasketStore);
   
   const basketProducts = basketProductsContext.cardsData  
-
-
-
+  
   return (
     <StyledWrapperBasketPage>
       <Header/>
-      <MainContainer>
-        <AsideTitle>Корзина</AsideTitle>
+
+      <MainContainer >
+      <AsideTitle margin='0'>Корзина</AsideTitle>
         <Breadcrumbs/>
           <div className='basket-points'>
             <div className='points-description'>
@@ -120,7 +126,7 @@ export const BasketPage = observer(() => {
             </div>
           <Button className='basket-button'>Потратить баллы</Button>
           </div>
-
+        <div className='basket-content'>
         {
           basketProducts.map((product:{id:string, cardName:string, price:string, volume:number, imgUrl:string})=>{
             
@@ -135,16 +141,15 @@ export const BasketPage = observer(() => {
              
                     <FlexContainer direction='column' align='flex-start' flex='0 1 46%'>
                       <h2 className='product-name'>{product.cardName}, {product.volume + 'мл'}</h2>
-
                       <button className='product-remove' onClick={() => basketProductsContext.deleteCard(product.id)}>удалить x</button>
                     </FlexContainer>
                     <FlexContainer>
                       <p className='product-price'>{product.price}</p>
                     </FlexContainer>
                     <div className='card-step'>
-                      <button className='step-minus' onClick={()=> basketProductsContext.decrease(product.id, product.volume)}>-</button>
+                      <button className='step-minus' onClick={()=> basketProductsContext.decrease(product.id)}>-</button>
                       <button className='step-count'>{product.volume}</button>
-                      <button className='step-plus' onClick={()=> basketProductsContext.increase(product.volume)}>+</button>
+                      <button className='step-plus' onClick={()=> basketProductsContext.increase(product.id)}>+</button>
                     </div>
                   </FlexContainer>
                   </MainContainer>
@@ -152,10 +157,9 @@ export const BasketPage = observer(() => {
             )
           })
         }
+        </div>
       </MainContainer>
-    <Footer/>
+    <Footer />
     </StyledWrapperBasketPage>
   )
 })
-// onClick={(event)=> decrease(event)}
-// onClick={(event)=> increase(event)}

@@ -4,6 +4,8 @@ import { MainContainer } from '../../Containers/Main-container/Main-container'
 import { FlexContainer } from '../../Containers/Flex-container/FlexContainer'
 import {ReactComponent as Logo} from '../../icons/logo.svg';
 import { FooterNavigation } from './Footer-navigation/Footer-navigation';
+import { Link } from 'react-router-dom';
+import { ROUTES } from '../../Utils/routes';
 
 
 
@@ -16,6 +18,7 @@ const FooterStyled = styled.div`
 
     .footer-logo{
         margin:0 auto;
+        cursor: pointer;
     }
     .footer-tm{
         font-size:14px;
@@ -28,15 +31,19 @@ const FooterStyled = styled.div`
     }
 ` 
 
-
+const linkBonuses = () =>{
+    window.scrollTo(0, 0);
+}
 
 export const Footer:React.FC = () => {
   return (
     <FooterStyled>
         <MainContainer footerresponse={'true'}>
             <FlexContainer direction='column'>
-                <div className='footer-logo'>
-                    <Logo/>
+                <div onClick={() => linkBonuses()} className='footer-logo'>
+                    <Link to={ROUTES.HOME}>
+                        <Logo/>
+                    </Link>
                 </div>
                 <FooterNavigation/>
             <p className='footer-tm'>© Parfumpomotivam 2023</p>      
