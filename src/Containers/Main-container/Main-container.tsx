@@ -38,8 +38,7 @@ const StyledContainer = styled.div<ContainersTypes>`
             max-width:335px;
         }
     `}
-
-
+    
     ${props => props.cardResponse && css`
     
         @media(max-width:768px) {
@@ -51,10 +50,6 @@ const StyledContainer = styled.div<ContainersTypes>`
             margin:0 auto;
         }
     `}
-
-   
-    
-
 `
 
 export const MainContainer:React.FC<ContainersTypes> = (props:ContainersTypes) => {

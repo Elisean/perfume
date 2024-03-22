@@ -33,33 +33,22 @@ const StyledLayoutWrapper = styled.section`
       display: grid;
       grid-template-columns: repeat(3, 305px);
       grid-template-rows: repeat(3, 500px);
-      grid-column-gap: 20px;
-      grid-row-gap: 20px;
-
+      justify-content:center;
     }
     @media(max-width:993px){
       display: grid;
       grid-template-columns: repeat(2, 305px);
       grid-template-rows: repeat(3, 500px);
-      grid-column-gap: 20px;
-      grid-row-gap: 20px;
-      justify-content: center;
     }
     @media(max-width:768px){
       display: grid;
       grid-template-columns: repeat(2, 240px);
       grid-template-rows: repeat(3, 470px);
-      grid-column-gap: 20px;
-      grid-row-gap: 20px;
-      justify-content: center;
     }
     @media(max-width:568px){
       display: grid;
-      grid-template-columns: repeat(1, 1fr);
+      grid-template-columns: repeat(1, 300px);
       grid-template-rows: repeat(3, 520px);
-      grid-column-gap: 20px;
-      grid-row-gap: 20px;
-      justify-content: center;
     }
    
   }
@@ -90,7 +79,7 @@ export const CatalogLayout:React.FC<ICatalogLayout> = observer(({filter,title}) 
      <StyledLayoutWrapper>
         <Header/>
             <MainContainer>
-            <AsideTitle>{title}</AsideTitle>
+            <AsideTitle responselayout={'true'}>{title}</AsideTitle>
               <div className='inner-page'>
               {
                 isLoading ? [...new Array(12)].map((_, index) => <Skeleton key={index}/>) 

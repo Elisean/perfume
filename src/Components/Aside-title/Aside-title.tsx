@@ -12,6 +12,7 @@ export interface IProps{
     left?:string
     textAlign?:string
     margin?:string
+    responselayout?:string
 }
 
 
@@ -45,6 +46,16 @@ const TitleStyled = styled.div<IProps>`
             text-align:center;
             margin:20px 0;
         }
+    `}
+     ${props => props.responselayout && css`
+     @media (max-width:1300px) {
+        margin:20px 0;
+        text-align:center;
+    }
+    @media (max-width:768px) {
+        margin: 100px 0 20px 0;
+    }
+      
     `}
     
 `

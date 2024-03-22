@@ -114,7 +114,7 @@ const FormContainerStyled = styled.div`
         position:absolute;
         top:70px;
         left:0;
-        z-index:5;
+        z-index:10;
         background-color: var(--bg-color);
         height:auto;
         max-height:700px;

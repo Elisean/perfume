@@ -51,12 +51,7 @@ const FlexContainerStyled = styled.div<ContainersTypes>`
            flex-wrap:wrap;
         }
     }
-    `}
-
- 
-    
-    
-  
+    `} 
 `
 
 export const FlexContainer:React.FC<ContainersTypes> = (props)=>{

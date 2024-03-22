@@ -6,7 +6,7 @@ import { HeaderSelect } from './Header-select/Header-select';
 import { HeaderSearch } from './Header-search/Header-search';
 import { HeaderUser } from './Header-user/Header-user';
 import { HeaderBasket } from './Header-basket/Header-basket';
-import { HeaderBurger } from '../Header-adaptive/Header-burger/Header-burger';
+import { HeaderBurger } from '../Header-burger/Header-burger';
 
 
 const HeaderBottomStyled = styled.div`

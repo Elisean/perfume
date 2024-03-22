@@ -44,23 +44,6 @@ const StyledWrapper = styled.div`
         visibility: hidden;
         z-index: -1;
   }
-
-  /* @media (max-width: 568px) {
-    .show{
-      overflow: scroll;
-      z-index:5;
-      opacity: 1;
-      visibility: visible;
-      position: static;
-  }
-    .hide{
-      overflow: scroll;
-      position: static;
-      opacity: 1;
-      z-index:0;
-      visibility: visible;
-    }
-  } */
   .wrapper-scroll{
     border:2px solid var(--border);
     border-radius:4px;
@@ -72,7 +55,6 @@ const StyledWrapper = styled.div`
   &::-webkit-scrollbar {
     width:9px;
   }
-
    &::-webkit-scrollbar-track{
     height:280px;
   } 
@@ -86,7 +68,6 @@ const StyledWrapper = styled.div`
     font-size:20px;
     text-align: left;
   } 
- 
 }
 
 .all-items{

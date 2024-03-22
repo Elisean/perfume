@@ -1,12 +1,12 @@
 import React from 'react'
 import styled from 'styled-components'
 import { useState, useEffect, useRef } from 'react'
-import  BurgerLogo from '../../../../icons/logo.svg'
-import { HeaderLocation } from '../../Header-top/Header-location/Header-location'
-import { HeaderPhone } from '../../Header-top/Header-phone/Header-phone'
-import { HeaderMenu } from '../../Header-top/Header-menu/Header-menu'
+import  BurgerLogo from '../../../icons/logo.svg'
+import { HeaderLocation } from '../Header-top/Header-location/Header-location'
+import { HeaderPhone } from '../Header-top/Header-phone/Header-phone'
+import { HeaderMenu } from '../Header-top/Header-menu/Header-menu'
 import { Link } from 'react-router-dom'
-import { ROUTES } from '../../../../Utils/routes'
+import { ROUTES } from '../../../Utils/routes'
 
 
 const HeaderBurgerWrapper = styled.div`
