@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import {useState, useContext} from 'react'
 import styled from 'styled-components'
 import { FlexContainer } from '../../../Containers/Flex-container/FlexContainer'
@@ -97,12 +97,21 @@ const StyledWrapper = styled.div`
 
 `
 
-export const SelectCards:React.FC<any> = observer(() => {
+export const SelectCards:React.FC = observer(() => {
   const [openSorting, setOpenSorting] = useState(false);
   const filtersContext = useContext(FiltersStore);
   const { isScreenMd, isScreenSm } = useResize();
+  const [sortItem, setSortItem] = useState('')
 
- 
+  // если в sortItem приходит значение, обновляй sortItem
+  useEffect(()=>{ 
+    if(sortItem !== ''){
+      setOpenSorting(false)
+    }
+  }, [sortItem])
+ // если в sortItem приходит значение, обновляй sortItem
+
+
   const resetFilterResponce = () =>{
     window.location.reload();
   }
@@ -141,11 +150,11 @@ export const SelectCards:React.FC<any> = observer(() => {
           }
         </div>
         <MainSelect responseselectpop={'true'} padding='10px 30px' width='305px' left={filtersContext.isFilters ? '35px' : '20px'} fontSize='18px' onClick={() => setOpenSorting(!openSorting)}>
-          По популярности
+          {sortItem || 'По популярности'}
           <Chevron/>
         </MainSelect>
-        <div className={openSorting ? `${'show'}` : `${'hide'}` }>
-          <Sorting  />
+        <div className={openSorting ? 'show' : 'hide' }>
+          <Sorting getSort={setSortItem}/>
         </div>
       </FlexContainer>
     </StyledWrapper>

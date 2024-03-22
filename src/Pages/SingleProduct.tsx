@@ -201,18 +201,16 @@ export const SingleProduct:React.FC = () =>{
     price:"",
 })
 
-
-
-  const [openDescription, setOpenDescription] = useState(false);
-  const [openReviews, setOpenReviews] = useState(false);
-  const [openModal, setOpenModal] = useState(false);
-  const [product, setProduct] = useState<any>([]);
-  const [isLoading, setIsLoading] = useState(true);
-  let [count, setCount] = useState(1);
-  const {id} = useParams();
-  const [allReviews, setAllReviews] = useState([]);
-  const [productLikes, setProductLikes] = useState([]);
-  const [likeProductLoading, setLikeProductLoading] = useState(true)
+  const [openDescription, setOpenDescription] = useState(false); // предикат для открытия модального окна с описанием
+  const [openReviews, setOpenReviews] = useState(false); // предикат для открытия модального окна с всеми оставленными комментариями
+  const [openModal, setOpenModal] = useState(false); // предикат для открытия модального окна для отправки комментария
+  const [product, setProduct] = useState<any>([]); // получение всех продуктов
+  const [isLoading, setIsLoading] = useState(true); // предикат для отображения продуктов после загрузки
+  let [count, setCount] = useState(1); // количество продуктов 
+  const {id} = useParams(); // получения id из адресной строки
+  const [allReviews, setAllReviews] = useState([]); // получение всех комментариев
+  const [productLikes, setProductLikes] = useState([]); // получение избранных продуктов
+  const [likeProductLoading, setLikeProductLoading] = useState(true) // предикат для отображения избранных продуктов после загрузки
 
 
   // Комментарии к продукту
@@ -222,7 +220,7 @@ export const SingleProduct:React.FC = () =>{
       )
       .then((res) => res.json())
       .then((data) => {
-        setAllReviews(data)
+        setAllReviews(data) // получение всех комментариев в массив
       }).catch((e)=>{
         console.log(e)
      });
@@ -252,33 +250,37 @@ export const SingleProduct:React.FC = () =>{
   }
    // степпер на увеличение продукта
  
-   // подгрузка комментариев с бд
+  // подгрузка товаров
   useEffect(() => {
+      // подгрузка отдельного товара
     fetch(
       `https://64e6020b09e64530d17f6dd0.mockapi.io/Flavors/${id}`
     )
     .then((res) => res.json())
     .then((data) => {
-      setIsLoading(false)
-      setProduct(data)
+      setIsLoading(false) // предикат для отображения продуктов после загрузки
+      setProduct(data) // получение товаров в массив 
      })
+      // подгрузка отдельного товара
 
+      // подгрузка избранных товаров
       fetch(
         `https://64e6020b09e64530d17f6dd0.mockapi.io/Flavors?&filter=${'productLikes'}`
       )
       .then((res) => res.json())
       .then((data) => {
-        setLikeProductLoading(false)
-        setProductLikes(data)
+        setLikeProductLoading(false) // предикат для отображения продуктов после загрузки
+        setProductLikes(data) // получение товаров в массив 
       })
+      // подгрузка избранных товаров
 
   }, [id]);
-   // подгрузка комментариев с бд
+   
  
 
   // формирование объекта для корзины товаров
   const getDataCard = (event?:any) =>{
-    const newCard = {...cards} // формирование нового объекта с последующей заменой старого
+    const newCard = {...cards} // формирование нового объекта на основе объекта cards
     newCard.id = nanoid(countCharacterForID); // добавление id к новому объекту 
     newCard.imgUrl = product.url; // добавление url к новому объекту 
     newCard.cardName = product.title; // добавление имени к новому объекту 
@@ -287,7 +289,7 @@ export const SingleProduct:React.FC = () =>{
     basketContext.cardsData = JSON.parse(localStorage.getItem("basketProduct") || '[]') // получение объекта из localStorage [] - значение по умолчанию, если не будет найден basketProduct
     basketContext.cardsData.push(newCard) // добавление нового объекта в массив стора
     localStorage.setItem("basketProduct", JSON.stringify(basketContext.cardsData)) // фиксация нового объекта в locaStorage
-    setCards(newCard) // замена старого объекта на новый
+    setCards(newCard) // замена объекта cards на newCard
   }
  // формирование объекта для корзины товаров
 
@@ -351,7 +353,7 @@ export const SingleProduct:React.FC = () =>{
            </Modal>
            <div className={openReviews? 'open-review' : 'close-review'}>
             <Button padding='12px 0' onClick={()=> setOpenModal(!openModal)}>Оставить отзыв</Button>
-          
+
             {
               allReviews.map((review:any, index:number)=>{
                 return(

@@ -4,13 +4,14 @@ import { Pagination } from '../Pagination';
 import { useResize } from '../../../../Hooks/useResize';
 import { Skeleton } from './Skeleton-catalog-card';
 import { Card } from '../../../../Components/Card/Card';
-import FiltersStore from '../../../../Store/FiltersStore';
 import { observer } from 'mobx-react-lite';
 import { scrollTop } from '../../../../Utils/scrollTop';
-
+import FiltersStore from '../../../../Store/FiltersStore';
+import  SortingStore  from '../../../../Store/SortingStore';
 
 const StyledCatalogWrapper = styled.div`
- 
+  margin:10px 0 0 0;
+  
    .filterOpen{
       display: grid;
       grid-template-columns: repeat(3, 305px);
@@ -101,23 +102,27 @@ const StyledCatalogWrapper = styled.div`
       justify-content: center;  
   }
 }
-  margin:10px 0 0 0;
-
 `
+  
 
 
+  
 
 export const CatalogCard:React.FC<any> = observer(()=>  {
+  const sortContext = useContext(SortingStore)
   const filtersContext = useContext(FiltersStore);
-  
+
   const [cards, setCards] = useState<any>([]);
   const [currentPage, setCurrentPage] = useState(1);
   const { width, isScreenSm, isScreenMd, isScreenLg, isScreenXl, isScreenXxl } = useResize();
   
   const [isLoading, setIsLoading] = useState(true);
+  
+  
 
+  
 
-
+// число карточек при изменении ширины экрана
   let countCards = 0;
 
     if(isScreenXxl && !filtersContext.isFilters){
@@ -145,25 +150,32 @@ export const CatalogCard:React.FC<any> = observer(()=>  {
     }else if(width >= 100 && !filtersContext.isFilters){
       countCards = 3;
     }
+// число карточек при изменении ширины экрана
 
   useEffect(() => {  
-      fetch(
-        `https://64e6020b09e64530d17f6dd0.mockapi.io/Flavors?page=${currentPage}&limit=${countCards}&`
-      )
-      .then((res) => res.json())
-      .then((data) => {
-            setCards(data)
-            setIsLoading(true)
-            
-            setTimeout(()=>{
-              setIsLoading(false)
-            }, 1500)      
-       });
-  }, [currentPage]);
+
+    sortContext.sortingProduct.length === 0 ?
+    fetch(
+      `https://64e6020b09e64530d17f6dd0.mockapi.io/Flavors?page=${currentPage}&limit=${countCards}&`
+    )
+    .then((res) => res.json())
+    .then((data) => {
+          setCards(data)
+          setIsLoading(true)
+          
+          setTimeout(()=>{
+            setIsLoading(false)
+          }, 1500)      
+     })  :  setCards(sortContext.sortingProduct)
+     
+
+  }, [currentPage, countCards, sortContext.sortingProduct]);
 
 
+  
   const changeCurrentPage = (number:number) =>{
     setCurrentPage(number)
+   
     scrollTop(1900);
   }
   return (

@@ -1,7 +1,10 @@
 import { styled } from 'styled-components'
-import React, { useState } from 'react'
+import React, { useContext } from 'react'
 import { FlexContainer } from '../../../Containers/Flex-container/FlexContainer'
 import { Button } from '../../../Components/Button/Button'
+import { observer } from 'mobx-react-lite'
+import  SortingStore  from '../../../Store/SortingStore'
+
 
 export const sortItems = [
  'По популярности',
@@ -26,35 +29,30 @@ const SortWrapper = styled.div`
     @media (max-width:568px) {
       left: 0;
       top:60px;
-
-    }
-    .btn-sort{
-        font-family: 'Open Sans', sans-serif;
-        background:#2B2825;
-        -webkit-text-fill-color: #C09E6C;
-        width:305px;
-        padding: 20px 27px;
-        font-size: 14px;
-        border: none;
-        border-radius:4px;
-        box-shadow: 0px 2px 10px 0px rgba(184, 164, 142, 0.40);
-        font-weight:600;
     }
 
 `
 
 
-export const Sorting:React.FC = () => {
+export const Sorting:React.FC<any> = observer((props) => {
 
+  const sortContext = useContext(SortingStore);
+
+  
+  const getSortItem = (sortItem:string) =>{
+    props.getSort(sortItem)
+    sortContext.priceDescending(sortItem)
+  }
+ 
   return (
     <SortWrapper>
       <FlexContainer direction='column'>
        {
         sortItems.map((sortItem, index) => (
-          <Button key={index} btnsorting={'true'} tabIndex={0}>{sortItem}</Button>
+          <Button  key={index} btnsorting={'true'} tabIndex={0} onClick={(event:any)=> getSortItem(event.target.textContent)}>{sortItem}</Button>
         ))
        }
       </FlexContainer>
     </SortWrapper>
   )
-}
+})

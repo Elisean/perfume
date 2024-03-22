@@ -1,14 +1,13 @@
 import React, { useContext, useEffect, useState } from 'react'
 import { Input } from '../Input/Input'
 import { Button } from '../Button/Button'
-import styled from 'styled-components'
-import checked from '../../icons/checked.svg';
 import { useForm } from '../../Hooks/useForm';
 import { observer } from 'mobx-react-lite';
 import { useNavigate } from 'react-router-dom';
 import { ROUTES } from '../../Utils/routes';
 import { useAuthContext } from '../../App/App';
-
+import styled from 'styled-components'
+import checked from '../../icons/checked.svg';
 
 
 const StyledSingInUser = styled.section`

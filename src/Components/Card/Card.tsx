@@ -5,9 +5,8 @@ import { FlexContainer } from '../../Containers/Flex-container/FlexContainer'
 import { Button } from '../Button/Button'
 import { nanoid } from 'nanoid'
 import { observer } from 'mobx-react-lite'
-import BasketStore from '../../Store/BasketStore'
 import { scrollTop } from '../../Utils/scrollTop'
-
+import BasketStore from '../../Store/BasketStore'
 
 const StyledCardWrapper = styled.section`
 
@@ -114,8 +113,6 @@ const StyledCardWrapper = styled.section`
 
 `
 
-
-
 export const Card:React.FC<any> = observer(({param}) => {
   const basketContext = useContext(BasketStore);
 
@@ -131,7 +128,7 @@ export const Card:React.FC<any> = observer(({param}) => {
 
 
   const getDataCard = (event?:any) =>{
-    const newCard = {...cards} // формирование нового объекта с последующей заменой старого
+    const newCard = {...cards} // формирование нового объекта на основе объекта cards
     newCard.id = nanoid(countCharacterForID); // добавление id к новому объекту 
     newCard.imgUrl = param.url; // добавление url к новому объекту 
     newCard.cardName = param.title; // добавление имени к новому объекту 
@@ -140,15 +137,15 @@ export const Card:React.FC<any> = observer(({param}) => {
     basketContext.cardsData = JSON.parse(localStorage.getItem("basketProduct") || '[]') // получение объекта из localStorage [] - значение по умолчанию, если не будет найден basketProduct
     basketContext.cardsData.push(newCard) // добавление нового объекта в массив стора
     localStorage.setItem("basketProduct", JSON.stringify(basketContext.cardsData)) // фиксация нового объекта в locaStorage
-    setCards(newCard) // замена старого объекта на новый
+    setCards(newCard) // замена объекта cards на newCard
   }
 
-  
+
   return (
          <StyledCardWrapper >
          <Link style={{display:'flex'}} to={`/perfume/singleProduct/${param.id}`}> <img className='card-image' src={param.url} onClick={()=> scrollTop()} alt="card-img"/></Link>
                     <div className='card-inner'>
-                    <Link  to={`/perfume/singleProduct/${param.id}`}> <h2 className='card-title'>{param.title}</h2> </Link>
+                    <Link to={`/perfume/singleProduct/${param.id}`}> <h2 className='card-title'>{param.title}</h2> </Link>
                       <p className='card-volume'>Объем мл.</p>
                       <FlexContainer wrap='wrap' justify='space-between'>
                         <button className='button-volume' name='volume' tabIndex={0} onClick={(event:any) => getDataCard(event)}>{param.volumes[0]}</button>
