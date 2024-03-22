@@ -65,7 +65,7 @@ export const CatalogLayout:React.FC<ICatalogLayout> = observer(({filter,title}) 
  
 
   useEffect(() => {
-    fetch(`https://64e6020b09e64530d17f6dd0.mockapi.io/Flavors?page=${currentPage}&filter=${filter}&limit=${countCards}&`)
+    fetch(`https://64e6020b09e64530d17f6dd0.mockapi.io/Flavors?filter=${filter}&`)
     .then((res) => res.json())
     .then((data) => {
         setIsLoading(false)
@@ -90,7 +90,6 @@ export const CatalogLayout:React.FC<ICatalogLayout> = observer(({filter,title}) 
               }
               </div>           
             </MainContainer>
-            <Pagination onChangePage={(number:number) => setCurrentPage(number)}/>
         <Footer/>
      </StyledLayoutWrapper>
   )
