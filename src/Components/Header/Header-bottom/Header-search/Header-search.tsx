@@ -253,11 +253,10 @@ export const HeaderSearch:React.FC = () =>{
 
             <div className={openSearch ? 'search-open' : 'search-closed'}>
                 <MainForm action={'#'}>
-                    <Input type="search" className="form-input" placeholder="Найти парфюм.." value={input} onChange={(event:React.ChangeEvent<HTMLInputElement>)=> handleChange(event.target.value)}/>
+                    <Input type="search" autocomplete="off" className="form-input" placeholder="Найти парфюм.." value={input} onChange={(event:React.ChangeEvent<HTMLInputElement>)=> handleChange(event.target.value)}/>
                     <button type="button" className="form-btn-search"><Search/></button>
                 </MainForm>
                 <div className="search-results">
-                
                     {
                      input && results.map((result:any, index:number)=>{
                             return <Link className="product-link" to={ROUTES.HOME + ROUTES.SINGLEPRODUCT + `${result.id}`} key={index}>
@@ -265,7 +264,7 @@ export const HeaderSearch:React.FC = () =>{
                                  <h2 className="product-title">{result.title}</h2> 
                                  <h3 className="product-type">{result.type}</h3>
                                  <h4 className="product-price">{result.price + ' ' + '₽'} </h4>
-                                 </Link>     
+                                </Link>     
                         })
                     }
                 </div>
