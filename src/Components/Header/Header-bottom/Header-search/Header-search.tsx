@@ -200,7 +200,7 @@ export const HeaderSearch:React.FC = () =>{
     const [input, setInput] = useState("");
     const [results, setResults] = useState([]);
     const [openSearch, setOpenSearch] = useState(false);
-
+    const [isFocused, setIsFocused] = useState(false);
     const body = document.body;
     const boxRef = useRef<HTMLDivElement>(null)
 
@@ -239,7 +239,15 @@ export const HeaderSearch:React.FC = () =>{
         setInput(value);
         fetchData(value);
     }
+    const handleFocus = () =>{
+        setIsFocused(true)
+        setInput('Найти парфюм..')
 
+    }
+    const handleBlur = () =>{
+        setIsFocused(false)
+        setInput('')
+    }
 
     return(
         <MainContainer>
@@ -253,7 +261,16 @@ export const HeaderSearch:React.FC = () =>{
 
             <div className={openSearch ? 'search-open' : 'search-closed'}>
                 <MainForm action={'#'}>
-                    <Input type="search" autocomplete="off" className="form-input" placeholder="Найти парфюм.." value={input} onChange={(event:React.ChangeEvent<HTMLInputElement>)=> handleChange(event.target.value)}/>
+                    <Input 
+                        type="search"
+                        autocomplete="off" 
+                        className="form-input" 
+                        placeholder="Найти парфюм.." 
+                        value={input} 
+                        onFocus={handleFocus}
+                        onBlur={handleBlur}
+                        data-input={isFocused ? 'input-in-focus' : null}
+                        onChange={(event:React.ChangeEvent<HTMLInputElement>)=> handleChange(event.target.value)}/>
                     <button type="button" className="form-btn-search"><Search/></button>
                 </MainForm>
                 <div className="search-results">
