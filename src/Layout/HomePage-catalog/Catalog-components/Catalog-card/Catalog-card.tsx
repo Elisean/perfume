@@ -175,7 +175,6 @@ export const CatalogCard:React.FC<any> = observer(()=>  {
   
   const changeCurrentPage = (number:number) =>{
     setCurrentPage(number)
-   
     scrollTop(1900);
   }
   return (

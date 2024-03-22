@@ -45,7 +45,7 @@ const StyledWrapper = styled.div`
         z-index: -1;
   }
 
-  @media (max-width: 568px) {
+  /* @media (max-width: 568px) {
     .show{
       overflow: scroll;
       z-index:5;
@@ -60,7 +60,7 @@ const StyledWrapper = styled.div`
       z-index:0;
       visibility: visible;
     }
-  }
+  } */
   .wrapper-scroll{
     border:2px solid var(--border);
     border-radius:4px;

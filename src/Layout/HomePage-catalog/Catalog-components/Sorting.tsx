@@ -38,7 +38,6 @@ export const Sorting:React.FC<any> = observer((props) => {
 
   const sortContext = useContext(SortingStore);
 
-  
   const getSortItem = (sortItem:string) =>{
     props.getSort(sortItem)
     sortContext.priceDescending(sortItem)
